@@ -1,0 +1,11 @@
+[build]
+	base = "web"
+	publish = "/dist"
+	command = "npm run generate"
+
+[build.environment]
+	SITE_TITLE="Jayme Stone"
+
+	SANITY_PROJECT_ID="verzhayl"
+	SANITY_PROJECT_DATASET="production"
+	SANITY_API_VERSION="2024-02-15"

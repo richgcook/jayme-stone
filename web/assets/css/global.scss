@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'ABCDiatype';
+    src: url('../fonts/ABCDiatype-Regular.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'ABCDiatype Mono';
+    src: url('../fonts/ABCDiatypeMono-Regular.woff2') format('woff2');
+    font-weight: 400;
+}
+:root {
+	--font-size-base: 24px;
+	--font-size-sm: 15px;
+	--font-size-md: 31px;
+	--font-size-lg: 36px;
+
+	--padding-base: 20px;
+
+	--color-primary: #b1a69f;
+}
+@include media('tablet-landscape') {
+	:root {	
+		
+	}
+}
+@include media('tablet-portrait') {
+	:root {	
+		
+	}
+}
+@include media('phone') {
+	:root { 
+		--font-size-base: 16px;
+		--font-size-sm: 12px;
+		--font-size-md: 23px;
+		--font-size-lg: 25px;
+	}
+}
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+body {
+	font-family: var(--font-primary), sans-serif;
+	font-size: var(--font-size-base);
+	font-variant-ligatures: none;
+	font-feature-settings: "ss07" 1;
+	background-color: white;
+	color: black;
+	line-height: 1.5;
+}
+a {
+	&:active, &:focus, &:hover {
+		color: currentColor;
+		outline: none;
+		text-decoration: none;
+	}
+}
+[data-ratio] {
+	display: block;
+	position: relative;
+	width: 100%;
+	background-color: transparent;
+	> img {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+@include globalSelect {
+	color: black;
+	background-color: var(--color-primary);
+}
+[v-cloak] { 
+	display: none !important; 
+}

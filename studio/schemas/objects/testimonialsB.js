@@ -1,0 +1,87 @@
+import { defineType, defineField, defineArrayMember } from 'sanity'
+import { Quotes } from '@phosphor-icons/react'
+
+export default defineType({
+	type: 'array',
+	name: 'testimonialsB',
+	title: 'Testimonials',
+	of: [
+		defineArrayMember({
+			type: 'object',
+			title: 'Section',
+			name: 'testimonialBlock',
+			fields: [
+				defineField({
+					type: 'string',
+					title: 'Title',
+					name: 'title',
+					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'color',
+					title: 'Background color',
+					name: 'bgColor',
+					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'color',
+					title: 'Text color',
+					name: 'textColor',
+					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'array',
+					title: 'Testimonials',
+					name: 'testimonials',
+					of: [
+						defineArrayMember({
+							type: 'object',
+							title: 'Testimonial',
+							name: 'testimonial',
+							fields: [
+								defineField({
+									type: 'richText',
+									title: 'Text',
+									name: 'text',
+									validation: Rule => Rule.required()
+								}),
+								defineField({
+									type: 'string',
+									title: 'Referrer',
+									name: 'referrerName',
+									validation: Rule => Rule.required()
+								}),
+							],
+							preview: {
+								select: {
+									text: 'text',
+									referrerName: 'referrerName'
+								},
+								prepare(selection) {
+									const { text, referrerName } = selection
+									return {
+										title: text ? text[0].children[0].text.substring(0, 50) + '...' : '',
+										subtitle: referrerName,
+										media: Quotes
+									}
+								}
+							}
+						}),
+					],
+				}),
+			],
+			preview: {
+				select: {
+					title: 'title'
+				},
+				prepare(selection) {
+					const { title } = selection
+					return {
+						title: title,
+						media: Quotes
+					}
+				}
+			}
+		}),
+	]
+})
