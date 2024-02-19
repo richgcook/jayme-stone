@@ -16,6 +16,7 @@ import pressPage from './documents/pressPage'
 import richText from './objects/richText'
 import altTag from './objects/altTag'
 import seo from './objects/seo'
+import colorPicker from './objects/colorPicker'
 import pageBuilderA from './objects/pageBuilderA'
 import pageBuilderB from './objects/pageBuilderB'
 import testimonialsA from './objects/testimonialsA'
@@ -42,6 +43,7 @@ export const schemaTypes = [
 	richText,
 	altTag,
 	seo,
+	colorPicker,
 	pageBuilderA,
 	pageBuilderB,
 	testimonialsA,

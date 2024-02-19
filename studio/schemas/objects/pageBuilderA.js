@@ -67,6 +67,18 @@ export default defineType({
 		}),
 		defineArrayMember({
 			type: 'object',
+			title: 'Content column',
+			name: 'contentColumnBlock',
+			fields: [
+				defineField({
+					type: 'pageBuilderB',
+					title: 'Content',
+					name: 'content',
+				}),
+			],
+		}),
+		defineArrayMember({
+			type: 'object',
 			title: 'Text',
 			name: 'textBlock',
 			fields: [
@@ -96,7 +108,7 @@ export default defineType({
 					],
 				}),
 				defineField({
-					type: 'color',
+					type: 'colorPicker',
 					title: 'Highlight color',
 					name: 'highlightColor',
 					description: 'Used for graphics',

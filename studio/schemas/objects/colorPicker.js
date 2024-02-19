@@ -2,7 +2,7 @@ import { defineType } from 'sanity'
 
 export default defineType({
 	type: 'color',
-	name: 'color',
+	name: 'colorPicker',
 	title: 'Color',
 	options: {
 		colorList: [

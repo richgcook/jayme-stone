@@ -22,19 +22,19 @@ export default defineType({
 			validation: Rule => Rule.required()
 		}),
 		defineField({
-			type: 'color',
+			type: 'colorPicker',
 			title: 'Background color',
 			name: 'bgColor',
 			validation: Rule => Rule.required()
 		}),
 		defineField({
-			type: 'color',
+			type: 'colorPicker',
 			title: 'Text color',
 			name: 'textColor',
 			validation: Rule => Rule.required()
 		}),
 		defineField({
-			type: 'color',
+			type: 'colorPicker',
 			title: 'Highlight color',
 			name: 'highlightColor',
 			description: 'Used for graphics, if applicable',

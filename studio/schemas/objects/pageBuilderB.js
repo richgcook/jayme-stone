@@ -106,40 +106,6 @@ export default defineType({
 		}),
 		defineArrayMember({
 			type: 'object',
-			title: 'Audio',
-			name: 'audioBlock',
-			fields: [
-				defineField({
-					type: 'file',
-					title: 'Audio',
-					name: 'audio',
-					options: {
-						accept: '.mp3'
-					},
-					validation: Rule => Rule.required()
-				}),
-				defineField({
-					type: 'richText',
-					title: 'Caption',
-					name: 'caption'
-				}),
-			],
-			preview: {
-				select: {
-					caption: 'caption',
-				},
-				prepare(selection) {
-					const { caption } = selection
-					return {
-						title: 'Audio',
-						subtitle: caption ? caption[0].children[0].text.substring(0, 50) + '...' : '',
-						media: SpeakerHigh
-					}
-				}
-			}
-		}),
-		defineArrayMember({
-			type: 'object',
 			title: 'Media embed',
 			name: 'embedBlock',
 			fields: [
@@ -176,6 +142,33 @@ export default defineType({
 						title: 'Embed',
 						subtitle: caption ? caption[0].children[0].text.substring(0, 50) + '...' : '',
 						media: YoutubeLogo
+					}
+				},
+			},
+		}),
+		defineArrayMember({
+			type: 'object',
+			title: 'Video reference',
+			name: 'videoRefBlock',
+			fields: [
+				defineField({
+					type: 'reference',
+					title: 'Video',
+					name: 'video',
+					to: [{ type: 'video' }],
+					validation: Rule => Rule.required()
+				}),
+			],
+			preview: {
+				select: {
+					videoTitle: 'video.title',
+				},
+				prepare(selection) {
+					const { videoTitle } = selection
+					return {
+						title: 'Video reference',
+						subtitle: videoTitle,
+						media: Play
 					}
 				},
 			},
