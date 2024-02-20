@@ -1,11 +1,17 @@
 <template>
-	<header :class="{ '--fixed': isFixed }">
-		<NuxtLink to="/"><Logo :navIsOpen="navStore.isOpen" /></NuxtLink>
-		<button class="nav-trigger" @click="navStore.toggleOpen()" :class="{ '--active': navStore.isOpen }">
-			<span></span>
-			<span></span>
-			<span></span>
-		</button>
+	<header :class="{ '--nav-open': navStore.isOpen }">
+		<div class="left">
+			<div>
+				<NuxtLink to="/" class="logo">Jayme Stone</NuxtLink>
+				<span class="strapline">Instigator / Integrator</span>
+			</div>
+			<button class="nav-trigger" @click="navStore.toggleOpen()">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+		<div class="right"></div>
 	</header>
 </template>
 
@@ -15,80 +21,106 @@ import { useNavStore } from '~/store/nav'
 
 const navStore = useNavStore()
 
-const route = useRoute()
-
-const isFixed = computed(() => {
-    return route.name == 'index' || route.name == 'contact'
-})
-
 </script>
 
 <style lang="scss" scoped>
 
 header {
-	position: relative;
-	padding: var(--padding-base);
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-between;
-	margin-bottom: calc(var(--padding-base) * 5);
+	position: sticky;
+	top: 0;
+	height: 80px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	z-index: 20;
-	&.--fixed {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-	}
-	> a {
-		display: block;
-		height: 24px;
-		width: 260px;
-		@include media('phone') {
-			height: 19px;
-			width: 212px;
+	&.--nav-open {
+		div.left {
+			background-color: var(--color-red);	
+			a.logo, 
+			span.strapline {
+				color: var(--color-black);
+			}
+			> button.nav-trigger {
+				span {
+					&:nth-child(1) {
+						transform: rotate(45deg) translate(-50%, -50%)  translateX(-1px)
+					}
+					&:nth-child(2) {
+						opacity: 0;
+					}
+					&:nth-child(3) {
+						transform: rotate(-45deg) translate(-50%, -50%) translateX(1px);
+					}
+				}
+			}
 		}
-		svg {
-			height: auto;
-			max-height: 100%;
-			width: auto;
-			max-width: 100%;
+		div.right {
+			opacity: 0;
+			pointer-events: none;
 		}
 	}
-	> button.nav-trigger {
-		all: unset;
-		box-sizing: border-box;
-		cursor: pointer;
-		display: block;
-		width: 34px;
-		position: relative;
-		&.--active {
+	div.left {
+		display: flex;
+		flex-flow: row nowrap;
+		background-color: var(--color-green);
+		transition: background-color 0.3s ease;
+		> div {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			padding: 0 20px 0 40px;
+			a.logo {
+				color: var(--color-beige);
+				transform: rotate(1deg);
+				transform-origin: left;
+				transition: color 0.3s ease;
+			}
+			span.strapline {
+				font-family: var(--font-family-mono);
+				font-size: var(--font-size-mono-caps);
+				text-transform: uppercase;
+				color: var(--color-beige);
+				border-bottom: 1px solid currentColor;
+				transform: rotate(1deg);
+				transform-origin: left;
+				transition: color 0.3s ease;
+			}
+		}
+		> button.nav-trigger {
+			all: unset;
+			box-sizing: border-box;
+			cursor: pointer;
+			display: block;
+			height: 80px;
+			width: 80px;
+			background-color: var(--color-pink);
+			position: relative;
 			span {
-				background-color: white;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				display: block;
+				height: 2px;
+				width: 28px;
+				background-color:var(--color-black);
+				transform-origin: left center;
+				transition: transform 0.3s ease, opacity 0.3s ease;
 				&:nth-child(1) {
-					transform: rotate(45deg) translate(3px, -3px);
+					transform: translate(-50%, -50%) translateY(-7px)
 				}
 				&:nth-child(2) {
-					opacity: 0;
+					transform: translate(-50%, -50%);
 				}
 				&:nth-child(3) {
-					transform: rotate(-45deg) translate(3px, 3px);
+					transform: translate(-50%, -50%) translateY(7px);
 				}
 			}
 		}
-		span {
-			position: absolute;
-			display: block;
-			height: 3px;
-			width: 34px;
-			background-color:black;
-			transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
-			&:nth-child(1) {
-				transform: translate(0, -11px);
-			}
-			&:nth-child(3) {
-				transform: translate(0, 11px);
-			}
-		}
+	}
+	div.right {
+		background-color: var(--color-blue);
+		transition: opacity 0.3s ease;
 	}
 }
 

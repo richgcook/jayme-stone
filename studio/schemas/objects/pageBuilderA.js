@@ -1,5 +1,5 @@
 import { defineType, defineField, defineArrayMember } from 'sanity'
-import { TextAlignLeft } from '@phosphor-icons/react'
+import { TextAlignLeft, Layout } from '@phosphor-icons/react'
 
 export default defineType({
 	type: 'array',
@@ -76,54 +76,16 @@ export default defineType({
 					name: 'content',
 				}),
 			],
-		}),
-		defineArrayMember({
-			type: 'object',
-			title: 'Text',
-			name: 'textBlock',
-			fields: [
-				defineField({
-					type: 'richText',
-					title: 'Text',
-					name: 'text',
-					validation: Rule => Rule.required()
-				}),
-				defineField({
-					type: 'object',
-					title: 'Button/link',
-					name: 'button',
-					description: 'Optional',
-					fields: [
-						defineField({
-							type: 'string',
-							title: 'Label',
-							name: 'label',
-						}),
-						defineField({
-							type: 'reference',
-							title: 'Link',
-							name: 'link',
-							to: [{ type: 'pageA' }]
-						}),
-					],
-				}),
-				defineField({
-					type: 'colorPicker',
-					title: 'Highlight color',
-					name: 'highlightColor',
-					description: 'Used for graphics',
-				}),
-			],
 			preview: {
 				select: {
-					text: 'text'
+					content: 'content'
 				},
 				prepare(selection) {
-					const { text } = selection
+					const { content } = selection
+					const contentLength = typeof content == 'object' ? Object.keys(content)?.length : content?.length
 					return {
-						title: 'Text',
-						subtitle: text ? text[0].children[0].text.substring(0, 50) + '...' : '',
-						media: TextAlignLeft
+						title: `Content column (${contentLength} ${contentLength > 1 ? 'items' : 'item'})`,
+						media: Layout
 					}
 				}
 			}

@@ -14,12 +14,33 @@ export default defineType({
 					name: 'alt',
 					type: 'alt'
 				}),
-			]
+			],
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			type: 'richText',
 			title: 'Introduction',
 			name: 'introduction',
+			validation: Rule => Rule.required()
+		}),
+		defineField({
+			type: 'reference',
+			title: 'Featured music',
+			name: 'featuredMusic',
+			to: [{ type: 'music' }],
+			validation: Rule => Rule.required()
+		}),
+		defineField({
+			type: 'reference',
+			title: 'Featured video',
+			name: 'featuredVideo',
+			to: [{ type: 'video' }],
+			validation: Rule => Rule.required()
+		}),
+		defineType({
+			type: 'testimonialsA',
+			name: 'testimonialsA',
+			title: 'Testimonials',
 		}),
 		defineField({
 			title: 'SEO',

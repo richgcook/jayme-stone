@@ -1,23 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+// font-family: "IBM Plex Mono", monospace;
+
 @font-face {
-    font-family: 'ABCDiatype';
-    src: url('../fonts/ABCDiatype-Regular.woff2') format('woff2');
+    font-family: 'Sporting Grotesque';
+    src: url('../fonts/Sporting_Grotesque-Regular_web.woff2') format('woff2');
     font-style: normal;
     font-weight: 400;
 }
-@font-face {
-    font-family: 'ABCDiatype Mono';
-    src: url('../fonts/ABCDiatypeMono-Regular.woff2') format('woff2');
-    font-weight: 400;
-}
 :root {
-	--font-size-base: 24px;
-	--font-size-sm: 15px;
-	--font-size-md: 31px;
-	--font-size-lg: 36px;
+	--font-family-base: 'Sporting Grotesque', sans-serif;
+	--font-family-mono: 'IBM Plex Mono', monospace;
+
+	--font-size-base: 16px;
+	--font-size-md: 20px;
+	--font-size-lg: 40px;
+	--font-size-xl: 80px;
+
+	--font-size-mono-sm: 12px;
+	--font-size-mono-md: 14px;
+	--font-size-mono-caps: 15px;
 
 	--padding-base: 20px;
 
-	--color-primary: #b1a69f;
+	--color-black: #141313;
+	--color-beige: #f7f1ee;
+	--color-green: #04674a;
+	--color-red: #e75f5c;
+	--color-pink: #eabad8;
+	--color-yellow: #e4aa58;
+	--color-blue: #4976af;
 }
 @include media('tablet-landscape') {
 	:root {	
@@ -42,12 +53,12 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 body {
-	font-family: var(--font-primary), sans-serif;
+	font-family: var(--font-family-base);
 	font-size: var(--font-size-base);
 	font-variant-ligatures: none;
 	font-feature-settings: "ss07" 1;
 	background-color: white;
-	color: black;
+	color: var(--color-black);
 	line-height: 1.5;
 }
 a {
@@ -77,4 +88,10 @@ a {
 }
 [v-cloak] { 
 	display: none !important; 
+}
+.has--arrow {
+	display: inline-flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	column-gap: 2ch;
 }

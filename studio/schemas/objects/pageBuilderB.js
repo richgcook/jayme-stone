@@ -1,4 +1,4 @@
-import { TextAlignLeft, Play, YoutubeLogo, SpeakerHigh } from '@phosphor-icons/react'
+import { TextAlignLeft, Play, YoutubeLogo, Video, Quotes } from '@phosphor-icons/react'
 import { defineType, defineField, defineArrayMember } from 'sanity'
 
 export default defineType({
@@ -72,103 +72,157 @@ export default defineType({
 		}),
 		defineArrayMember({
 			type: 'object',
-			title: 'Video',
-			name: 'videoBlock',
+			title: 'Video(s)',
+			name: 'videosBlock',
 			fields: [
 				defineField({
-					type: 'file',
-					title: 'Video',
-					name: 'video',
-					options: {
-						accept: '.mp4'
-					},
-					validation: Rule => Rule.required()
-				}),
-				defineField({
-					type: 'richText',
-					title: 'Caption',
-					name: 'caption',
-				}),
-			],
-			preview: {
-				select: {
-					caption: 'caption',
-				},
-				prepare(selection) {
-					const { caption } = selection
-					return {
-						title: 'Video',
-						subtitle: caption ? caption[0].children[0].text.substring(0, 50) + '...' : '',
-						media: Play
-					}
-				},
-			},
-		}),
-		defineArrayMember({
-			type: 'object',
-			title: 'Media embed',
-			name: 'embedBlock',
-			fields: [
-				defineField({
-					type: 'image',
-					title: 'Cover/thumbnail image',
-					name: 'coverImage',
-					fields: [
-						defineField({
-							name: 'alt',
-							type: 'alt'
+					type: 'array',
+					title: 'Videos',
+					name: 'videos',
+					of: [
+						defineArrayMember({
+							type: 'object',
+							title: 'Embed',
+							name: 'embedBlock',
+							fields: [
+								defineField({
+									type: 'image',
+									title: 'Cover/thumbnail image',
+									name: 'coverImage',
+									fields: [
+										defineField({
+											name: 'alt',
+											type: 'alt'
+										}),
+									]
+								}),
+								defineField({
+									type: 'text',
+									title: 'Embed code',
+									name: 'embedCode',
+									rows: 6
+								}),
+								defineField({
+									type: 'richText',
+									title: 'Caption',
+									name: 'caption',
+								}),
+							],
+							preview: {
+								select: {
+									caption: 'caption',
+								},
+								prepare(selection) {
+									const { caption } = selection
+									return {
+										title: 'Embed',
+										subtitle: caption ? caption[0].children[0].text.substring(0, 50) + '...' : '',
+										media: YoutubeLogo
+									}
+								},
+							},
+						}),
+						defineArrayMember({
+							type: 'object',
+							title: 'Reference',
+							name: 'videoRefBlock',
+							fields: [
+								defineField({
+									type: 'reference',
+									title: 'Video',
+									name: 'video',
+									to: [{ type: 'video' }],
+									validation: Rule => Rule.required()
+								}),
+							],
+							preview: {
+								select: {
+									videoTitle: 'video.title',
+								},
+								prepare(selection) {
+									const { videoTitle } = selection
+									return {
+										title: 'Video reference',
+										subtitle: videoTitle,
+										media: Play
+									}
+								},
+							},
 						}),
 					]
 				}),
-				defineField({
-					type: 'text',
-					title: 'Embed code',
-					name: 'embedCode',
-					rows: 6
-				}),
-				defineField({
-					type: 'richText',
-					title: 'Caption',
-					name: 'caption',
-				}),
 			],
 			preview: {
 				select: {
-					caption: 'caption',
+					videos: 'videos',
 				},
 				prepare(selection) {
-					const { caption } = selection
+					const { videos } = selection
+					const videosLength = typeof videos == 'object' ? Object.keys(videos)?.length : videos?.length
 					return {
-						title: 'Embed',
-						subtitle: caption ? caption[0].children[0].text.substring(0, 50) + '...' : '',
-						media: YoutubeLogo
+						title: `${videosLength > 1 ? 'Videos' : 'Video'} (${videosLength})`,
+						media: Video
 					}
 				},
 			},
 		}),
 		defineArrayMember({
 			type: 'object',
-			title: 'Video reference',
-			name: 'videoRefBlock',
+			title: 'Press',
+			name: 'pressBlock',
 			fields: [
 				defineField({
-					type: 'reference',
-					title: 'Video',
-					name: 'video',
-					to: [{ type: 'video' }],
-					validation: Rule => Rule.required()
+					type: 'array',
+					title: 'Press',
+					name: 'press',
+					of: [
+						defineArrayMember({
+							type: 'object',
+							title: 'Press item',
+							name: 'pressItem',
+							fields: [
+								defineField({
+									type: 'text',
+									title: 'Text',
+									name: 'text',
+									rows: 2,
+									validation: Rule => Rule.required()
+								}),
+								defineField({
+									type: 'string',
+									title: 'Referrer',
+									name: 'referrerName',
+									validation: Rule => Rule.required()
+								}),
+							],
+							preview: {
+								select: {
+									text: 'text',
+									referrerName: 'referrerName'
+								},
+								prepare(selection) {
+									const { text, referrerName } = selection
+									return {
+										title: text,
+										subtitle: referrerName,
+										media: Quotes
+									}
+								}
+							}
+						}),
+					]
 				}),
 			],
 			preview: {
 				select: {
-					videoTitle: 'video.title',
+					press: 'press',
 				},
 				prepare(selection) {
-					const { videoTitle } = selection
+					const { press } = selection
+					const pressLength = typeof press == 'object' ? Object.keys(press)?.length : press?.length
 					return {
-						title: 'Video reference',
-						subtitle: videoTitle,
-						media: Play
+						title: `Press (${pressLength})`,
+						media: Quotes
 					}
 				},
 			},

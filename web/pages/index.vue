@@ -1,14 +1,7 @@
 <template>
-	<div class="home-layout">
-		<div class="left" v-if="data.homePage.introduction?.length">
-			<RichText :blocks="data.homePage.introduction" />
-		</div>
-		<div class="right" v-if="data.homePage.featuredImage">
-			<Img 
-				:src="data.homePage.featuredImage.asset.url"
-				:alt="data.homePage.featuredImage.asset.alt"
-			/>
-		</div>
+	<div>
+
+		<NewsletterSignup />
 	</div>
 </template>
 

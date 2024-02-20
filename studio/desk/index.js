@@ -4,6 +4,7 @@ import { DocumentsIcon } from '@sanity/icons'
 import { projectsStructure } from './projects'
 import { musicStructure } from './music'
 import { videosStructure } from './videos'
+import { settingsStructure } from './settingsGeneral'
 
 const hiddenDocTypes = listItem => 
 	![
@@ -18,6 +19,7 @@ const hiddenDocTypes = listItem =>
 		'eventsPage',
 		'pressPage',
 		'pageA',
+		'settingsGeneral',
 	]
 .includes(listItem.getId())
 
@@ -64,6 +66,8 @@ export const deskStructure = (S, context) =>
 		),
 
 		S.documentTypeListItem('pageA').title('Pages').icon(DocumentsIcon),
+
+		settingsStructure(S, context),
 
 		// Filter out docs already defined above
 		...S.documentTypeListItems().filter(hiddenDocTypes),

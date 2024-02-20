@@ -53,7 +53,7 @@ export default defineType({
 							title: 'File',
 							name: 'file',
 							options: {
-								accept: '.mp3'
+								accept: 'audio/*'
 							},
 							validation: Rule => Rule.required()
 						}),
@@ -70,9 +70,10 @@ export default defineType({
 							validation: Rule => Rule.required()
 						}),
 						defineField({
-							type: 'richText',
+							type: 'text',
 							title: 'Role',
 							name: 'role',
+							rows: 2,
 						}),
 					],
 				}),
@@ -89,6 +90,11 @@ export default defineType({
 			name: 'testimonialsB',
 			title: 'Testimonials',
 			hidden: ({document}) => document?.slug?.current !== 'about',
+		}),
+		defineType({
+			type: 'newsletterSelection',
+			name: 'newsletterSelection',
+			title: 'Newsletter selection',
 		}),
 		defineField({
 			title: 'SEO',

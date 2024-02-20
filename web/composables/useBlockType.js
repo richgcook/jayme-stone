@@ -5,6 +5,8 @@ export const useBlockType = (type) => {
 		case 'audioBlock': return 'audio'
 		case 'videoBlock': return 'video'
 		case 'embedBlock': return 'embed'
+		case 'imageTextBlock': return 'image-text'
+		case 'contentColumnBlock': return 'content-column'
 		default: return
 	}
 }

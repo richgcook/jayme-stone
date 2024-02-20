@@ -12,6 +12,7 @@ import videosPage from './documents/videosPage'
 import pageA from './documents/pageA'
 import eventsPage from './documents/eventsPage'
 import pressPage from './documents/pressPage'
+import settingsGeneral from './documents/settingsGeneral'
 
 import richText from './objects/richText'
 import altTag from './objects/altTag'
@@ -21,6 +22,7 @@ import pageBuilderA from './objects/pageBuilderA'
 import pageBuilderB from './objects/pageBuilderB'
 import testimonialsA from './objects/testimonialsA'
 import testimonialsB from './objects/testimonialsB'
+import newsletterSelection from './objects/newsletterSelection'
 
 export const schemaTypes = [
 	// Documents
@@ -39,6 +41,8 @@ export const schemaTypes = [
 	eventsPage,
 	pressPage,
 
+	settingsGeneral,
+
 	// Objects
 	richText,
 	altTag,
@@ -48,5 +52,6 @@ export const schemaTypes = [
 	pageBuilderB,
 	testimonialsA,
 	testimonialsB,
+	newsletterSelection,
 
 ]

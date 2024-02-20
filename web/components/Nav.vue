@@ -1,10 +1,8 @@
 <template>
 	<Transition name="fade">
 		<nav class="main" v-show="isOpen" v-cloak ref="nav">
-			<ul class="menu">
-				<li><NuxtLink to="/about">About</NuxtLink></li>
-				<li><NuxtLink to="/writing">Selected Writing</NuxtLink></li>
-				<li><NuxtLink to="/contact">Contact</NuxtLink></li>
+			<ul class="menu" v-if="data?.settingsGeneral?.menuA?.length">
+				<li v-for="menuItem in data.settingsGeneral.menuA" :key="menuItem._id"><NuxtLink :to="`/${menuItem.slug.current}`">{{ menuItem.title }}</NuxtLink></li>
 			</ul>
 		</nav>
 	</Transition>
@@ -27,6 +25,18 @@ watch(isOpen, (newValue, oldValue) => {
 	if (oldValue) enableBodyScroll(nav.value)
 })
 
+const query = groq`{ 
+
+	"settingsGeneral": *[_type == "settingsGeneral"] {
+		menuA[]->{
+			_id, _type, slug, title
+		}
+	}[0]
+	
+}`
+
+const { data } = await useSanityQuery(query)
+
 </script>
 
 <style lang="scss" scoped>
@@ -36,7 +46,9 @@ nav.main {
 	inset: 0;
 	height: 100%;
 	width: 100%;
-	background-color: var(--color-primary);
+	padding: 150px 100px;
+	overflow-y: auto;
+	background-color: var(--color-green);
 	z-index: 10;
 	&.fade-enter-active,
 	&.fade-leave-active {
@@ -47,32 +59,14 @@ nav.main {
 		opacity: 0;
 	}
 	ul.menu {
-		position: absolute;
-		top: 50%;
-		left: 0;
-		transform: translateY(-50%);
-		width: 100%;
+
 		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-evenly;
-		@include media('phone') {
-			flex-flow: column nowrap;
-			align-items: center;
-			row-gap: 3em;
-		}
+		flex-flow: column nowrap;
 		li {
-			font-size: 43px;
-			line-height: 1;
-			@include media('phone') {
-				font-size: 38px;
-			}
+			font-size: 50px;
+			line-height: 1.3;
 			a {
-				color: white;
-				&:hover {
-					text-decoration: underline;
-					text-decoration-thickness: 3px;
-					text-underline-offset: 3px;
-				}
+				color: var(--color-beige);
 			}
 		}
 	}

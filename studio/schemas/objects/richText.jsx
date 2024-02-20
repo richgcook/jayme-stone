@@ -1,26 +1,21 @@
+import React from 'react'
+import { defineType, defineField, defineArrayMember } from 'sanity'
 import { Cards, FileArrowDown } from '@phosphor-icons/react'
-import { Header1, Header2, Header3, Header4, Normal } from '../../components/blockRenders'
 import { PAGE_REFERENCES } from '../../constants'
 
-export default {
+const buttonRenderer = props => (
+	<span style={{ backgroundColor: '#2276fc', color: 'white' }}>{props.renderDefault(props)}</span>
+)
+
+export default defineType({
 	type: 'array',
 	title: 'Text',
 	name: 'richText',
 	of: [
-		{ 
+		defineArrayMember({ 
 			type: 'block',
 			styles: [
-				{ 
-					title: 'Normal', 
-					value: 'normal', 
-					//component: Normal 
-				},
-				{ 
-					title: 'H1', 
-					value: 'h1', 
-					//component: Header1
-				},
-				{ title: 'H2', value: 'h2' },
+				{ title: 'Normal', value: 'normal' },
 				{ title: 'H3', value: 'h3'}
 			],
 			lists: [
@@ -29,7 +24,7 @@ export default {
 			marks: {
 				decorators: [
 					{ title: 'Strong', value: 'strong' },
-					{ title: 'Emphasis', value: 'em' }
+					{ title: 'Emphasis', value: 'em' },
 				],
 				annotations: [
 					{
@@ -37,24 +32,24 @@ export default {
 						type: 'object',
 						title: 'External link',
 						fields: [
-							{
+							defineField({
 								name: 'href',
 								type: 'url',
 								title: 'URL',
 								validation: Rule => Rule.uri({
 									scheme: ['https', 'http', 'mailto', 'tel']
 								})
-							},
-							{
+							}),
+							defineField({
 								title: 'Open in new tab',
 								name: 'blank',
 								type: 'boolean'
-							},
-							{
+							}),
+							defineField({
 								type: 'boolean',
-								name: 'symbol',
-								title: 'Add link symbol'
-							}
+								title: 'Style link as a button',
+								name: 'button',
+							}),
 						],
 					},
 					{
@@ -63,13 +58,21 @@ export default {
 						title: 'Internal link',
 						icon: Cards,
 						fields: [
-							{
+							defineField({
 								name: 'reference',
 								type: 'reference',
 								title: 'Reference',
 								to: PAGE_REFERENCES,
-							},
+							}),
+							defineField({
+								type: 'boolean',
+								title: 'Add link as a button',
+								name: 'button',
+							}),
 						],
+						components: {
+							annotation: buttonRenderer
+						}
 					},
 					{
 						name: 'fileUploadLink',
@@ -77,20 +80,20 @@ export default {
 						title: 'File upload',
 						icon: FileArrowDown,
 						fields: [
-							{
+							defineField({
 								type: 'file',
 								title: 'File upload',
 								name: 'file'
-							},
-							{
+							}),
+							defineField({
 								type: 'boolean',
-								name: 'symbol',
-								title: 'Add link symbol'
-							}
+								title: 'Add link as a button',
+								name: 'button',
+							}),
 						],
-					}
+					},
 				]
 			}
-		}
+		}),
 	]
-}
+})

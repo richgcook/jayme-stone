@@ -48,63 +48,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 
 div.blocks-layout {
-	display: grid;
-	grid-template-columns: repeat(12, 1fr);
-	gap: calc(var(--padding-base) * 4) var(--padding-base);
-	padding: 0 var(--padding-base);
-	@include media('phone') {
-		grid-template-columns: 1fr;
-		gap: calc(var(--padding-base) * 2) var(--padding-base);
-	}
-	> div.block {
-		&[data-type="text"] {
-			grid-column: 3 / span 8;
-			@include media('phone') {
-				grid-column: 1 / -1;
-			}
-		}
-		&[data-type="image"] {
-			grid-column: 1 / -1;
-			display: grid;
-			grid-template-columns: repeat(12, 1fr);
-			gap: 0 var(--padding-base);
-			> div {
-				grid-column: 3 / span 8;
-				@include media('phone') {
-					grid-column: 1 / -1;
-				}
-				&[data-image-orientation="portrait"] {
-					display: grid;
-					grid-template-columns: subgrid;
-					> div {
-						grid-column: 3 / span 4;
-						@include media('phone') {
-							grid-column: 4 / span 6;
-						}
-					}
-
-				}
-			}
-			div.text {
-				font-size: var(--font-size-sm);
-				color: var(--color-primary);
-				margin-top: 5px;
-			}
-		}
-		&[data-type="audio"],
-		&[data-type="video"],
-		&[data-type="embed"] {
-			grid-column: 3 / span 8;
-			@include media('phone') {
-				grid-column: 1 / -1;
-			}
-			div.text {
-				font-size: var(--font-size-sm);
-				color: var(--color-primary);
-				margin-top: 5px;
-			}
-		}
-	}
+	
 }
 
 </style>
