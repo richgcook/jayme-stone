@@ -24,15 +24,15 @@
 			</div>
 
 			<div v-else-if="useBlockType(block._type) == 'content-column'">
-				<div class="content-column">
+				<div class="content-column" :style="{ 'background-color': block.highlightColor?.hex == '#f7f1ee' ? 'white' : null }">
 					<div>
-
+						<GraphicsSquare :fill="block.highlightColor?.hex" :repeatPattern="true" />
 					</div>
 					<div class="content">
 						<PageBuilderB :content="block.content" v-if="block.content?.length" />
 					</div>
 					<div>
-
+						<GraphicsSquare :fill="block.highlightColor?.hex" :index="2" :repeatPattern="true" />
 					</div>
 				</div>
 			</div>
@@ -91,6 +91,8 @@ div.blocks-layout {
 					flex-flow: column nowrap;
 					justify-content: center;
 					row-gap: 20px;
+					font-size: var(--font-size-md);
+					line-height: 1.5;
 					padding: 0 100px;
 				}
 			}
@@ -100,8 +102,11 @@ div.blocks-layout {
 			div.content-column {
 				display: grid;
 				grid-template-columns: repeat(4, 1fr);
+				background-color: var(--color-beige);
 				> div.content {
 					grid-column: 2 / span 2;
+					background-color: var(--color-beige);
+					padding: 90px;
 					div.blocks-layout {
 						grid-template-columns: 1fr;
 					}

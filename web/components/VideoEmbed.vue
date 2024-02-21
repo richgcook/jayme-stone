@@ -6,7 +6,7 @@
 				:alt="poster.alt"
 				v-if="poster"
 			/>
-			<button @click="playInitiated = true"><SymbolPlay :fill="'var(--color-primary)'" /></button>
+			<button @click="playInitiated = true" :class="{ '--sm': size == 'sm' }"><SymbolPlay :fill="secondaryColor" /></button>
 		</div>
 		<div class="embed" v-html="html" ref="embed" v-show="playInitiated"></div>
 	</div>
@@ -17,7 +17,9 @@
 const props = defineProps({
 	poster: Object,
 	html: String,
-	color: String
+	primaryColor: String,
+	secondaryColor: String,
+	size: String
 })
 
 const embed = ref(null)
@@ -69,15 +71,27 @@ div.video-embed {
 			transform: translate(-50%, -50%);
 			z-index: 1;
 			display: block;
-			height: 100px;
-			width: 100px;
-			@include media('tablet-portrait') {
-				height: 80px;
-				width: 80px;
+			background-color: v-bind(primaryColor);
+			height: 200px;
+			width: 200px;
+			border-radius: 50%;
+			&.--sm {
+				height: 100px;
+				width: 100px;
+				svg {
+					height: 30px;
+				}
 			}
 			@include media('phone') {
-				height: 64px;
-				width: 64px;
+				height: 100px;
+				width: 100px;
+			}
+			svg {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-25%, -50%);
+				height: 60px;
 			}
 		}
 	}

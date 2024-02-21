@@ -1,13 +1,13 @@
 <template>
 	<footer>
 		<div class="grid">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+			<div><GraphicsSquare :fill="`var(--color-beige)`" :index="3" /></div>
+			<div><GraphicsSquare :fill="`var(--color-beige)`" :index="2" /></div>
+			<div><GraphicsSquare :fill="`var(--color-beige)`" :index="5" /></div>
+			<div><GraphicsSquare :fill="`var(--color-beige)`" :index="4" /></div>
 		</div>
 		<ul class="social-links" v-if="data.settingsGeneral?.socialLinks?.length">
-			<li v-for="(link, index) in data.settingsGeneral.socialLinks" :key="index"><a :href="link.url" target="_blank">{{ link.title }}</a></li>
+			<li v-for="(link, index) in data.settingsGeneral.socialLinks" :key="index"><NuxtLink :to="link.url" target="_blank">{{ link.title }}</NuxtLink></li>
 		</ul>
 		<span class="copyright">&copy; {{ new Date().getFullYear() }} Jayme Stone</span>
 	</footer>
@@ -30,7 +30,7 @@ const { data } = await useSanityQuery(query)
 <style lang="scss" scoped>
 
 footer {
-	background-color: yellow;
+	background-color: white;
 	position: relative;
 	div.grid {
 		display: grid;
@@ -43,6 +43,7 @@ footer {
 		position: absolute;
 		left: 40px;
 		bottom: 40px;
+		z-index: 1;
 		display: flex;
 		flex-flow: row nowrap;
 		column-gap: 2ch;
@@ -57,6 +58,7 @@ footer {
 		position: absolute;
 		right: 40px;
 		bottom: 40px;
+		z-index: 1;
 	}
 }
 

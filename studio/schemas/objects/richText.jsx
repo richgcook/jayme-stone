@@ -1,7 +1,11 @@
 import React from 'react'
 import { defineType, defineField, defineArrayMember } from 'sanity'
-import { Cards, FileArrowDown } from '@phosphor-icons/react'
+import { Cards, FileArrowDown, HighlighterCircle } from '@phosphor-icons/react'
 import { PAGE_REFERENCES } from '../../constants'
+
+const HighlightDecorator = props => (
+	<span style={{ color: 'red' }}>{props.children}</span>
+)
 
 const buttonRenderer = props => (
 	<span style={{ backgroundColor: '#2276fc', color: 'white' }}>{props.renderDefault(props)}</span>
@@ -25,6 +29,12 @@ export default defineType({
 				decorators: [
 					{ title: 'Strong', value: 'strong' },
 					{ title: 'Emphasis', value: 'em' },
+					{ 
+						title: 'Highlight',
+						value: 'highlight',
+						icon: HighlighterCircle,
+						component: HighlightDecorator
+					}
 				],
 				annotations: [
 					{

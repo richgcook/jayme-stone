@@ -41,6 +41,7 @@ h3.title-arrow {
 	column-gap: 2ch;
 	font-family: var(--font-family-mono);
 	font-size: var(--font-size-mono-caps);
+	letter-spacing: 0.05em;
 	text-transform: uppercase;
 	transform: v-bind(rotation);
 	transform-origin: left;

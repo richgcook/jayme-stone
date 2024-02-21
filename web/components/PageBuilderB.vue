@@ -7,30 +7,51 @@
 				<RichText :blocks="block.text" />
 			</div>
 
-			<div v-else-if="useBlockType(block._type) == 'image'" :data-image-orientation="block.image.asset.orientation">
-				<div class="image-container">
-					<ImgWithRatio 
-						:src="block.image.asset.url"
-						:alt="block.image.asset.alt"
-						:ratio="block.image.asset.ratio"
-					/>
+			<div v-else-if="useBlockType(block._type) == 'image'">
+				<ImgWithRatio 
+					:src="block.image.asset.url"
+					:alt="block.image.asset.alt"
+					:ratio="block.image.asset.ratio"
+				/>
+				<RichText :blocks="block.caption" v-if="block.caption?.length" />
+			</div>
+
+			<div class="videos" v-else-if="useBlockType(block._type) == 'videos'">
+				<h3 class="block-title">{{ block.videos?.length > 1 ? `Videos` : `Video` }}</h3>
+				<div class="videos-layout">
+					<div v-for="(video, index) in block.videos" :key="index" class="video">
+						<div v-if="useBlockType(video._type) == 'embed'">
+							<VideoEmbed 
+								:poster="video.coverImage" 
+								:html="video.embedCode" 
+								:primaryColor="video.bgColor?.hex" 
+								:secondaryColor="video.highlightColor?.hex" 
+								:size="'sm'"
+							/>
+							<h3>{{ video.title }}</h3>
+						</div>
+						<div v-else-if="useBlockType(video._type) == 'video-ref'">
+							<VideoEmbed 
+								:poster="video.video.coverImage" 
+								:html="video.video.embedCode" 
+								:primaryColor="video.video?.bgColor?.hex" 
+								:secondaryColor="video.video?.highlightColor?.hex"
+								:size="'sm'"
+							/>
+							<h3>{{ video.video.title }}</h3>
+						</div>
+					</div>
 				</div>
-				<RichText :blocks="block.caption" />
 			</div>
 
-			<div v-else-if="useBlockType(block._type) == 'audio'">
-				<AudioPlayer :src="block.audio" />
-				<RichText :blocks="block.caption" v-if="block.caption?.length" />
-			</div>
-
-			<div v-else-if="useBlockType(block._type) == 'embed'">
-				<VideoEmbed :poster="block.coverImage" :html="block.embedCode" />
-				<RichText :blocks="block.caption" v-if="block.caption?.length" />
-			</div>
-
-			<div v-else-if="useBlockType(block._type) == 'video'">
-				<VideoPlayer :src="block.video" />
-				<RichText :blocks="block.caption" v-if="block.caption?.length" />
+			<div v-else-if="useBlockType(block._type) == 'press'">
+				<h3 class="block-title">Press</h3>
+				<div class="press-layout">
+					<div v-for="(press, index) in block.press" :key="index" class="item">
+						<h3>{{ press.text }}</h3>
+						<h5>{{ press.referrerName }}</h5>
+					</div>
+				</div>
 			</div>
 
 		</div>
@@ -48,7 +69,51 @@ const props = defineProps({
 <style lang="scss" scoped>
 
 div.blocks-layout {
-	
+	display: grid;
+	row-gap: 50px;
+	> div.block {
+		h3.block-title {
+			font-family: var(--font-family-mono);
+			font-size: var(--font-size-mono-caps);
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			&:after {
+				content: '';
+				display: block;
+				height: 1px;
+				width: 100%;
+				background-color: var(--color-yellow);
+				margin: 9px 0 15px 0;
+			}
+		}
+		&[data-type="videos"] {
+			div.videos {
+				div.videos-layout {
+					display: grid;
+					row-gap: 1.6em;
+					div.video {
+						h3 {
+							margin-top: 10px;
+						}
+					}
+				}
+			}
+		}
+		&[data-type="press"] {
+			div.press-layout {
+				display: grid;
+				row-gap: 1.6em;
+				div.item {
+					h5 {
+						font-family: var(--font-family-mono);
+						font-size: var(--font-size-mono-sm);
+						text-transform: uppercase;
+						letter-spacing: 0.05em;
+					}
+				}
+			}
+		}
+	}
 }
 
 </style>

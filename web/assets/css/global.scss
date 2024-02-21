@@ -55,11 +55,9 @@
 body {
 	font-family: var(--font-family-base);
 	font-size: var(--font-size-base);
-	font-variant-ligatures: none;
-	font-feature-settings: "ss07" 1;
 	background-color: white;
 	color: var(--color-black);
-	line-height: 1.5;
+	line-height: 1.6;
 }
 a {
 	&:active, &:focus, &:hover {
@@ -83,8 +81,8 @@ a {
 	}
 }
 @include globalSelect {
-	color: black;
-	background-color: var(--color-primary);
+	color: var(--color-black);
+	background-color: var(--color-beige);
 }
 [v-cloak] { 
 	display: none !important; 

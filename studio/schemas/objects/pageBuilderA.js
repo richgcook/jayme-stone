@@ -75,6 +75,13 @@ export default defineType({
 					title: 'Content',
 					name: 'content',
 				}),
+				defineField({
+					type: 'colorPicker',
+					title: 'Highlight color',
+					name: 'highlightColor',
+					description: 'Used for graphics',
+					validation: Rule => Rule.required()
+				}),
 			],
 			preview: {
 				select: {

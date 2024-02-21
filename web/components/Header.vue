@@ -80,6 +80,7 @@ header {
 				font-family: var(--font-family-mono);
 				font-size: var(--font-size-mono-caps);
 				text-transform: uppercase;
+				letter-spacing: 0.05em;
 				color: var(--color-beige);
 				border-bottom: 1px solid currentColor;
 				transform: rotate(1deg);

@@ -1,15 +1,13 @@
 <template>
 	<div>
 		<PageBuilderA :content="data.page.pageBuilder" v-if="data.page.pageBuilder?.length" />
-		<NewsletterSignup 
-			:title="data.page.newsletterSelection?.active ? data.page.newsletterSelection.title : undefined" 
-		/>
+		<NewsletterSignup :title="data.page.newsletterSelection?.active ? data.page.newsletterSelection.title : undefined" />
 	</div>
 </template>
 
 <script setup>
 
-const { $seoQuery, $richTextQuery, $imageQuery } = useNuxtApp()
+const { $seoQuery, $richTextQuery, $imageQuery, $pageBuilderAQuery } = useNuxtApp()
 
 const route = useRoute()
 
@@ -20,27 +18,7 @@ const query = groq`{
 			${$seoQuery}
 		},
 		pageBuilder[] {
-			_type,
-			_type == "imageTextBlock" => {
-				image {
-					${$imageQuery}
-				},
-				title,
-				text[] {
-					${$richTextQuery}
-				},
-				orientation,
-			},
-			_type == "contentColumnBlock" => {
-				content[] {
-					_type,
-					_type == "textBlock" => {
-						text[] {
-							${$richTextQuery}
-						},
-					},
-				},
-			},
+			${$pageBuilderAQuery}
 		},
 		newsletterSelection
 	}[0]

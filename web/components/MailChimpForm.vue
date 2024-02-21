@@ -128,6 +128,7 @@ form.newsletter {
 		}
 		font-family: var(--font-family-mono);
 		font-size: var(--font-size-mono-caps);
+		letter-spacing: 0.05em;
 		text-transform: uppercase;
 		background-color: var(--color-blue);
 		height: 85px;
@@ -141,6 +142,7 @@ form.newsletter {
 		padding: 0 25px;
 		font-family: var(--font-family-mono);
 		font-size: var(--font-size-mono-caps);
+		letter-spacing: 0.05em;
 		text-transform: uppercase;
 		background-color: var(--color-yellow);
 		&[disabled] {

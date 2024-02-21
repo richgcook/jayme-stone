@@ -94,29 +94,44 @@ export default defineType({
 											name: 'alt',
 											type: 'alt'
 										}),
-									]
+									],
+									validation: Rule => Rule.required()
 								}),
 								defineField({
 									type: 'text',
 									title: 'Embed code',
 									name: 'embedCode',
-									rows: 6
+									rows: 6,
+									validation: Rule => Rule.required()
 								}),
 								defineField({
-									type: 'richText',
-									title: 'Caption',
-									name: 'caption',
+									type: 'string',
+									title: 'Title',
+									name: 'title',
+									validation: Rule => Rule.required()
+								}),
+								defineField({
+									type: 'colorPicker',
+									title: 'Button color',
+									name: 'bgColor',
+									validation: Rule => Rule.required()
+								}),
+								defineField({
+									type: 'colorPicker',
+									title: 'Icon color',
+									name: 'highlightColor',
+									validation: Rule => Rule.required()
 								}),
 							],
 							preview: {
 								select: {
-									caption: 'caption',
+									title: 'title',
 								},
 								prepare(selection) {
-									const { caption } = selection
+									const { title } = selection
 									return {
 										title: 'Embed',
-										subtitle: caption ? caption[0].children[0].text.substring(0, 50) + '...' : '',
+										subtitle: title,
 										media: YoutubeLogo
 									}
 								},

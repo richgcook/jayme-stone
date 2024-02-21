@@ -1,72 +1,26 @@
 <template>
-	<div class="writing-layout">
-		<div class="back-container">
-			<NuxtLink to="/writing"><SymbolArrowPrev :fill="'var(--color-primary)'" /></NuxtLink>
-		</div>
-		<div class="titles">
-			<h1>{{ data.writing.title }}</h1>
-			<div class="additionals">
-				<RichText :blocks="data.writing.additionalDetails" />
-				<p>{{ useFormatDate(data.writing.date, 'DD.MM.YYYY') }}</p>
-			</div>
-		</div>
-		<PageBuilderB :content="data.writing.pageBuilder" v-if="data.writing.pageBuilder?.length" />
+	<div>
+		<PageBuilderA :content="data.project.pageBuilder" v-if="data.project.pageBuilder?.length" />
+		<NewsletterSignup :title="data.project.newsletterSelection?.active ? data.project.newsletterSelection.title : undefined" />
 	</div>
 </template>
 
 <script setup>
 
-const { $seoQuery, $richTextQuery, $imageQuery } = useNuxtApp()
+const { $seoQuery, $richTextQuery, $imageQuery, $pageBuilderAQuery } = useNuxtApp()
 
 const route = useRoute()
 
 const query = groq`{ 
 
-	"writing": *[_type == "writing" && slug.current == $slug] {
+	"project": *[_type == "project" && slug.current == $slug] {
 		_id, _type, slug, title, seo {
 			${$seoQuery}
 		},
-		date, type,
-		additionalDetails[] {
-			${$richTextQuery}
-		},
 		pageBuilder[] {
-			_type,
-			_type == "textBlock" => {
-				text[] {
-					${$richTextQuery}
-				},
-			},
-			_type == "imageBlock" => {
-				image {
-					${$imageQuery}
-				},
-				caption[] {
-					${$richTextQuery}
-				},
-			},
-			_type == "audioBlock" => {
-				"audio": audio.asset->url,
-				caption[] {
-					${$richTextQuery}
-				},
-			},
-			_type == "embedBlock" => {
-				coverImage {
-					${$imageQuery}
-				},
-				embedCode,
-				caption[] {
-					${$richTextQuery}
-				},
-			},
-			_type == "videoBlock" => {
-				"video": video.asset->url,
-				caption[] {
-					${$richTextQuery}
-				},
-			},
+			${$pageBuilderAQuery}
 		},
+		newsletterSelection
 	}[0],
 	
 }`
@@ -75,7 +29,7 @@ const { data } = await useSanityQuery(query, {
     slug: route.params.slug,
 })
 
-const { title, description, image, bodyClass } = useMetaBodyHelpers(data?.value.writing)
+const { title, description, image, bodyClass } = useMetaBodyHelpers(data?.value.project)
 
 useHead({
 	title: title.value,

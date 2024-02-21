@@ -10,6 +10,8 @@ import externalLink from '~/components/serializers/ExternalLink'
 import internalLink from '~/components/serializers/InternalLink'
 import fileUploadLink from '~/components/serializers/FileUploadLink'
 
+import highlightDecorator from '~/components/serializers/HighlightDecorator'
+
 const props = defineProps({
 	blocks: Array
 })
@@ -18,7 +20,8 @@ const serializers = {
 	marks: {
 		link: externalLink,
 		internalLink: internalLink,
-		fileUploadLink: fileUploadLink
+		fileUploadLink: fileUploadLink,
+		highlight: highlightDecorator
 	}
 }
 
@@ -28,6 +31,13 @@ const serializers = {
 
 div.text {
 	white-space: pre-line;
+	:deep(h3) {
+		font-family: var(--font-family-mono);
+		font-size: var(--font-size-mono-caps);
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: var(--color-green);
+	}
 	:deep(ul) {
 		li {
 			padding-left: 1.5em;
@@ -43,7 +53,7 @@ div.text {
 		}
 	}
 	:deep(> *) {
-		margin: 1em 0;
+		margin: 1.6em 0;
 		&:first-child {
 			margin-top: 0 !important;
 		}
