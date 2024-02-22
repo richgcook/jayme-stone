@@ -1,15 +1,12 @@
 <template>
 	<div class="audio-player">
 		<audio ref="audio" @timeupdate="timeupdate" @ended="ended">
-			<source :src="src">
+			<source :src="src" :type="mimeType">
 		</audio>
-		<input type="range" v-model="progress" @input="seekbarUpdated" min="0" :max="duration" ref="seekbar" :disabled="!playing">
-		<div class="duration" v-if="!progress">{{ useFormatMediaDuration(duration) }}</div>
-		<div class="duration" v-else>{{ useFormatMediaDuration(progress) }} </div>
 		<div class="controls">
 			<button class="play-pause" @click="playPause">
-				<span class="play" v-show="!playing"><SymbolPlay :fill="'white'" /></span>
-				<span class="pause" v-show="playing"><SymbolPause :fill="'white'" /></span>
+				<SymbolPlay class="--play" :fill="'var(--color-green)'" v-show="!playing" />
+				<SymbolPause class="--pause" :fill="'var(--color-green)'" v-show="playing" v-cloak />
 			</button>
 		</div>
 	</div>
@@ -17,15 +14,23 @@
 
 <script setup>
 
+import { useProducerTracksStore } from '~/store/producerTracks'
+import { storeToRefs } from 'pinia'
+
+const producerTracksStore = useProducerTracksStore()
+
+const { getCurrentlyPlayingTrackId } = storeToRefs(producerTracksStore)
+const { setCurrentlyPlayingTrackId } = producerTracksStore
+
 const props = defineProps({
 	id: String,
 	src: String,
+	mimeType: String,
 })
 
 const emit = defineEmits()
 
 const audio = ref(null)
-const seekbar = ref(null)
 
 const duration = ref(0)
 const progress = ref(0)
@@ -39,18 +44,22 @@ const playPause = () => {
 	if (audio.value.paused) {
 		audio.value.play()
 		playing.value = true
+		setCurrentlyPlayingTrackId(props.id)
 	} else {
 		audio.value.pause()
 		playing.value = false
 	}
 }
 
+watch(getCurrentlyPlayingTrackId, (trackId) => {
+	if (trackId !== props.id && playing.value) {
+		audio.value.pause()
+		playing.value = false
+	}
+})
+
 const timeupdate = () => {
 	progress.value = audio.value.currentTime
-}
-
-const seekbarUpdated = () => {
-	audio.value.currentTime = progress.value
 }
 
 const ended = () => {
@@ -70,100 +79,34 @@ onMounted(() => {
 <style lang="scss" scoped>
 
 div.audio-player {
-	display: flex;
-    flex-flow: row nowrap;
-	align-items: center;
-	column-gap: calc(var(--padding-base) * 2);
-	padding: calc((var(--padding-base) * 2) + var(--font-size-sm)) calc(var(--padding-base) * 2);
-	width: 100%;
-	background-color: var(--color-primary);
-	position: relative;
-	@include media('phone') {
-		padding: calc(var(--padding-base) * 2) var(--padding-base);
-	}
 	audio {
 		display: none;
 	}
 	div.controls {
-		display: flex;
-		flex-flow: column nowrap;
-		align-items: center;
-		position: relative;
 		button.play-pause {
 			all: unset;
+			box-sizing: border-box;
 			cursor: pointer;
-			display: block;
-			height: 64px;
-			width: 64px;
 			position: relative;
-			span {
-				svg {
-					height: 64px;
-					width: 64px;
-					position: absolute;
-					top: 50%;
-					left: 50%;
+			display: block;
+			background-color: var(--color-black);
+			height: 200px;
+			width: 200px;
+			border-radius: 50%;
+			@include media('phone') {
+				height: 100px;
+				width: 100px;
+			}
+			svg {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-25%, -50%);
+				height: 60px;
+				&.--pause {
 					transform: translate(-50%, -50%);
 				}
 			}
-		}
-	}
-	input[type="range"] {
-		all: unset;
-		height: 3px;
-		width: 100%;
-		background-color: white;
-		position: relative;
-		&:hover {
-			&::-webkit-slider-thumb {
-				cursor: grab;
-			}
-			&::-moz-range-thumb {
-				cursor: grab;
-			}
-		}
-		&:active {
-			&::-webkit-slider-thumb {
-				cursor: grabbing;
-			}
-			&::-moz-range-thumb {
-				cursor: grabbing;
-			}
-		}
-		&::-webkit-slider-runnable-track,
-		&::-webkit-slider-thumb {
-			position: relative;
-			-webkit-appearance: none;
-			height: 20px;
-			border: none;
-		}
-		&::-moz-range-track,
-		&::-moz-range-thumb {
-			position: relative;
-			-moz-appearance: none;
-			height: 20px;
-			border: none;
-		}
-		&::-webkit-slider-thumb {
-			width: 20px;
-			background-color: white;
-			border-radius: 50%;
-		}
-		&::-moz-range-thumb {
-			width: 20px;
-			background-color: white;
-			border-radius: 50%;
-		}
-	}
-	div.duration {
-		position: absolute;
-		bottom: calc(var(--padding-base) * 2);
-		left: calc(var(--padding-base) * 2);
-		font-size: var(--font-size-sm);
-		color: white;
-		@include media('phone') {
-			bottom: var(--padding-base);
-			left: var(--padding-base);
 		}
 	}
 }

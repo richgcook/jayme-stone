@@ -1,4 +1,5 @@
 import { defineType, defineField, defineArrayMember } from 'sanity'
+import { orderRankField } from '@sanity/orderable-document-list'
 import { Link } from '@phosphor-icons/react'
 
 export default defineType({
@@ -90,5 +91,8 @@ export default defineType({
 			name: 'seo',
 			type: 'seo'
 		}),
+		orderRankField(
+			{ type: 'music' }
+		)
 	],
 })

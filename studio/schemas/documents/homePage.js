@@ -42,6 +42,11 @@ export default defineType({
 			name: 'testimonialsA',
 			title: 'Testimonials',
 		}),
+		defineType({
+			type: 'newsletterSelection',
+			name: 'newsletterSelection',
+			title: 'Newsletter selection',
+		}),
 		defineField({
 			title: 'SEO',
 			name: 'seo',

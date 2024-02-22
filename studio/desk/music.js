@@ -1,3 +1,4 @@
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { VinylRecord } from '@phosphor-icons/react'
 import { DocumentIcon } from '@sanity/icons'
 
@@ -20,5 +21,10 @@ S.listItem()
 					.schemaType('musicPage')
 				),
 				S.documentTypeListItem('music').title('Music').icon(VinylRecord),
+				orderableDocumentListDeskItem({
+					type: 'music', 
+					title: 'Order',
+					S, context
+				}),
 			])
 		)

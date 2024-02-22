@@ -1,21 +1,24 @@
 <template>
-	<div class="music-layout">
-		<div v-for="music in data.music" :key="music._id" class="music">
-			<div class="image">
-				<Img
-					:src="music.featuredImage.asset.url"
-					:alt="music.featuredImage.asset.alt"
-				/>
-			</div>
-			<div class="text">
-				<h2>{{ music.title }}</h2>
-				<ul class="streaming-links" v-if="music.streamingLinks?.length">
-					<li v-for="(link, index) in music.streamingLinks" :key="index">
-						<NuxtLink :to="link.link" target="_blank">{{ link.title }}</NuxtLink>
-					</li>
-				</ul>
+	<div>
+		<div class="music-layout">
+			<div v-for="music in data.music" :key="music._id" class="music">
+				<div class="image">
+					<Img
+						:src="music.featuredImage.asset.url"
+						:alt="music.featuredImage.asset.alt"
+					/>
+				</div>
+				<div class="text" :style="{ 'background-color': music.bgColor?.hex, 'color': music.textColor?.hex }">
+					<h2>{{ music.title }}</h2>
+					<ul class="streaming-links" v-if="music.streamingLinks?.length">
+						<li v-for="(link, index) in music.streamingLinks" :key="index">
+							<NuxtLink :to="link.link" target="_blank">{{ link.title }}</NuxtLink>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
+		<NewsletterSignup :title="data.musicPage.newsletterSelection?.active ? data.musicPage.newsletterSelection.title : undefined" />
 	</div>
 </template>
 
@@ -29,9 +32,10 @@ const query = groq`{
 		_id, title, slug, seo {
 			${$seoQuery}
 		},
+		newsletterSelection
 	}[0],
 
-	"music": *[_type == "music"] {
+	"music": *[_type == "music"] | order(orderRank) {
 		_id, title, slug, seo {
 			${$seoQuery}
 		},
@@ -97,11 +101,11 @@ div.music-layout {
 			display: flex;
 			flex-flow: column nowrap;
 			justify-content: center;
-			row-gap: 10px;
+			row-gap: 5px;
 			padding: 0 100px;
 			h2 {
 				font-size: var(--font-size-lg);
-				line-height: 1;
+				line-height: 1.3;
 			}
 			ul.streaming-links {
 				display: flex;

@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<PageBuilderA :content="data.page.pageBuilder" v-if="data.page.pageBuilder?.length" />
+		<ProducerTracks :tracks="data.page.selectedTracks" v-if="data.page.selectedTracks?.length" />
 		<NewsletterSignup :title="data.page.newsletterSelection?.active ? data.page.newsletterSelection.title : undefined" />
 	</div>
 </template>
@@ -19,6 +20,15 @@ const query = groq`{
 		},
 		pageBuilder[] {
 			${$pageBuilderAQuery}
+		},
+		selectedTracks[] {
+			image {
+				${$imageQuery}
+			},
+			"file": file.asset->{
+				_id, url, mimeType, extension
+			},
+			title, artists, role
 		},
 		newsletterSelection
 	}[0]

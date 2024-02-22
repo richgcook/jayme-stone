@@ -26,13 +26,13 @@
 			<div v-else-if="useBlockType(block._type) == 'content-column'">
 				<div class="content-column" :style="{ 'background-color': block.highlightColor?.hex == '#f7f1ee' ? 'white' : null }">
 					<div>
-						<GraphicsSquare :fill="block.highlightColor?.hex" :repeatPattern="true" />
+						<GraphicsRectangleY :fill="block.highlightColor?.hex" :index="1" />
 					</div>
 					<div class="content">
 						<PageBuilderB :content="block.content" v-if="block.content?.length" />
 					</div>
 					<div>
-						<GraphicsSquare :fill="block.highlightColor?.hex" :index="2" :repeatPattern="true" />
+						<GraphicsRectangleY :fill="block.highlightColor?.hex" :index="2" />
 					</div>
 				</div>
 			</div>

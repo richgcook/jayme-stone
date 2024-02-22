@@ -92,6 +92,7 @@ header {
 			all: unset;
 			box-sizing: border-box;
 			cursor: pointer;
+			flex-shrink: 0;
 			display: block;
 			height: 80px;
 			width: 80px;

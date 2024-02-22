@@ -44,7 +44,7 @@ h3.title-arrow {
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
 	transform: v-bind(rotation);
-	transform-origin: left;
+	transform-origin: top left;
 	color: v-bind(color);
 	div.line-arrow {
 		display: flex;
