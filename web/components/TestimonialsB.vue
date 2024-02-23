@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<TestimonialsHeader />
-		<div class="testimonials-layouts">
+		<div class="testimonials-layout">
 			<div>
 				<GraphicsRectangleY :index="6" />
 			</div>
@@ -22,7 +22,7 @@ const props = defineProps({
 
 <style scoped lang="scss">
 
-div.testimonials-layouts {
+div.testimonials-layout {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	div.testimonials-sections {
