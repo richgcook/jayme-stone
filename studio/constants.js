@@ -2,9 +2,7 @@
 export const PAGE_REFERENCES = [
 	{ type: 'pageA' },
 	{ type: 'musicPage' },
-	{ type: 'music' },
 	{ type: 'videosPage' },
-	{ type: 'video' },
 	{ type: 'projectsPage' },
 	{ type: 'project' },
 	{ type: 'eventsPage' },

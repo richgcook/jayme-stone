@@ -35,8 +35,6 @@ const props = defineProps({
 })
 
 const toPath = computed(() => {
-	if (props.type === 'music') return `/music/${props.slug}`
-	if (props.type === 'video') return `/video/${props.slug}`
 	if (props.type === 'project') return `/projects/${props.slug}`
 	return props.slug
 })
