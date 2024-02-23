@@ -2,6 +2,7 @@
 	<div>
 		<PageBuilderA :content="data.page.pageBuilder" v-if="data.page.pageBuilder?.length" />
 		<ProducerTracks :tracks="data.page.selectedTracks" v-if="data.page.selectedTracks?.length" />
+		<TestimonialsB :content="data.page.testimonialsB" v-if="data.page.testimonialsB?.length" />
 		<NewsletterSignup :title="data.page.newsletterSelection?.active ? data.page.newsletterSelection.title : undefined" />
 	</div>
 </template>
@@ -29,6 +30,12 @@ const query = groq`{
 				_id, url, mimeType, extension
 			},
 			title, artists, role
+		},
+		testimonialsB[] {
+			title, bgColor, textColor, lineColor,
+			testimonials[] {
+				text, referrerName
+			}
 		},
 		newsletterSelection
 	}[0]

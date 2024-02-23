@@ -22,7 +22,7 @@ const { $seoQuery, $richTextQuery, $imageQuery } = useNuxtApp()
 
 const query = groq`{ 
 
-	"projects": *[_type == "project"] {
+	"projects": *[_type == "project"] | order(orderRank) {
 		_id, _type, slug, title, seo {
 			${$seoQuery}
 		},

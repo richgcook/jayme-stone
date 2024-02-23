@@ -1,3 +1,4 @@
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { Stack } from '@phosphor-icons/react'
 import { DocumentsIcon, DocumentIcon } from '@sanity/icons'
 
@@ -20,5 +21,10 @@ S.listItem()
 					.schemaType('projectsPage')
 				),
 				S.documentTypeListItem('project').title('Projects').icon(Stack),
+				orderableDocumentListDeskItem({
+					type: 'project', 
+					title: 'Order',
+					S, context
+				}),
 			])
 		)

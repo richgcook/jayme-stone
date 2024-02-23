@@ -30,6 +30,12 @@ export default defineType({
 					validation: Rule => Rule.required()
 				}),
 				defineField({
+					type: 'colorPicker',
+					title: 'Line color',
+					name: 'lineColor',
+					validation: Rule => Rule.required()
+				}),
+				defineField({
 					type: 'array',
 					title: 'Testimonials',
 					name: 'testimonials',
@@ -40,9 +46,10 @@ export default defineType({
 							name: 'testimonial',
 							fields: [
 								defineField({
-									type: 'richText',
+									type: 'text',
 									title: 'Text',
 									name: 'text',
+									rows: 2,
 									validation: Rule => Rule.required()
 								}),
 								defineField({
@@ -60,7 +67,7 @@ export default defineType({
 								prepare(selection) {
 									const { text, referrerName } = selection
 									return {
-										title: text ? text[0].children[0].text.substring(0, 50) + '...' : '',
+										title: text,
 										subtitle: referrerName,
 										media: Quotes
 									}

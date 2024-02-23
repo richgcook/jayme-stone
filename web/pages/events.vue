@@ -19,7 +19,7 @@
 		</div>
 		<div class="events-archive">
 			<div>
-				<GraphicsSquare :repeatPattern="true" />
+				<GraphicsRectangleY :index="4" />
 			</div>
 			<div class="content">
 				<TitleWithArrow 
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 			<div>
-				<GraphicsSquare :index="2" :repeatPattern="true" />
+				<GraphicsRectangleY :index="5" />
 			</div>
 		</div>
 		<NewsletterSignup :title="data.eventsPage.newsletterSelection?.active ? data.eventsPage.newsletterSelection.title : undefined" />

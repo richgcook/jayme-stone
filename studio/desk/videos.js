@@ -1,3 +1,4 @@
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { Video } from '@phosphor-icons/react'
 import { DocumentIcon } from '@sanity/icons'
 
@@ -20,5 +21,10 @@ S.listItem()
 					.schemaType('videosPage')
 				),
 				S.documentTypeListItem('video').title('Videos').icon(Video),
+				orderableDocumentListDeskItem({
+					type: 'video', 
+					title: 'Order',
+					S, context
+				}),
 			])
 		)
