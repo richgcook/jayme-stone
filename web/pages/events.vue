@@ -19,7 +19,7 @@
 		</div>
 		<div class="events-archive">
 			<div>
-				<GraphicsRectangleY :index="4" />
+				<GraphicsRectangleY :index="4" :isFullColor="true" />
 			</div>
 			<div class="content">
 				<TitleWithArrow 
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 			<div>
-				<GraphicsRectangleY :index="5" />
+				<GraphicsRectangleY :index="5" :isFullColor="true" />
 			</div>
 		</div>
 		<NewsletterSignup :title="data.eventsPage.newsletterSelection?.active ? data.eventsPage.newsletterSelection.title : undefined" />

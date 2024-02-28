@@ -23,34 +23,65 @@ export default defineType({
 			validation: Rule => Rule.required()
 		}),
 		defineField({
-			type: 'colorPicker',
-			title: 'Background color',
-			name: 'bgColor',
-			validation: Rule => Rule.required()
+			type: 'object',
+			title: 'Colors',
+			name: 'colors',
+			options: {
+				collapsible: true,
+				collapsed: true
+			},
+			fields: [
+				defineField({
+					type: 'colorPicker',
+					title: 'Background',
+					name: 'bg',
+					options: {
+						collapsible: false
+					},
+					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'colorPicker',
+					title: 'Text',
+					name: 'text',
+					options: {
+						collapsible: false
+					},
+					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'colorPicker',
+					title: 'Button',
+					name: 'button',
+					options: {
+						collapsible: false
+					},
+					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'colorPicker',
+					title: 'Icon',
+					name: 'icon',
+					options: {
+						collapsible: false
+					},
+					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'colorPicker',
+					title: 'Graphic',
+					name: 'graphic',
+					options: {
+						collapsible: false
+					},
+					description: 'Used for graphics, if applicable'
+				}),
+			],
 		}),
 		defineField({
-			type: 'colorPicker',
-			title: 'Text color',
-			name: 'textColor',
-			validation: Rule => Rule.required()
-		}),
-		defineField({
-			type: 'colorPicker',
-			title: 'Button color',
-			name: 'buttonColor',
-			validation: Rule => Rule.required()
-		}),
-		defineField({
-			type: 'colorPicker',
-			title: 'Icon color',
-			name: 'iconColor',
-			validation: Rule => Rule.required()
-		}),
-		defineField({
-			type: 'colorPicker',
-			title: 'Graphic color',
-			name: 'graphicColor',
-			description: 'Used for graphics, if applicable'
+			type: 'boolean',
+			title: 'Add graphic',
+			name: 'hasGraphic',
 		}),
 		defineField({
 			type: 'image',
@@ -70,11 +101,6 @@ export default defineType({
 			name: 'embedCode',
 			rows: 6,
 			validation: Rule => Rule.required()
-		}),
-		defineField({
-			type: 'boolean',
-			title: 'Add graphic',
-			name: 'hasGraphic',
 		}),
 		defineField({
 			title: 'SEO',

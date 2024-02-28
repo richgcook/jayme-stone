@@ -1,5 +1,5 @@
 import { defineType, defineField, defineArrayMember } from 'sanity'
-import { TextAlignLeft } from '@phosphor-icons/react'
+import { Quotes, ScribbleLoop, Circle } from '@phosphor-icons/react'
 
 export default defineType({
 	type: 'array',
@@ -58,16 +58,33 @@ export default defineType({
 					name: 'centerText',
 				}),
 				defineField({
-					type: 'colorPicker',
-					title: 'Background color',
-					name: 'bgColor',
-					validation: Rule => Rule.required()
-				}),
-				defineField({
-					type: 'colorPicker',
-					title: 'Text color',
-					name: 'textColor',
-					validation: Rule => Rule.required()
+					type: 'object',
+					title: 'Colors',
+					name: 'colors',
+					options: {
+						collapsible: true,
+						collapsed: true
+					},
+					fields: [
+						defineField({
+							type: 'colorPicker',
+							title: 'Background',
+							name: 'bg',
+							options: {
+								collapsible: false
+							},
+							validation: Rule => Rule.required()
+						}),
+						defineField({
+							type: 'colorPicker',
+							title: 'Text',
+							name: 'text',
+							options: {
+								collapsible: false
+							},
+							validation: Rule => Rule.required()
+						}),
+					],
 				}),
 				defineField({
 					type: 'number',
@@ -89,13 +106,14 @@ export default defineType({
 					text: 'text',
 					name: 'referrer.name',
 					media: 'referrer.image',
+					blockWidth: 'blockWidth',
 				},
 				prepare(selection) {
-					const { name, text, media } = selection
+					const { name, text, media, blockWidth } = selection
 					return {
 						title: text ? text[0].children[0].text.substring(0, 50) + '...' : '',
-						subtitle: name,
-						media: media
+						subtitle: `${blockWidth}/4`,
+						media: media ? media : Quotes
 					}
 				}
 			}
@@ -134,6 +152,21 @@ export default defineType({
 					],
 				}),
 			],
+			preview: {
+				select: {
+					blockWidth: 'blockWidth',
+					color: 'colors.bg.hex',
+				},
+				prepare(selection) {
+					const { blockWidth, color } = selection
+					console.log(color)
+					return {
+						title: 'Graphic',
+						subtitle: `${blockWidth}/4`,
+						media: () => <ScribbleLoop color={ color } weight="bold" />
+					}
+				}
+			}
 		}),
 	]
 })

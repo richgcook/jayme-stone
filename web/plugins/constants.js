@@ -51,7 +51,7 @@ const testimonialsAQuery =
 				${imageQuery}
 			}
 		},
-		centerText, bgColor, textColor, blockWidth, blockHeight
+		centerText, colors, blockWidth, blockHeight
 	},
 	_type == "graphic" => {
 		blockWidth, colors
@@ -93,14 +93,14 @@ const pageBuilderAQuery =
 						},
 						embedCode,
 						title,
-						buttonColor, iconColor,
+						colors,
 					},
 					_type == "videoRefBlock" => {
 						video->{
 							_id, _type, slug, title, seo {
 								${seoQuery}
 							},
-							buttonColor, iconColor,
+							colors,
 							coverImage {
 								${imageQuery}
 							},
@@ -118,7 +118,7 @@ const pageBuilderAQuery =
 				}
 			},
 		},
-		graphicColor,
+		colors,
 	},
 	`
 

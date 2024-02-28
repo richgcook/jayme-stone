@@ -9,12 +9,6 @@
 	</div>
 </template>
 
-<script setup>
-
-
-
-</script>
-
 <style scoped lang="scss">
 
 div.testimonials-header {

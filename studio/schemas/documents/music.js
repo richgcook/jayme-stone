@@ -35,16 +35,33 @@ export default defineType({
 			validation: Rule => Rule.required()
 		}),
 		defineField({
-			type: 'colorPicker',
-			title: 'Background color',
-			name: 'bgColor',
-			validation: Rule => Rule.required()
-		}),
-		defineField({
-			type: 'colorPicker',
-			title: 'Text color',
-			name: 'textColor',
-			validation: Rule => Rule.required()
+			type: 'object',
+			title: 'Colors',
+			name: 'colors',
+			options: {
+				collapsible: true,
+				collapsed: true
+			},
+			fields: [
+				defineField({
+					type: 'colorPicker',
+					title: 'Background',
+					name: 'bg',
+					options: {
+						collapsible: false
+					},
+					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'colorPicker',
+					title: 'Text',
+					name: 'text',
+					options: {
+						collapsible: false
+					},
+					validation: Rule => Rule.required()
+				}),
+			],
 		}),
 		defineField({
 			type: 'array',

@@ -36,7 +36,7 @@ const query = groq`{
 			${$testimonialsAQuery}
 		},
 		testimonialsB[] {
-			title, bgColor, textColor, lineColor,
+			title, colors,
 			testimonials[] {
 				text, referrerName
 			}

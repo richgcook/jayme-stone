@@ -19,9 +19,9 @@ const props = defineProps({
 	section: Object
 })
 
-const sectionBgColor = computed(() => props.section.bgColor.hex)
-const sectionTextColor = computed(() => props.section.textColor.hex)
-const sectionLineColor = computed(() => props.section.lineColor.hex)
+const sectionBgColor = computed(() => props.section.colors.bg.hex)
+const sectionTextColor = computed(() => props.section.colors.text.hex)
+const sectionLineColor = computed(() => props.section.colors.line.hex)
 
 </script>
 

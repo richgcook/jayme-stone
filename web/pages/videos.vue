@@ -1,13 +1,13 @@
 <template>
 	<div>
 		<div class="videos-layout">
-			<div v-for="(video, index) in data.videos" :key="video._id" class="video" :style="{ 'background-color': video.bgColor?.hex, 'color': video.textColor?.hex }">
+			<div v-for="(video, index) in data.videos" :key="video._id" class="video" :style="{ 'background-color': video.colors?.bg?.hex, 'color': video.colors?.text?.hex }">
 				<div class="inner">
 					<VideoEmbed 
 						:poster="video.coverImage" 
 						:html="video.embedCode" 
-						:buttonColor="video?.buttonColor?.hex" 
-						:iconColor="video?.iconColor?.hex"
+						:buttonColor="video.colors?.button?.hex" 
+						:iconColor="video.colors?.icon?.hex"
 						:isOverview="true"
 						:title="video.title"
 						:isFirst="index == 0"
@@ -42,7 +42,7 @@ const query = groq`{
 		},
 		embedCode,
 		title,
-		bgColor, textColor, buttonColor, iconColor, graphicColor
+		colors,
 	}
 	
 }`

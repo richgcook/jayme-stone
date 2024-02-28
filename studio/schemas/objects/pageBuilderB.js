@@ -111,16 +111,33 @@ export default defineType({
 									validation: Rule => Rule.required()
 								}),
 								defineField({
-									type: 'colorPicker',
-									title: 'Button color',
-									name: 'buttonColor',
-									validation: Rule => Rule.required()
-								}),
-								defineField({
-									type: 'colorPicker',
-									title: 'Icon color',
-									name: 'iconColor',
-									validation: Rule => Rule.required()
+									type: 'object',
+									title: 'Colors',
+									name: 'colors',
+									options: {
+										collapsible: true,
+										collapsed: true
+									},
+									fields: [
+										defineField({
+											type: 'colorPicker',
+											title: 'Button',
+											name: 'button',
+											options: {
+												collapsible: false
+											},
+											validation: Rule => Rule.required()
+										}),
+										defineField({
+											type: 'colorPicker',
+											title: 'Icon',
+											name: 'icon',
+											options: {
+												collapsible: false
+											},
+											validation: Rule => Rule.required()
+										}),
+									],
 								}),
 							],
 							preview: {

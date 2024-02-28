@@ -76,11 +76,33 @@ export default defineType({
 					name: 'content',
 				}),
 				defineField({
-					type: 'colorPicker',
-					title: 'Graphic color',
-					name: 'graphicColor',
-					description: 'Used for graphics',
-					validation: Rule => Rule.required()
+					type: 'object',
+					title: 'Colors',
+					name: 'colors',
+					options: {
+						collapsible: true,
+						collapsed: true
+					},
+					fields: [
+						defineField({
+							type: 'colorPicker',
+							title: 'Background',
+							name: 'bg',
+							options: {
+								collapsible: false
+							},
+							validation: Rule => Rule.required()
+						}),
+						defineField({
+							type: 'colorPicker',
+							title: 'Graphic',
+							name: 'graphic',
+							description: 'Used for graphics',
+							options: {
+								collapsible: false
+							},
+						}),
+					],
 				}),
 			],
 			preview: {

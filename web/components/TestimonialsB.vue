@@ -3,7 +3,7 @@
 		<TestimonialsHeader />
 		<div class="testimonials-layout">
 			<div>
-				<GraphicsRectangleY :index="6" />
+				<GraphicsRectangleY :index="6" :isFullColor="true" />
 			</div>
 			<div class="testimonials-sections">
 				<TestimonialsBSection v-for="(section, index) in content" :key="index" :section="section" />

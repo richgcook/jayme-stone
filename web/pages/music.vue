@@ -8,7 +8,7 @@
 						:alt="music.featuredImage.asset.alt"
 					/>
 				</div>
-				<div class="text" :style="{ 'background-color': music.bgColor?.hex, 'color': music.textColor?.hex }">
+				<div class="text" :style="{ 'background-color': music.colors?.bg?.hex, 'color': music.colors?.text?.hex }">
 					<h2>{{ music.title }}</h2>
 					<ul class="streaming-links" v-if="music.streamingLinks?.length">
 						<li v-for="(link, index) in music.streamingLinks" :key="index">
@@ -42,7 +42,7 @@ const query = groq`{
 		featuredImage {
 			${$imageQuery}
 		},
-		bgColor, textColor, streamingLinks,
+		colors, streamingLinks,
 	}
 	
 }`
