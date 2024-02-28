@@ -14,24 +14,8 @@
 				</div>
 			</div>
 
-			<div class="block" data-type="graphic" :style="{ 'background-color': 'var(--color-blue)' }">
-				<GraphicsSquare :fill="`var(--color-black)`" :index="1" />
-			</div>
-
-			<div class="block" data-type="graphic" :style="{ 'background-color': 'var(--color-pink)' }">
-				<GraphicsSquare :fill="`var(--color-black)`" :index="2" />
-			</div>
-
-			<div class="block" data-type="graphic" :style="{ 'background-color': 'var(--color-red)' }">
-				<GraphicsSquare :fill="`var(--color-black)`" :index="3" />
-			</div>
-
-			<div class="block" data-type="graphic" :style="{ 'background-color': 'var(--color-green)' }">
-				<GraphicsSquare :fill="`var(--color-black)`" :index="4" />
-			</div>
-
-			<div class="block" data-type="graphic" :style="{ 'background-color': 'var(--color-yellow)' }">
-				<GraphicsSquare :fill="`var(--color-black)`" :index="5" />
+			<div class="block" data-type="graphic">
+				<GraphicsSquareColored :bgColor="'var(--color-yellow)'" :fill="`var(--color-black)`" :index="5" />
 			</div>
 
 			<div class="block" data-type="text">
@@ -47,6 +31,22 @@
 
 			<div class="block" data-type="graphic" :style="{ 'background-color': 'var(--color-pink)' }">
 				<GraphicsSquare :fill="`var(--color-black)`" :index="6" />
+			</div>
+
+			<div class="block" data-type="graphic">
+				<GraphicsSquareColored :bgColor="'var(--color-blue)'" :fill="`var(--color-black)`" :index="1" />
+			</div>
+
+			<div class="block" data-type="graphic">
+				<GraphicsSquareColored :bgColor="'var(--color-pink)'" :fill="`var(--color-black)`" :index="2" />
+			</div>
+
+			<div class="block" data-type="graphic">
+				<GraphicsSquareColored :bgColor="'var(--color-red)'" :fill="`var(--color-black)`" :index="3" />
+			</div>
+
+			<div class="block" data-type="graphic">
+				<GraphicsSquareColored :bgColor="'var(--color-green)'" :fill="`var(--color-black)`" :index="4" />
 			</div>
 
 			<div class="block" data-type="music" :style="{ 'background-color': data.homePage.featuredMusic?.colors?.bg?.hex }">
