@@ -10,7 +10,7 @@
 
 <script setup>
 
-const { $seoQuery, $richTextQuery, $imageQuery, $pageBuilderAQuery } = useNuxtApp()
+const { $seoQuery, $imageQuery, $testimonialsAQuery, $pageBuilderAQuery } = useNuxtApp()
 
 const route = useRoute()
 
@@ -33,16 +33,7 @@ const query = groq`{
 			title, artists, role
 		},
 		testimonialsA[] {
-			text[] {
-				${$richTextQuery}
-			}, 
-			referrer {
-				name,
-				image {
-					${$imageQuery}
-				}
-			},
-			bgColor, textColor
+			${$testimonialsAQuery}
 		},
 		testimonialsB[] {
 			title, bgColor, textColor, lineColor,

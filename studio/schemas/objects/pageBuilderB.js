@@ -113,13 +113,13 @@ export default defineType({
 								defineField({
 									type: 'colorPicker',
 									title: 'Button color',
-									name: 'bgColor',
+									name: 'buttonColor',
 									validation: Rule => Rule.required()
 								}),
 								defineField({
 									type: 'colorPicker',
 									title: 'Icon color',
-									name: 'highlightColor',
+									name: 'iconColor',
 									validation: Rule => Rule.required()
 								}),
 							],

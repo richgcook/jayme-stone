@@ -66,7 +66,8 @@ const query = groq`{
 			events[] {
 				${$richTextQuery}
 			},
-		}
+		},
+		newsletterSelection
 	}[0],
 	
 }`

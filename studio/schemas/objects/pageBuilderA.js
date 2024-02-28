@@ -77,8 +77,8 @@ export default defineType({
 				}),
 				defineField({
 					type: 'colorPicker',
-					title: 'Highlight color',
-					name: 'highlightColor',
+					title: 'Graphic color',
+					name: 'graphicColor',
 					description: 'Used for graphics',
 					validation: Rule => Rule.required()
 				}),

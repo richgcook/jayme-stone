@@ -37,6 +37,27 @@ const seoQuery =
 	"shareImage": shareImage.asset->url
 	`
 
+const testimonialsAQuery =
+	`
+	_type,
+	_type == "testimonial" => {
+		text[] {
+			${richTextQuery}
+		}, 
+		textSize,
+		referrer {
+			name,
+			image {
+				${imageQuery}
+			}
+		},
+		centerText, bgColor, textColor, blockWidth, blockHeight
+	},
+	_type == "graphic" => {
+		blockWidth, colors
+	}
+	`
+
 const pageBuilderAQuery =
 	`
 	_type,
@@ -72,14 +93,14 @@ const pageBuilderAQuery =
 						},
 						embedCode,
 						title,
-						bgColor, textColor, highlightColor,
+						buttonColor, iconColor,
 					},
 					_type == "videoRefBlock" => {
 						video->{
 							_id, _type, slug, title, seo {
 								${seoQuery}
 							},
-							bgColor, textColor, highlightColor,
+							buttonColor, iconColor,
 							coverImage {
 								${imageQuery}
 							},
@@ -97,7 +118,7 @@ const pageBuilderAQuery =
 				}
 			},
 		},
-		highlightColor,
+		graphicColor,
 	},
 	`
 
@@ -105,5 +126,6 @@ export default defineNuxtPlugin(nuxtApp => {
 	nuxtApp.provide('richTextQuery', richTextQuery)
 	nuxtApp.provide('imageQuery', imageQuery)
 	nuxtApp.provide('seoQuery', seoQuery)
+	nuxtApp.provide('testimonialsAQuery', testimonialsAQuery)
 	nuxtApp.provide('pageBuilderAQuery', pageBuilderAQuery)
 })

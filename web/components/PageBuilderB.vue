@@ -24,8 +24,8 @@
 							<VideoEmbed 
 								:poster="video.coverImage" 
 								:html="video.embedCode" 
-								:primaryColor="video.bgColor?.hex" 
-								:secondaryColor="video.highlightColor?.hex" 
+								:buttonColor="video.buttonColor?.hex" 
+								:iconColor="video.iconColor?.hex"
 								:size="'sm'"
 							/>
 							<h3>{{ video.title }}</h3>
@@ -34,8 +34,8 @@
 							<VideoEmbed 
 								:poster="video.video.coverImage" 
 								:html="video.video.embedCode" 
-								:primaryColor="video.video?.bgColor?.hex" 
-								:secondaryColor="video.video?.highlightColor?.hex"
+								:buttonColor="video.video?.buttonColor?.hex" 
+								:iconColor="video.video?.iconColor?.hex"
 								:size="'sm'"
 							/>
 							<h3>{{ video.video.title }}</h3>

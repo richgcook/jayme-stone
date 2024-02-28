@@ -10,6 +10,7 @@ const hiddenDocTypes = listItem =>
 	![
 		'homePage',
 		'project',
+		'projectIntegrator',
 		'projectsPage',
 		'projectCategory',
 		'music',

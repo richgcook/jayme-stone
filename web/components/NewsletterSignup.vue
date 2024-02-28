@@ -8,7 +8,10 @@
 				:color="`var(--color-beige)`" 
 				:label="title"
 			/>
-			<MailChimpForm />
+			<div class="form">
+				<div class="graphic"></div>
+				<MailChimpForm />
+			</div>
 		</div>
 	</div>
 </template>
@@ -36,8 +39,26 @@ div.newsletter-signup {
 		row-gap: 20px;
 		height: 100%;
 		padding: 0 100px;
-		> div {
+		div.title-graphic {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+		div.form {
 			width: 100%;
+			position: relative;
+			div.graphic {
+				background-color: var(--color-black);
+				mask-image: url('/graphics/newsletter.png');
+				mask-repeat: no-repeat;
+				mask-size: contain;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 50%;
+				height: 60px;
+				transform: translateY(-100%);
+				mask-position: bottom right;
+			}
 		}
 	}
 }

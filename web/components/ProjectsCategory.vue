@@ -1,6 +1,6 @@
 <template>
 	<div class="projects-category" :class="{ '--first': isFirst }">
-		<h2 class="category-title">{{ title }}</h2>
+		<h2 class="category-title" v-if="title">{{ title }}</h2>
 		<div class="projects-layout">
 			<div v-for="project in projects" :key="project._id" class="project">
 				<NuxtLink :to="linkUrl(project)" :target="externalLinkTarget(project)" class="image">
@@ -51,6 +51,10 @@ const props = defineProps({
 	lineColor: {
 		type: String,
 		default: 'white'
+	},
+	isOverview: {
+		type: Boolean,
+		default: false
 	}
 })
 
@@ -77,7 +81,7 @@ const linkIsExternal = (project) => {
 <style scoped lang="scss">
 
 div.projects-category {
-	padding: 100px;
+	padding: 100px 7%;
 	background-color: v-bind(bgColor);
 	&.--first {
 		padding-top: 0;

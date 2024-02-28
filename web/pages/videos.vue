@@ -1,15 +1,18 @@
 <template>
 	<div>
 		<div class="videos-layout">
-			<div v-for="video in data.videos" :key="video._id" class="video" :style="{ 'background-color': video.bgColor?.hex, 'color': video.textColor?.hex }">
+			<div v-for="(video, index) in data.videos" :key="video._id" class="video" :style="{ 'background-color': video.bgColor?.hex, 'color': video.textColor?.hex }">
 				<div class="inner">
 					<VideoEmbed 
 						:poster="video.coverImage" 
 						:html="video.embedCode" 
-						:primaryColor="video?.bgColor?.hex" 
-						:secondaryColor="video?.highlightColor?.hex"
+						:buttonColor="video?.buttonColor?.hex" 
+						:iconColor="video?.iconColor?.hex"
+						:isOverview="true"
+						:title="video.title"
+						:isFirst="index == 0"
+						:pageTitle="data.videosPage.title"
 					/>
-					<h3>{{ video.title }}</h3>
 				</div>
 			</div>
 		</div>
@@ -39,7 +42,7 @@ const query = groq`{
 		},
 		embedCode,
 		title,
-		bgColor, textColor, highlightColor,
+		bgColor, textColor, buttonColor, iconColor, graphicColor
 	}
 	
 }`
@@ -66,7 +69,14 @@ useHead({
 
 div.videos-layout {
 	div.video {
-		height: 50vh;
+		height: 70vh;
+		@supports (height: 100svh) {
+			height: 70svh;
+		}
+		div.inner {
+			height: 100%;
+  			width: 100%;
+		}
 	}
 }
 

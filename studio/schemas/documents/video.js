@@ -36,10 +36,21 @@ export default defineType({
 		}),
 		defineField({
 			type: 'colorPicker',
-			title: 'Highlight color',
-			name: 'highlightColor',
-			description: 'Used for graphics and icons',
+			title: 'Button color',
+			name: 'buttonColor',
 			validation: Rule => Rule.required()
+		}),
+		defineField({
+			type: 'colorPicker',
+			title: 'Icon color',
+			name: 'iconColor',
+			validation: Rule => Rule.required()
+		}),
+		defineField({
+			type: 'colorPicker',
+			title: 'Graphic color',
+			name: 'graphicColor',
+			description: 'Used for graphics, if applicable'
 		}),
 		defineField({
 			type: 'image',

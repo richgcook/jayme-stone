@@ -1,14 +1,30 @@
 <template>
-	<div class="video-embed">
+	<div class="video-embed" :class="{ '--overview': isOverview }">
 		<div class="poster" v-show="!playInitiated">
-			<Img 
-				:src="poster.asset.url"
-				:alt="poster.alt"
-				v-if="poster"
+			<TitleWithArrow 
+				:arrowDirection="'next'" 
+				:arrowPosition="'after'" 
+				:lineLength="'100%'" 
+				:color="`var(--color-pink)`" 
+				:label="pageTitle"
+				v-if="isOverview && isFirst && pageTitle"
 			/>
-			<button @click="playInitiated = true" :class="{ '--sm': size == 'sm' }"><SymbolPlay :fill="secondaryColor" /></button>
+			<Img :src="poster.asset.url" :alt="poster.alt" v-if="poster" />
+			<button @click="playInitiated = true" :class="{ '--sm': size == 'sm' }"><SymbolPlay :fill="iconColor" /></button>
+			<h3 class="title" v-if="isOverview && title">{{ title }}</h3>
 		</div>
-		<div class="embed" v-html="html" ref="embed" v-show="playInitiated"></div>
+		<div class="embed" ref="embed" v-show="playInitiated">
+			<TitleWithArrow 
+				:arrowDirection="'next'" 
+				:arrowPosition="'after'" 
+				:lineLength="'100%'" 
+				:color="`var(--color-pink)`" 
+				:label="pageTitle"
+				v-if="isOverview && isFirst && pageTitle"
+			/>
+			<div v-html="html" ref="embedHtml"></div>
+			<h3 class="title" v-if="isOverview && title">{{ title }}</h3>
+		</div>
 	</div>
 </template>
 
@@ -17,12 +33,23 @@
 const props = defineProps({
 	poster: Object,
 	html: String,
-	primaryColor: String,
-	secondaryColor: String,
-	size: String
+	buttonColor: String,
+	iconColor: String,
+	size: String,
+	isOverview: {
+		type: Boolean,
+		default: false
+	},
+	title: String,
+	isFirst: {
+		type: Boolean,
+		default: false
+	},
+	pageTitle: String
 })
 
 const embed = ref(null)
+const embedHtml = ref(null)
 
 const playInitiated = ref(false)
 
@@ -46,6 +73,46 @@ onMounted(() => {
 <style scoped lang="scss">
 
 div.video-embed {
+	&.--overview {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+  		width: 100%;
+		div.poster, div.embed {
+			max-height: 60%;
+			max-width: 60%;
+			@media (orientation: landscape) {
+				height: 60%;
+			}
+			@media (orientation: portrait) {
+				width: 80%;
+			}
+			:deep(h3.title-arrow) {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				transform: translateY(-100%) translateY(-20px);
+			}
+			:deep(h3.title) {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				transform: translateY(100%) translateY(10px);
+			}
+		}
+		div.embed {
+			> div {
+				position: absolute;
+				inset: 0;
+				height: 100%;
+				swidth: 100%;
+			}
+		}
+	}
 	div.poster {
 		position: relative;
 		@supports (aspect-ratio: 1 / 1) {
@@ -71,7 +138,7 @@ div.video-embed {
 			transform: translate(-50%, -50%);
 			z-index: 1;
 			display: block;
-			background-color: v-bind(primaryColor);
+			background-color: v-bind(buttonColor);
 			height: 200px;
 			width: 200px;
 			border-radius: 50%;
@@ -90,7 +157,7 @@ div.video-embed {
 				position: absolute;
 				top: 50%;
 				left: 50%;
-				transform: translate(-25%, -50%);
+				transform: translate(-30%, -50%);
 				height: 60px;
 			}
 		}

@@ -24,18 +24,141 @@ export default defineType({
 			validation: Rule => Rule.required()
 		}),
 		defineField({
-			type: 'reference',
+			type: 'object',
 			title: 'Featured music',
 			name: 'featuredMusic',
-			to: [{ type: 'music' }],
-			validation: Rule => Rule.required()
+			fields: [
+				defineField({
+					type: 'reference',
+					title: 'Music',
+					name: 'music',
+					to: [{ type: 'music' }],
+					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'object',
+					title: 'Colors',
+					name: 'colors',
+					options: {
+						collapsible: true,
+						collapsed: true
+					},
+					fields: [
+						defineField({
+							type: 'colorPicker',
+							title: 'Background',
+							name: 'bg',
+							options: {
+								collapsible: false
+							},
+							validation: Rule => Rule.required()
+						}),
+						defineField({
+							type: 'colorPicker',
+							title: 'Text',
+							name: 'text',
+							options: {
+								collapsible: false
+							},
+							validation: Rule => Rule.required()
+						}),
+						defineField({
+							type: 'colorPicker',
+							title: 'Graphic',
+							name: 'graphic',
+							description: 'Used for graphics',
+							options: {
+								collapsible: false
+							},
+						}),
+					],
+				}),
+			],
 		}),
 		defineField({
-			type: 'reference',
+			type: 'object',
 			title: 'Featured video',
 			name: 'featuredVideo',
-			to: [{ type: 'video' }],
-			validation: Rule => Rule.required()
+			fields: [
+				defineField({
+					type: 'reference',
+					title: 'Video',
+					name: 'video',
+					to: [{ type: 'video' }],
+					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'object',
+					title: 'Colors',
+					name: 'colors',
+					options: {
+						collapsible: true,
+						collapsed: true
+					},
+					fields: [
+						defineField({
+							type: 'colorPicker',
+							title: 'Background',
+							name: 'bg',
+							options: {
+								collapsible: false
+							},
+							validation: Rule => Rule.required()
+						}),
+						defineField({
+							type: 'colorPicker',
+							title: 'Text',
+							name: 'text',
+							options: {
+								collapsible: false
+							},
+							validation: Rule => Rule.required()
+						}),
+						defineField({
+							type: 'colorPicker',
+							title: 'Button',
+							name: 'button',
+							options: {
+								collapsible: false
+							},
+							validation: Rule => Rule.required()
+						}),
+						defineField({
+							type: 'colorPicker',
+							title: 'Icon',
+							name: 'icon',
+							options: {
+								collapsible: false
+							},
+							validation: Rule => Rule.required()
+						}),
+						defineField({
+							type: 'colorPicker',
+							title: 'Graphic',
+							name: 'graphic',
+							description: 'Used for graphics',
+							options: {
+								collapsible: false
+							},
+						}),
+					],
+				}),
+			],
+		}),
+		defineField({
+			type: 'array',
+			name: 'featuredProjects',
+			title: 'Featured projects',
+			of: [
+				defineArrayMember({
+					type: 'reference',
+					to: [
+						{ type: 'project' },
+						{ type: 'projectIntegrator' }
+					]
+				})
+			],
+			validation: Rule => Rule.required().unique()
 		}),
 		defineType({
 			type: 'testimonialsA',

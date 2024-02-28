@@ -4,7 +4,7 @@
 		<ProjectsCategory :title="`As Artist`" :projects="data.projects" :isFirst="true" />
 		<ProjectsCategory 
 			:title="`As Integrator`" 
-			:projects="data.projectsPage.integratorProjects" 
+			:projects="data.projectsAsIntegrator" 
 			:bgColor="`var(--color-blue)`"
 			:categoryTitleColor="`var(--color-pink)`"
 			:titleColor="`var(--color-pink)`"
@@ -18,7 +18,7 @@
 
 <script setup>
 
-const { $seoQuery, $richTextQuery, $imageQuery } = useNuxtApp()
+const { $seoQuery, $imageQuery } = useNuxtApp()
 
 const query = groq`{ 
 
@@ -32,16 +32,21 @@ const query = groq`{
 		subtitle, externalLink
 	},
 
+	"projectsAsIntegrator": *[_type == "projectIntegrator"] | order(orderRank) {
+		_id, _type, slug, title, seo {
+			${$seoQuery}
+		},
+		featuredImage {
+			${$imageQuery}
+		},
+		subtitle, externalLink
+	},
+
 	"projectsPage": *[_type == "projectsPage"] {
 		_id, title, slug, seo {
 			${$seoQuery}
 		},
-		integratorProjects[] {
-			featuredImage {
-				${$imageQuery}
-			},
-			title, subtitle, externalLink
-		}
+		newsletterSelection
 	}[0],
 	
 }`

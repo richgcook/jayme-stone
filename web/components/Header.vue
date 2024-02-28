@@ -11,7 +11,9 @@
 				<span></span>
 			</button>
 		</div>
-		<div class="right"></div>
+		<div class="right">
+			<div class="graphic"></div>
+		</div>
 	</header>
 </template>
 
@@ -31,6 +33,7 @@ header {
 	height: 80px;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	background-color: var(--color-green);
 	z-index: 20;
 	&.--nav-open {
 		div.left {
@@ -123,6 +126,18 @@ header {
 	div.right {
 		background-color: var(--color-blue);
 		transition: opacity 0.3s ease;
+		position: relative;
+		div.graphic {
+			mask-image: url('/graphics/home-image-featured.png');
+			mask-repeat: no-repeat;
+			mask-size: cover;
+			mask-position: 0 0;
+			background-color: var(--color-black);
+			position: absolute;
+			inset: 0;
+			height: 100%;
+			width: 100%;
+		}
 	}
 }
 

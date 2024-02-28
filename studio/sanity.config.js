@@ -16,7 +16,7 @@ export default defineConfig({
 		newDocumentOptions: (prev, { currentUser, creationContext }) => {
 			const { type } = creationContext
 			if (type === 'global') {
-				const excludedTemplateIds = ['homePage', 'writingPage', 'aboutPage', 'contactPage']
+				const excludedTemplateIds = ['homePage', 'eventsPage', 'musicPage', 'pressPage', 'projectsPage', 'settingsGeneral', 'videosPage']
 				return prev.filter((template) => !excludedTemplateIds.includes(template.templateId))
 			}
 			return prev
@@ -29,19 +29,17 @@ export default defineConfig({
 		visionTool(),
 		dashboardTool({
 			widgets: [
-				/*
 				netlifyWidget({
 					title: 'Netlify',
 					sites: [
 						{
-							title: 'GKSH website',
-							apiId: '65feb728-8ceb-483f-8a84-471cbad8f380',
-							buildHookId: '6572fe561ae76d7a3c99f84c',
-							name: 'gksh-dev-18d3cf',
+							title: 'Jayme Stone website',
+							apiId: '5453508f-4a7c-4619-b39d-b2d8c03a983d',
+							buildHookId: '65df421671dbda1a6fa67032',
+							name: 'jayme-stone-dev-a0f8f3',
 						}
 					]
 				})
-				*/
 			]
 		}),
 		colorInput(),

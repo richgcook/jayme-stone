@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<PageBuilderA :content="data.project.pageBuilder" v-if="data.project.pageBuilder?.length" />
-		<NewsletterSignup :title="data.project.newsletterSelection?.active ? data.project.newsletterSelection.title : undefined" />
+		<NewsletterSignup :title="data.projectsPage.newsletterSelection?.active ? data.projectsPage.newsletterSelection.title : undefined" />
 	</div>
 </template>
 
@@ -20,6 +20,10 @@ const query = groq`{
 		pageBuilder[] {
 			${$pageBuilderAQuery}
 		},
+		newsletterSelection
+	}[0],
+
+	"projectsPage": *[_type == "projectsPage"] {
 		newsletterSelection
 	}[0],
 	

@@ -20,9 +20,17 @@ S.listItem()
 					.documentId('projectsPage')
 					.schemaType('projectsPage')
 				),
-				S.documentTypeListItem('project').title('Projects').icon(Stack),
+				S.divider(),
+				S.documentTypeListItem('project').title('Projects (as Artist)').icon(Stack),
 				orderableDocumentListDeskItem({
 					type: 'project', 
+					title: 'Order',
+					S, context
+				}),
+				S.divider(),
+				S.documentTypeListItem('projectIntegrator').title('Projects (as Integrator)').icon(Stack),
+				orderableDocumentListDeskItem({
+					type: 'projectIntegrator', 
 					title: 'Order',
 					S, context
 				}),

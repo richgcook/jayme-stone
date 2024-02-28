@@ -24,15 +24,15 @@
 			</div>
 
 			<div v-else-if="useBlockType(block._type) == 'content-column'">
-				<div class="content-column" :style="{ 'background-color': block.highlightColor?.hex == '#f7f1ee' ? 'white' : null }">
+				<div class="content-column" :style="{ 'background-color': block.graphicColor?.hex == '#f7f1ee' ? 'white' : null }">
 					<div>
-						<GraphicsRectangleY :fill="block.highlightColor?.hex" :index="1" />
+						<GraphicsRectangleY :fill="block.graphicColor?.hex" :index="1" />
 					</div>
 					<div class="content">
 						<PageBuilderB :content="block.content" v-if="block.content?.length" />
 					</div>
 					<div>
-						<GraphicsRectangleY :fill="block.highlightColor?.hex" :index="2" />
+						<GraphicsRectangleY :fill="block.graphicColor?.hex" :index="2" />
 					</div>
 				</div>
 			</div>
@@ -93,7 +93,7 @@ div.blocks-layout {
 					row-gap: 20px;
 					font-size: var(--font-size-md);
 					line-height: 1.5;
-					padding: 0 100px;
+					padding: 50px 100px;
 				}
 			}
 		}

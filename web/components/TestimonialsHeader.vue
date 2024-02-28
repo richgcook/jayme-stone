@@ -1,5 +1,6 @@
 <template>
 	<div class="testimonials-header">
+		<div class="graphic"></div>
 		<h3>What folks are saying</h3>
 		<div class="line-arrow">
 			<span class="line"></span>
@@ -20,6 +21,15 @@ div.testimonials-header {
 	height: 400px;
 	background-color: var(--color-black);
 	position: relative;
+	div.graphic {
+		background-color: var(--color-blue);
+		mask-image: url('/graphics/testimonials.png');
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		position: absolute;
+		height: 80%;
+    	width: 100%;
+	}
 	h3 {
 		font-family: var(--font-family-mono);
 		font-size: var(--font-size-mono-caps);

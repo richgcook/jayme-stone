@@ -1,5 +1,5 @@
 <template>
-	<div class="graphic" :class="{ '--repeat-pattern': repeatPattern }"></div>
+	<div class="graphic" :class="{ '--cover': cover }"></div>
 </template>
 
 <script setup>
@@ -9,14 +9,14 @@ const props = defineProps({
 		type: String,
 		default: 'var(--color-black)'
 	},
-	repeatPattern: {
-		type: Boolean,
-		default: false
-	},
 	index: {
     	type: Number,
     	default: 1
-  	}
+  	},
+	cover: {
+		type: Boolean,
+		default: false
+	}
 })
 
 const bgUrl = (i) => `url('/graphics/square-${i.toString().padStart(2, '0')}.png')`
@@ -31,9 +31,8 @@ div.graphic {
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: relative;
-	&.--repeat-pattern {
-		aspect-ratio: auto;
-		background-repeat: repeat-y;
+	&.--cover {
+		background-size: cover;
 		height: 100%;
 		width: 100%;
 	}

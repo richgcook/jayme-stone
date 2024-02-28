@@ -1,6 +1,7 @@
 import homePage from './documents/homePage'
 
 import project from './documents/project'
+import projectIntegrator from './documents/projectIntegrator'
 import projectsPage from './documents/projectsPage'
 
 import music from './documents/music'
@@ -29,6 +30,7 @@ export const schemaTypes = [
 	homePage,
 
 	project,
+	projectIntegrator,
 	projectsPage,
 
 	music,

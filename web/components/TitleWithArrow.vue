@@ -1,5 +1,6 @@
 <template>
-	<h3 class="title-arrow">
+	<h3 class="title-arrow" :class="{ '--line-before': arrowPosition == 'before' }">
+		<NuxtLink :to="link" v-if="link"></NuxtLink>
 		<span class="label" v-if="arrowPosition == 'after'">{{ label }}</span>
 		<div class="line-arrow">
 			<span class="line"></span>
@@ -23,11 +24,15 @@ const props = defineProps({
 	color: {
 		type: String,
 		default: 'var(--color-black)'
+	},
+	link: {
+		type: String,
+		default: ''
 	}
 })
 
 const lineLength = props.lineLength
-const rotation = `rotate(${props.rotation}deg)`
+const rotation = `${props.rotation}deg`
 const color = props.color
 
 </script>
@@ -43,9 +48,21 @@ h3.title-arrow {
 	font-size: var(--font-size-mono-caps);
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
-	transform: v-bind(rotation);
+	rotate: v-bind(rotation);
 	transform-origin: top left;
 	color: v-bind(color);
+	position: relative;
+	a {
+		position: absolute;
+		inset: 0;
+		height: 100%;
+		width: 100%;
+	}
+	&.--line-before {
+		div.line-arrow {
+			flex-shrink: 0;
+		}
+	}
 	div.line-arrow {
 		display: flex;
 		flex-flow: row nowrap;
@@ -58,6 +75,7 @@ h3.title-arrow {
 			background-color: v-bind(color);
 		}
 		svg {
+			flex-shrink: 0;
 			width: 4px;
 			margin-left: -3px;
 		}

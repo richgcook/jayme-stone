@@ -18,6 +18,17 @@ export default defineType({
 					validation: Rule => Rule.required()
 				}),
 				defineField({
+					type: 'string',
+					title: 'Text size',
+					name: 'textSize',
+					options: {
+						list: [
+							{ title: 'Large', value: 'lg' },
+							{ title: 'XL', value: 'xl' },
+						],
+					},
+				}),
+				defineField({
 					type: 'object',
 					title: 'Referrer',
 					name: 'referrer',
@@ -38,9 +49,13 @@ export default defineType({
 									name: 'alt'
 								}
 							],
-							validation: Rule => Rule.required()
 						}),
 					],
+				}),
+				defineField({
+					type: 'boolean',
+					title: 'Center text',
+					name: 'centerText',
 				}),
 				defineField({
 					type: 'colorPicker',
@@ -53,6 +68,20 @@ export default defineType({
 					title: 'Text color',
 					name: 'textColor',
 					validation: Rule => Rule.required()
+				}),
+				defineField({
+					type: 'number',
+					title: 'Block width',
+					name: 'blockWidth',
+					description: 'How many columns to take up from 1 to 4',
+					initialValue: 1,
+					validation: Rule => Rule.required().min(1).max(4)
+				}),
+				defineField({
+					type: 'number',
+					title: 'Block height',
+					name: 'blockHeight',
+					description: 'If your block needs to exceed one row in height, please indicate the number of rows required',
 				}),
 			],
 			preview: {
@@ -70,6 +99,41 @@ export default defineType({
 					}
 				}
 			}
+		}),
+		defineArrayMember({
+			type: 'object',
+			title: 'Graphic',
+			name: 'graphic',
+			fields: [
+				defineField({
+					type: 'number',
+					title: 'Block width',
+					name: 'blockWidth',
+					description: 'How many columns to take up from 1 to 4',
+					initialValue: 1,
+					validation: Rule => Rule.required().min(1).max(4)
+				}),
+				defineField({
+					type: 'object',
+					title: 'Colors',
+					name: 'colors',
+					options: {
+						collapsible: true,
+						collapsed: true
+					},
+					fields: [
+						defineField({
+							type: 'colorPicker',
+							title: 'Background',
+							name: 'bg',
+							options: {
+								collapsible: false
+							},
+							validation: Rule => Rule.required()
+						}),
+					],
+				}),
+			],
 		}),
 	]
 })
