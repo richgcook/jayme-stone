@@ -26,16 +26,16 @@
 
 					<template v-for="(field, index) in data?.form.formFields">
 
-						<input type="text" name="first-name" :placeholder="field.label" :key="index" v-if="field._type === 'textInput'" />
+						<input type="text" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :key="index" v-if="field._type === 'textInput'" />
 
-						<input type="email" name="email" :placeholder="field.label" :key="index" v-if="field._type === 'emailInput'" />
+						<input type="email" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :key="index" v-if="field._type === 'emailInput'" />
 
 						<div v-if="field._type === 'textarea'" :key="index">
-							<textarea name="message" :placeholder="field.label" rows="5" ></textarea>
+							<textarea :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" rows="5" ></textarea>
 						</div>
 
 						<div v-if="field._type === 'select'" :key="index">
-							<select name="select">
+							<select :name="sanitizeFieldLabel(field.label)">
 								<option value="" disabled selected>{{ field.label }}</option>
 								<option v-for="option in field.options" :key="option._key" :value="option">{{ option }}</option>
 							</select>
@@ -123,6 +123,10 @@ const submitForm = () => {
 		formError.value = true
 		formMessage.value = error
 	})
+}
+
+const sanitizeFieldLabel = (label) => {
+	return label.toLowerCase().replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-')
 }
 
 </script>
