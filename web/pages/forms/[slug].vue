@@ -22,13 +22,14 @@
 					ref="form"
 					v-show="!formSucess"
 				>
+					<input type="hidden" name="form-name" :value="route.params.slug" />
 					<input type="text" name="first-name" placeholder="First name" />
 					<input type="email" name="email" placeholder="Email address" />
 					<select name="select">
 						<option value="" disabled selected>Select answer</option>
-						<option value="option-1">Option 1</option>
-						<option value="option-2">Option 2</option>
-						<option value="option-3">Option 3</option>
+						<option name="option-1" value="Option 1">Option 1</option>
+						<option name="option-2" value="Option 2">Option 2</option>
+						<option name="option-3" value="Option 3">Option 3</option>
 					</select>
 					<textarea name="message" placeholder="Message" rows="5"></textarea>
 					<button type="submit">
