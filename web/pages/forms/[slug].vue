@@ -1,12 +1,21 @@
 <template>
 	<div>
-		<form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" method="POST">
+		<form 
+			:name="route.params.slug" 
+			method="POST" 
+			data-netlify="true" 
+			data-netlify-honeypot="bot-field"
+			@submit.prevent="submitForm"
+			ref="form"
+			v-show="!formSucess || !formError"
+		>
 
 			<input name="first-name" placeholder="First Name">
 			<input name="last-name" placeholder="Last Name">
-			<input type="submit" value="Submit">
+			<button type="submit">Submit</button>
 
 			</form>
+		<div v-show="formSucess || formError">{{ formMessage }}</div>
 	</div>
 </template>
 
@@ -43,6 +52,31 @@ useHead({
 		class: bodyClass.value
 	}
 })
+
+const form = ref(null)
+
+const formSucess = ref(false)
+const formError = ref(false)
+const formMessage = ref('')
+
+const submitForm = () => {
+	console.log('submit form')
+	const formData = new FormData(form.value)
+
+	fetch('/', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		body: new URLSearchParams(formData).toString()
+	})
+	.then(() => {
+		formSucess.value = true
+		formMessage.value = 'Form submitted successfully'
+	})
+	.catch((error) => {
+		formError.value = true
+		formMessage.value = error
+	})
+}
 
 </script>
 
