@@ -23,15 +23,26 @@
 					v-show="!formSucess"
 				>
 					<input type="hidden" name="form-name" :value="route.params.slug" />
-					<input type="text" name="first-name" placeholder="First name" />
-					<input type="email" name="email" placeholder="Email address" />
-					<select name="select">
-						<option value="" disabled selected>Select answer</option>
-						<option name="option-1" value="Option 1">Option 1</option>
-						<option name="option-2" value="Option 2">Option 2</option>
-						<option name="option-3" value="Option 3">Option 3</option>
-					</select>
-					<textarea name="message" placeholder="Message" rows="5"></textarea>
+
+					<template v-for="(field, index) in data?.form.formFields">
+
+						<input type="text" name="first-name" :placeholder="field.label" :key="index" v-if="field._type === 'textInput'" />
+
+						<input type="email" name="email" :placeholder="field.label" :key="index" v-if="field._type === 'emailInput'" />
+
+						<div v-if="field._type === 'textarea'" :key="index">
+							<textarea name="message" :placeholder="field.label" rows="5" ></textarea>
+						</div>
+
+						<div v-if="field._type === 'select'" :key="index">
+							<select name="select">
+								<option value="" disabled selected>{{ field.label }}</option>
+								<option v-for="option in field.options" :key="option._key" :value="option">{{ option }}</option>
+							</select>
+						</div>
+
+					</template>
+
 					<button type="submit">
 						<span class="label">{{ data?.form.submitLabel }}</span>
 						<span class="line-arrow">
@@ -40,7 +51,8 @@
 						</span>
 					</button>
 				</form>
-				<div v-show="formSucess || formError">{{ formMessage }}</div>
+				<div class="message" v-show="formSucess">{{ formMessage }}</div>
+				<div class="message -error" v-show="formError">{{ formMessage }}</div>
 			</div>
 			<div>
 				<GraphicsRectangleY :index="5" :isFullColor="true" />
@@ -66,6 +78,7 @@ const query = groq`{
 		introduction[] {
 			${$richTextQuery}
 		},
+		formFields,
 		submitLabel, successMessage
 	}[0],
 	
@@ -125,6 +138,11 @@ div.form-layout {
 		padding: 90px;
 		display: grid;
 		row-gap: 1.6em;
+		div.message {
+			&.--error {
+				color: var(--color-red);
+			}
+		}
 	}
 	form {
 		display: grid;
@@ -134,6 +152,7 @@ div.form-layout {
 			all: unset;
 			box-sizing: border-box;
 			height: 85px;
+			width: 100%;
 			padding: 0 25px;
 			color: var(--color-black);
 			@include placeholder {
@@ -146,6 +165,7 @@ div.form-layout {
 		textarea {
 			all: unset;
 			box-sizing: border-box;
+			width: 100%;
 			padding: 25px;
 			color: var(--color-black);
 			@include placeholder {

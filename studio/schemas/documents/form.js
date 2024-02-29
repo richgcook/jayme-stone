@@ -1,5 +1,5 @@
-import { defineType, defineField } from 'sanity'
-import { Article, Play, SpeakerHigh } from '@phosphor-icons/react'
+import { defineType, defineField, defineArrayMember } from 'sanity'
+import { Textbox, At, TextAlignLeft, SortAscending } from '@phosphor-icons/react'
 
 export default defineType({
 	type: "document",
@@ -31,6 +31,126 @@ export default defineType({
 			type: 'richText',
 			title: 'Introduction',
 			name: 'introduction',
+		}),
+		defineField({
+			type: 'array',
+			title: 'Form',
+			name: 'formFields',
+			of: [
+				defineArrayMember({
+					type: 'object',
+					title: 'Text',
+					name: 'textInput',
+					fields: [
+						defineField({
+							type: 'string',
+							title: 'Label',
+							name: 'label',
+							validation: Rule => Rule.required()
+						}),
+					],
+					preview: {
+						select: {
+							label: 'label',
+						},
+						prepare(selection) {
+							const { label } = selection
+							return {
+								title: label,
+								media: Textbox
+							}
+						}
+					}
+				}),
+				defineArrayMember({
+					type: 'object',
+					title: 'Email',
+					name: 'emailInput',
+					fields: [
+						defineField({
+							type: 'string',
+							title: 'Label',
+							name: 'label',
+							validation: Rule => Rule.required()
+						}),
+					],
+					preview: {
+						select: {
+							label: 'label',
+						},
+						prepare(selection) {
+							const { label } = selection
+							return {
+								title: label,
+								media: At
+							}
+						}
+					}
+				}),
+				defineArrayMember({
+					type: 'object',
+					title: 'Textarea',
+					name: 'textarea',
+					fields: [
+						defineField({
+							type: 'string',
+							title: 'Label',
+							name: 'label',
+							validation: Rule => Rule.required()
+						}),
+					],
+					preview: {
+						select: {
+							label: 'label',
+						},
+						prepare(selection) {
+							const { label } = selection
+							return {
+								title: label,
+								media: TextAlignLeft
+							}
+						}
+					}
+				}),
+				defineArrayMember({
+					type: 'object',
+					title: 'Dropdown',
+					name: 'select',
+					fields: [
+						defineField({
+							type: 'string',
+							title: 'Label',
+							name: 'label',
+							validation: Rule => Rule.required()
+						}),
+						defineField({
+							type: 'array',
+							title: 'Options',
+							name: 'options',
+							of: [
+								defineArrayMember({
+									type: 'string',
+									title: 'Option',
+									name: 'option',
+									validation: Rule => Rule.required()
+								}),
+							],
+						}),
+					],
+					preview: {
+						select: {
+							label: 'label',
+						},
+						prepare(selection) {
+							const { label } = selection
+							return {
+								title: label,
+								media: SortAscending
+							}
+						}
+					}
+				}),
+			]
 		}),
 		defineField({
 			type: 'string',
