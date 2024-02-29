@@ -13,6 +13,7 @@ import videosPage from './documents/videosPage'
 import pageA from './documents/pageA'
 import eventsPage from './documents/eventsPage'
 import pressPage from './documents/pressPage'
+import form from './documents/form'
 import settingsGeneral from './documents/settingsGeneral'
 
 import richText from './objects/richText'
@@ -42,6 +43,8 @@ export const schemaTypes = [
 	pageA,
 	eventsPage,
 	pressPage,
+	
+	form,
 
 	settingsGeneral,
 

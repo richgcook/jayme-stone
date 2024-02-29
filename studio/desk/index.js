@@ -1,5 +1,5 @@
-import { House, Question, Calendar, FileArrowDown } from '@phosphor-icons/react'
-import { DocumentsIcon } from '@sanity/icons'
+import { House, Calendar, FileArrowDown } from '@phosphor-icons/react'
+import { DocumentsIcon, ComposeIcon } from '@sanity/icons'
 
 import { projectsStructure } from './projects'
 import { musicStructure } from './music'
@@ -20,6 +20,7 @@ const hiddenDocTypes = listItem =>
 		'eventsPage',
 		'pressPage',
 		'pageA',
+		'form',
 		'settingsGeneral',
 	]
 .includes(listItem.getId())
@@ -67,6 +68,8 @@ export const deskStructure = (S, context) =>
 		),
 
 		S.documentTypeListItem('pageA').title('Pages').icon(DocumentsIcon),
+
+		S.documentTypeListItem('form').title('Forms').icon(ComposeIcon),
 
 		settingsStructure(S, context),
 
