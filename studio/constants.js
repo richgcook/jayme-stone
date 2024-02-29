@@ -7,4 +7,5 @@ export const PAGE_REFERENCES = [
 	{ type: 'project' },
 	{ type: 'eventsPage' },
 	{ type: 'pressPage' },
+	{ type: 'form' },
   ]

@@ -36,6 +36,7 @@ const props = defineProps({
 
 const toPath = computed(() => {
 	if (props.type === 'project') return `/projects/${props.slug}`
+	if (props.type === 'form') return `/forms/${props.slug}`
 	return props.slug
 })
 
