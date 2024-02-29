@@ -54,7 +54,9 @@ a {
 		flex-flow: row nowrap;
 		align-items: center;
 		column-gap: 2ch;
+		height: 85px;
 		width: fit-content;
+		padding: 0 25px;
 		font-family: var(--font-family-mono);
 		font-size: var(--font-size-mono-caps);
 		letter-spacing: 0.05em;
@@ -62,7 +64,6 @@ a {
 		background-color: var(--color-green);
 		color: var(--color-beige);
 		text-decoration: none;
-		padding: 30px 25px;
 		span.line-arrow {
 			display: flex;
 			flex-flow: row nowrap;

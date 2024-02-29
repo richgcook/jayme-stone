@@ -1,27 +1,57 @@
 <template>
 	<div>
-		<form 
-			:name="route.params.slug" 
-			method="POST" 
-			data-netlify="true" 
-			data-netlify-honeypot="bot-field"
-			@submit.prevent="submitForm"
-			ref="form"
-			v-show="!formSucess || !formError"
-		>
-
-			<input name="first-name" placeholder="First Name">
-			<input name="last-name" placeholder="Last Name">
-			<button type="submit">Submit</button>
-
-			</form>
-		<div v-show="formSucess || formError">{{ formMessage }}</div>
+		<div class="form-layout">
+			<div>
+				<GraphicsRectangleY :index="5" :isFullColor="true" />
+			</div>
+			<div class="content">
+				<TitleWithArrow 
+					:arrowDirection="'next'" 
+					:arrowPosition="'after'" 
+					:lineLength="'50%'" 
+					:color="`var(--color-green)`" 
+					:label="data?.form.subtitle"
+				/>
+				<RichText :blocks="data?.form.introduction" />
+				<form 
+					:name="route.params.slug" 
+					method="POST" 
+					data-netlify="true" 
+					data-netlify-honeypot="bot-field"
+					@submit.prevent="submitForm"
+					ref="form"
+					v-show="!formSucess"
+				>
+					<input type="text" name="first-name" placeholder="First name" />
+					<input type="email" name="email" placeholder="Email address" />
+					<select name="select">
+						<option value="" disabled selected>Select answer</option>
+						<option value="option-1">Option 1</option>
+						<option value="option-2">Option 2</option>
+						<option value="option-3">Option 3</option>
+					</select>
+					<textarea name="message" placeholder="Message" rows="5"></textarea>
+					<button type="submit">
+						<span class="label">{{ data?.form.submitLabel }}</span>
+						<span class="line-arrow">
+							<span class="line"></span>
+							<SymbolArrowHeadNext :fill="`var(--color-beige)`" />
+						</span>
+					</button>
+				</form>
+				<div v-show="formSucess || formError">{{ formMessage }}</div>
+			</div>
+			<div>
+				<GraphicsRectangleY :index="5" :isFullColor="true" />
+			</div>
+		</div>
+		<NewsletterSignup />
 	</div>
 </template>
 
 <script setup>
 
-const { $seoQuery, $richTextQuery, $imageQuery, $pageBuilderAQuery } = useNuxtApp()
+const { $seoQuery, $richTextQuery } = useNuxtApp()
 
 const route = useRoute()
 
@@ -30,7 +60,12 @@ const query = groq`{
 	"form": *[_type == "form" && slug.current == $slug] {
 		_id, _type, slug, title, seo {
 			${$seoQuery}
-		}
+		},
+		subtitle,
+		introduction[] {
+			${$richTextQuery}
+		},
+		submitLabel, successMessage
 	}[0],
 	
 }`
@@ -60,9 +95,7 @@ const formError = ref(false)
 const formMessage = ref('')
 
 const submitForm = () => {
-	console.log('submit form')
 	const formData = new FormData(form.value)
-
 	fetch('/', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -70,7 +103,7 @@ const submitForm = () => {
 	})
 	.then(() => {
 		formSucess.value = true
-		formMessage.value = 'Form submitted successfully'
+		formMessage.value = data?.value.form.successMessage
 	})
 	.catch((error) => {
 		formError.value = true
@@ -82,6 +115,102 @@ const submitForm = () => {
 
 <style lang="scss" scoped>
 
-
+div.form-layout {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	background-color: var(--color-beige);
+	> div.content {
+		grid-column: 2 / span 2;
+		padding: 90px;
+		display: grid;
+		row-gap: 1.6em;
+	}
+	form {
+		display: grid;
+		row-gap: 10px;
+		input[type="text"],
+		input[type="email"] {
+			all: unset;
+			box-sizing: border-box;
+			height: 85px;
+			padding: 0 25px;
+			color: var(--color-black);
+			@include placeholder {
+				color: currentColor;
+			}
+			font-family: var(--font-family-mono);
+			font-size: var(--font-size-mono-md);
+			border: 1px solid currentColor;
+		}
+		textarea {
+			all: unset;
+			box-sizing: border-box;
+			padding: 25px;
+			color: var(--color-black);
+			@include placeholder {
+				color: currentColor;
+			}
+			font-family: var(--font-family-mono);
+			font-size: var(--font-size-mono-md);
+			border: 1px solid currentColor;
+		}
+		select {
+			all: unset;
+			box-sizing: border-box;
+			width: 100%;
+			padding: 30px 100px 30px 25px;
+			color: var(--color-black);
+			@include placeholder {
+				color: currentColor;
+			}
+			font-family: var(--font-family-mono);
+			font-size: var(--font-size-mono-md);
+			border: 1px solid currentColor;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='15' viewBox='0 0 28 15' fill='none'%3E%3Cpath d='M27 0.999979L14 14L1.00002 0.999979' stroke='%23141313'/%3E%3C/svg%3E");			background-repeat: no-repeat;
+			background-position: calc(100% - 25px) 50%;
+			background-size: 18px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+		button[type="submit"] {
+			all: unset;
+			cursor: pointer;
+			box-sizing: border-box;
+			display: flex;
+			flex-flow: row nowrap;
+			align-items: center;
+			column-gap: 2ch;
+			height: 85px;
+			width: 100%;
+			padding: 0 25px;
+			font-family: var(--font-family-mono);
+			font-size: var(--font-size-mono-caps);
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			background-color: var(--color-green);
+			color: var(--color-beige);
+			text-decoration: none;
+			span.line-arrow {
+				display: flex;
+				flex-flow: row nowrap;
+				align-items: center;
+				width: 100%;
+				span.line {
+					display: block;
+					height: 1px;
+					width: 100%;
+					background-color: var(--color-beige)
+				}
+				svg {
+					width: 4px;
+					margin-left: -3px;
+				}
+			}
+			span.label {
+				flex-shrink: 0;
+			}
+		}
+	}
+}
 
 </style>

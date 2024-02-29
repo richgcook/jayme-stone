@@ -125,13 +125,13 @@ form.newsletter {
 		color: var(--color-beige);
 		@include placeholder {
 			color: currentColor;
+			font-size: var(--font-size-mono-caps);
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
 		}
 		font-family: var(--font-family-mono);
-		font-size: var(--font-size-mono-caps);
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
+		font-size: var(--font-size-mono-md);
 		background-color: var(--color-blue);
-		height: 85px;
 		padding: 0 25px;
 	}
 	button[type="submit"] {
