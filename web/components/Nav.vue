@@ -4,6 +4,7 @@
 			<ul class="menu" v-if="data?.settingsGeneral?.menuA?.length">
 				<li v-for="menuItem in data.settingsGeneral.menuA" :key="menuItem._id"><NuxtLink :to="`/${menuItem.slug.current}`">{{ menuItem.title }}</NuxtLink></li>
 			</ul>
+			<div class="graphic"></div>
 		</nav>
 	</Transition>
 </template>
@@ -59,9 +60,10 @@ nav.main {
 		opacity: 0;
 	}
 	ul.menu {
-
 		display: flex;
 		flex-flow: column nowrap;
+		position: relative;
+    	z-index: 1;
 		li {
 			font-size: 50px;
 			line-height: 1.3;
@@ -69,6 +71,18 @@ nav.main {
 				color: var(--color-beige);
 			}
 		}
+	}
+	div.graphic {
+		pointer-events: none;
+		background-color: var(--color-blue);
+		mask-image: url('/graphics/nav.png');
+		mask-repeat: no-repeat;
+		mask-size: auto 100%;
+		position: absolute;
+		inset: 0;
+		height: 100%;
+		width: 100%;
+		mask-position: bottom right;
 	}
 }
 
