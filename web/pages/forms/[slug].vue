@@ -16,8 +16,6 @@
 				<form 
 					:name="route.params.slug" 
 					method="POST" 
-					data-netlify="true" 
-					data-netlify-honeypot="bot-field"
 					@submit.prevent="submitForm"
 					ref="form"
 					v-show="!formSucess"
@@ -110,11 +108,20 @@ const formMessage = ref('')
 
 const submitForm = () => {
 	const formData = new FormData(form.value)
+
+	fetch('/.netlify/functions/send-contact-form', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		body: new URLSearchParams(formData).toString()
+	})
+
+	/*
 	fetch('/', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 		body: new URLSearchParams(formData).toString()
 	})
+	*/
 	.then(() => {
 		formSucess.value = true
 		formMessage.value = data?.value.form.successMessage
