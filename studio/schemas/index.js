@@ -20,6 +20,7 @@ import richText from './objects/richText'
 import altTag from './objects/altTag'
 import seo from './objects/seo'
 import colorPicker from './objects/colorPicker'
+import colorPickerSelect from './objects/colorPickerSelect'
 import pageBuilderA from './objects/pageBuilderA'
 import pageBuilderB from './objects/pageBuilderB'
 import testimonialsA from './objects/testimonialsA'
@@ -54,6 +55,7 @@ export const schemaTypes = [
 	altTag,
 	seo,
 	colorPicker,
+	colorPickerSelect,
 	pageBuilderA,
 	pageBuilderB,
 	testimonialsA,

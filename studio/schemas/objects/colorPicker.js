@@ -5,6 +5,7 @@ export default defineField({
 	name: 'colorPicker',
 	title: 'Color',
 	options: {
+		collapsible: false,
 		colorList: [
 			{ hex: '#ffffff' },
 			'#141313',

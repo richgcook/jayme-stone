@@ -30,27 +30,18 @@ export default defineField({
 							type: 'colorPicker',
 							title: 'Background',
 							name: 'bg',
-							options: {
-								collapsible: false
-							},
 							validation: Rule => Rule.required()
 						}),
 						defineField({
 							type: 'colorPicker',
 							title: 'Text',
 							name: 'text',
-							options: {
-								collapsible: false
-							},
 							validation: Rule => Rule.required()
 						}),
 						defineField({
 							type: 'colorPicker',
 							title: 'Line',
 							name: 'line',
-							options: {
-								collapsible: false
-							},
 							validation: Rule => Rule.required()
 						}),
 					],

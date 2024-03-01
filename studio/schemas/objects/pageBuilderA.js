@@ -61,9 +61,6 @@ export default defineField({
 							type: 'colorPicker',
 							title: 'Graphic',
 							name: 'graphic',
-							options: {
-								collapsible: false
-							},
 							description: 'Used for graphics, if applicable'
 						}),
 					],
@@ -113,9 +110,6 @@ export default defineField({
 							type: 'colorPicker',
 							title: 'Background',
 							name: 'bg',
-							options: {
-								collapsible: false
-							},
 							validation: Rule => Rule.required()
 						}),
 						defineField({
@@ -123,9 +117,6 @@ export default defineField({
 							title: 'Graphic',
 							name: 'graphic',
 							description: 'Used for graphics',
-							options: {
-								collapsible: false
-							},
 						}),
 					],
 				}),

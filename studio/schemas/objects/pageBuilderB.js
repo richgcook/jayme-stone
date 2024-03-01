@@ -123,18 +123,12 @@ export default defineField({
 											type: 'colorPicker',
 											title: 'Button',
 											name: 'button',
-											options: {
-												collapsible: false
-											},
 											validation: Rule => Rule.required()
 										}),
 										defineField({
 											type: 'colorPicker',
 											title: 'Icon',
 											name: 'icon',
-											options: {
-												collapsible: false
-											},
 											validation: Rule => Rule.required()
 										}),
 									],

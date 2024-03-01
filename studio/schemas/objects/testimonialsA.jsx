@@ -70,18 +70,12 @@ export default defineField({
 							type: 'colorPicker',
 							title: 'Background',
 							name: 'bg',
-							options: {
-								collapsible: false
-							},
 							validation: Rule => Rule.required()
 						}),
 						defineField({
 							type: 'colorPicker',
 							title: 'Text',
 							name: 'text',
-							options: {
-								collapsible: false
-							},
 							validation: Rule => Rule.required()
 						}),
 					],
@@ -144,9 +138,6 @@ export default defineField({
 							type: 'colorPicker',
 							title: 'Background',
 							name: 'bg',
-							options: {
-								collapsible: false
-							},
 							validation: Rule => Rule.required()
 						}),
 					],
@@ -159,7 +150,6 @@ export default defineField({
 				},
 				prepare(selection) {
 					const { blockWidth, color } = selection
-					console.log(color)
 					return {
 						title: 'Graphic',
 						subtitle: `${blockWidth}/4`,

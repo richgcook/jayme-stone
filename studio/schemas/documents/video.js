@@ -35,45 +35,30 @@ export default defineType({
 					type: 'colorPicker',
 					title: 'Background',
 					name: 'bg',
-					options: {
-						collapsible: false
-					},
 					validation: Rule => Rule.required()
 				}),
 				defineField({
 					type: 'colorPicker',
 					title: 'Text',
 					name: 'text',
-					options: {
-						collapsible: false
-					},
 					validation: Rule => Rule.required()
 				}),
 				defineField({
 					type: 'colorPicker',
 					title: 'Button',
 					name: 'button',
-					options: {
-						collapsible: false
-					},
 					validation: Rule => Rule.required()
 				}),
 				defineField({
 					type: 'colorPicker',
 					title: 'Icon',
 					name: 'icon',
-					options: {
-						collapsible: false
-					},
 					validation: Rule => Rule.required()
 				}),
 				defineField({
 					type: 'colorPicker',
 					title: 'Graphic',
 					name: 'graphic',
-					options: {
-						collapsible: false
-					},
 					description: 'Used for graphics, if applicable'
 				}),
 			],

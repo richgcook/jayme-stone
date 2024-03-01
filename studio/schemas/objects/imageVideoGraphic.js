@@ -21,6 +21,8 @@ export default defineField({
 					{ title: 'Top', value: 'top' },
 					{ title: 'Bottom', value: 'bottom' },
 				],
+				layout: 'radio',
+				direction: 'horizontal'
 			},
 			initialValue: 'left',
 			hidden: ({ parent }) => !parent?.active,
