@@ -26,16 +26,16 @@
 
 					<template v-for="(field, index) in data?.form.formFields">
 
-						<input type="text" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :key="index" v-if="field._type === 'textInput'" />
+						<input type="text" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :required="field.required" :key="index" v-if="field._type === 'textInput'" />
 
-						<input type="email" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :key="index" v-if="field._type === 'emailInput'" />
+						<input type="email" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :required="field.required" :key="index" v-if="field._type === 'emailInput'" />
 
 						<div v-if="field._type === 'textarea'" :key="index">
-							<textarea :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" rows="5" ></textarea>
+							<textarea :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :required="field.required" rows="5" ></textarea>
 						</div>
 
 						<div v-if="field._type === 'select'" :key="index">
-							<select :name="sanitizeFieldLabel(field.label)">
+							<select :name="sanitizeFieldLabel(field.label)" :required="field.required">
 								<option value="" disabled selected>{{ field.label }}</option>
 								<option v-for="option in field.options" :key="option._key" :value="option">{{ option }}</option>
 							</select>

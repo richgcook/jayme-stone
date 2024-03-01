@@ -48,15 +48,22 @@ export default defineType({
 							name: 'label',
 							validation: Rule => Rule.required()
 						}),
+						defineField({
+							type: 'boolean',
+							title: 'Required',
+							name: 'required',
+						}),
 					],
 					preview: {
 						select: {
 							label: 'label',
+							required: 'required',
 						},
 						prepare(selection) {
-							const { label } = selection
+							const { label, required } = selection
 							return {
 								title: label,
+								subtitle: required ? 'Required' : '',
 								media: Textbox
 							}
 						}
@@ -73,15 +80,22 @@ export default defineType({
 							name: 'label',
 							validation: Rule => Rule.required()
 						}),
+						defineField({
+							type: 'boolean',
+							title: 'Required',
+							name: 'required',
+						}),
 					],
 					preview: {
 						select: {
 							label: 'label',
+							required: 'required',
 						},
 						prepare(selection) {
-							const { label } = selection
+							const { label, required } = selection
 							return {
 								title: label,
+								subtitle: required ? 'Required' : '',
 								media: At
 							}
 						}
@@ -98,15 +112,22 @@ export default defineType({
 							name: 'label',
 							validation: Rule => Rule.required()
 						}),
+						defineField({
+							type: 'boolean',
+							title: 'Required',
+							name: 'required',
+						}),
 					],
 					preview: {
 						select: {
 							label: 'label',
+							required: 'required',
 						},
 						prepare(selection) {
-							const { label } = selection
+							const { label, required } = selection
 							return {
 								title: label,
+								subtitle: required ? 'Required' : '',
 								media: TextAlignLeft
 							}
 						}
@@ -136,15 +157,22 @@ export default defineType({
 								}),
 							],
 						}),
+						defineField({
+							type: 'boolean',
+							title: 'Required',
+							name: 'required',
+						}),
 					],
 					preview: {
 						select: {
 							label: 'label',
+							required: 'required',
 						},
 						prepare(selection) {
-							const { label } = selection
+							const { label, required } = selection
 							return {
 								title: label,
+								subtitle: required ? 'Required' : '',
 								media: SortAscending
 							}
 						}
