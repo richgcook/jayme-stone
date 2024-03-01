@@ -6,12 +6,6 @@ export default defineType({
 	name: "homePage",
 	fields: [
 		defineField({
-			type: 'colorPicker',
-			title: 'Graphic',
-			name: 'graphic',
-			description: 'Used for graphics, if applicable'
-		}),
-		defineField({
 			type: 'object',
 			title: 'Featured image',
 			name: 'featuredImage',

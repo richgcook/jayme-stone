@@ -1,5 +1,6 @@
 import { TextAlignLeft, Play, YoutubeLogo, Video, Quotes } from '@phosphor-icons/react'
 import { defineField, defineArrayMember } from 'sanity'
+import { DocumentBasedPageBuilderBInput } from '../components/DocumentBasedPageBuilderBInput'
 
 export default defineField({
 	type: 'array',
@@ -253,5 +254,8 @@ export default defineField({
 				},
 			},
 		}),
-	]
+	],
+	components: {
+    	input: DocumentBasedPageBuilderBInput,
+    },
 })
