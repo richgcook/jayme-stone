@@ -1,6 +1,6 @@
-import { defineType } from 'sanity'
+import { defineField } from 'sanity'
 
-export default defineType({
+export default defineField({
 	type: 'color',
 	name: 'colorPicker',
 	title: 'Color',

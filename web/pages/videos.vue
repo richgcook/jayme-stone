@@ -14,6 +14,7 @@
 						:pageTitle="data.videosPage.title"
 					/>
 				</div>
+				<GraphicsImageVideo :index="1" :fill="video.colors?.graphic?.hex" :position="video.imageVideoGraphic?.position" v-if="video.imageVideoGraphic?.active" />
 			</div>
 		</div>
 		<NewsletterSignup :title="data.videosPage.newsletterSelection?.active ? data.videosPage.newsletterSelection.title : undefined" />
@@ -43,6 +44,7 @@ const query = groq`{
 		embedCode,
 		title,
 		colors,
+		imageVideoGraphic,
 	}
 	
 }`
@@ -69,6 +71,7 @@ useHead({
 
 div.videos-layout {
 	div.video {
+		position: relative;
 		height: 70vh;
 		@supports (height: 100svh) {
 			height: 70svh;
@@ -76,6 +79,8 @@ div.videos-layout {
 		div.inner {
 			height: 100%;
   			width: 100%;
+			position: relative;
+			z-index: 1;
 		}
 	}
 }

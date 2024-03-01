@@ -40,7 +40,7 @@ export default defineType({
 			name: 'colors',
 			options: {
 				collapsible: true,
-				collapsed: true
+				collapsed: false
 			},
 			fields: [
 				defineField({

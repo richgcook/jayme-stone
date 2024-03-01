@@ -6,16 +6,48 @@ export default defineType({
 	name: "homePage",
 	fields: [
 		defineField({
-			type: 'image',
+			type: 'object',
 			title: 'Featured image',
 			name: 'featuredImage',
 			fields: [
 				defineField({
-					name: 'alt',
-					type: 'alt'
+					type: 'image',
+					title: 'Image',
+					name: 'image',
+					validation: Rule => Rule.required(),
+					fields: [
+						defineField({
+							name: 'alt',
+							type: 'alt'
+						}),
+					],
+				}),
+				defineField({
+					type: 'object',
+					title: 'Colors',
+					name: 'colors',
+					options: {
+						collapsible: true,
+						collapsed: false
+					},
+					fields: [
+						defineField({
+							type: 'colorPicker',
+							title: 'Graphic',
+							name: 'graphic',
+							options: {
+								collapsible: false
+							},
+							description: 'Used for graphics, if applicable'
+						}),
+					],
+				}),
+				defineField({
+					type: 'imageVideoGraphic',
+					title: 'Graphic',
+					name: 'imageVideoGraphic',
 				}),
 			],
-			validation: Rule => Rule.required()
 		}),
 		defineField({
 			type: 'richText',
@@ -41,7 +73,7 @@ export default defineType({
 					name: 'colors',
 					options: {
 						collapsible: true,
-						collapsed: true
+						collapsed: false
 					},
 					fields: [
 						defineField({
@@ -93,7 +125,7 @@ export default defineType({
 					name: 'colors',
 					options: {
 						collapsible: true,
-						collapsed: true
+						collapsed: false
 					},
 					fields: [
 						defineField({
@@ -160,12 +192,12 @@ export default defineType({
 			],
 			validation: Rule => Rule.required().unique()
 		}),
-		defineType({
+		defineField({
 			type: 'testimonialsA',
 			name: 'testimonialsA',
 			title: 'Testimonials',
 		}),
-		defineType({
+		defineField({
 			type: 'newsletterSelection',
 			name: 'newsletterSelection',
 			title: 'Newsletter selection',

@@ -2,12 +2,13 @@
 	<div>
 		<div class="blocks-layout">
 
-			<div class="block" data-type="featured-image">
+			<div class="block" data-type="featured-image" v-if="data.homePage.featuredImage?.image">
 				<div class="image">
 					<Img
-						:src="data.homePage.featuredImage.asset.url"
-						:alt="data.homePage.featuredImage.asset.alt"
+						:src="data.homePage.featuredImage.image.asset.url"
+						:alt="data.homePage.featuredImage.image.asset.alt"
 					/>
+					<GraphicsImageVideo :index="1" :fill="data.homePage.featuredImage.colors?.graphic?.hex" :position="data.homePage.featuredImage.imageVideoGraphic?.position" v-if="data.homePage.featuredImage.imageVideoGraphic?.active" />
 				</div>
 				<div class="graphic">
 					<div></div>
@@ -135,7 +136,10 @@ const query = groq`{
 			${$seoQuery}
 		},
 		featuredImage {
-			${$imageQuery}
+			image {
+				${$imageQuery}
+			},
+			colors, imageVideoGraphic
 		},
 		introduction[] {
 			${$richTextQuery}
@@ -228,7 +232,7 @@ div.blocks-layout {
 			grid-column: span 4;
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			div.image {
+			> div.image {
 				position: relative;
 				@supports (aspect-ratio: 1 / 1) {
 					aspect-ratio: 800 / 947;
@@ -244,7 +248,7 @@ div.blocks-layout {
 					object-fit: cover;
 				}
 			}
-			div.graphic {
+			> div.graphic {
 				pointer-events: none;
 				position: relative;
 				background-color: var(--color-blue);

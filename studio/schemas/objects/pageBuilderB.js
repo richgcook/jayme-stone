@@ -1,7 +1,7 @@
 import { TextAlignLeft, Play, YoutubeLogo, Video, Quotes } from '@phosphor-icons/react'
-import { defineType, defineField, defineArrayMember } from 'sanity'
+import { defineField, defineArrayMember } from 'sanity'
 
-export default defineType({
+export default defineField({
 	type: 'array',
 	name: 'pageBuilderB',
 	title: 'Page builder',
@@ -116,7 +116,7 @@ export default defineType({
 									name: 'colors',
 									options: {
 										collapsible: true,
-										collapsed: true
+										collapsed: false
 									},
 									fields: [
 										defineField({

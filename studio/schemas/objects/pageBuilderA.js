@@ -1,7 +1,7 @@
-import { defineType, defineField, defineArrayMember } from 'sanity'
+import { defineField, defineArrayMember } from 'sanity'
 import { TextAlignLeft, Layout } from '@phosphor-icons/react'
 
-export default defineType({
+export default defineField({
 	type: 'array',
 	name: 'pageBuilderA',
 	title: 'Content',
@@ -48,6 +48,31 @@ export default defineType({
 					initialValue: 'odd',
 					validation: Rule => Rule.required()
 				}),
+				defineField({
+					type: 'object',
+					title: 'Colors',
+					name: 'colors',
+					options: {
+						collapsible: true,
+						collapsed: false
+					},
+					fields: [
+						defineField({
+							type: 'colorPicker',
+							title: 'Graphic',
+							name: 'graphic',
+							options: {
+								collapsible: false
+							},
+							description: 'Used for graphics, if applicable'
+						}),
+					],
+				}),
+				defineField({
+					type: 'imageVideoGraphic',
+					title: 'Graphic',
+					name: 'imageVideoGraphic',
+				}),
 			],
 			preview: {
 				select: {
@@ -81,7 +106,7 @@ export default defineType({
 					name: 'colors',
 					options: {
 						collapsible: true,
-						collapsed: true
+						collapsed: false
 					},
 					fields: [
 						defineField({

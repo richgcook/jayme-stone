@@ -1,5 +1,5 @@
 import React from 'react'
-import { defineType, defineField, defineArrayMember } from 'sanity'
+import { defineField, defineArrayMember } from 'sanity'
 import { Cards, FileArrowDown, HighlighterCircle } from '@phosphor-icons/react'
 import { PAGE_REFERENCES } from '../../constants'
 
@@ -11,7 +11,7 @@ const buttonRenderer = props => (
 	<span style={{ backgroundColor: '#2276fc', color: 'white' }}>{props.renderDefault(props)}</span>
 )
 
-export default defineType({
+export default defineField({
 	type: 'array',
 	title: 'Text',
 	name: 'richText',

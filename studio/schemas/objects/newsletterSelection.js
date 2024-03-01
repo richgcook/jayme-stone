@@ -1,6 +1,6 @@
-import { defineType, defineField } from 'sanity'
+import { defineField } from 'sanity'
 
-export default defineType({
+export default defineField({
 	type: 'object',
 	name: 'newsletterSelection',
 	title: 'Newsletter',

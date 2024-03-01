@@ -1,10 +1,10 @@
 <template>
 	<header :class="{ '--nav-open': navStore.isOpen }">
 		<div class="left">
-			<div>
-				<NuxtLink to="/" class="logo">Jayme Stone</NuxtLink>
+			<NuxtLink to="/">
+				<span to="/" class="logo">Jayme Stone</span>
 				<span class="strapline">Instigator / Integrator</span>
-			</div>
+			</NuxtLink>
 			<button class="nav-trigger" @click="navStore.toggleOpen()">
 				<span></span>
 				<span></span>
@@ -38,7 +38,7 @@ header {
 	&.--nav-open {
 		div.left {
 			background-color: var(--color-red);	
-			a.logo, 
+			span.logo, 
 			span.strapline {
 				color: var(--color-black);
 			}
@@ -66,14 +66,14 @@ header {
 		flex-flow: row nowrap;
 		background-color: var(--color-green);
 		transition: background-color 0.3s ease;
-		> div {
+		> a {
 			display: flex;
 			flex-flow: row nowrap;
 			justify-content: space-between;
 			align-items: center;
 			width: 100%;
 			padding: 0 20px 0 40px;
-			a.logo {
+			span.logo {
 				color: var(--color-beige);
 				transform: rotate(1deg);
 				transform-origin: left;

@@ -4,7 +4,7 @@
 		<div class="testimonials-layout">
 			<template v-for="(block, index) in content">
 				<TestimonialA :testimonial="block" :key="index" v-if="block._type == 'testimonial'" />
-				<GraphicsSquareColored :bgColor="block.colors.bg.hex" :cover="true" :index="3" :key="index" v-if="block._type == 'graphic'" />
+				<GraphicsSquareColored :bgColor="block.colors?.bg?.hex" :cover="true" :index="3" :key="index" v-if="block._type == 'graphic'" />
 			</template>
 		</div>
 	</div>

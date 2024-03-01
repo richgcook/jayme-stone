@@ -70,6 +70,7 @@ const pageBuilderAQuery =
 			${richTextQuery}
 		},
 		orientation,
+		colors, imageVideoGraphic
 	},
 	_type == "contentColumnBlock" => {
 		content[] {

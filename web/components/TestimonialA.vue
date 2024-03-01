@@ -14,8 +14,8 @@ const props = defineProps({
 	testimonial: Object
 })
 
-const bgColor = computed(() => props.testimonial.colors.bg.hex)
-const textColor = computed(() => props.testimonial.colors.text.hex)
+const bgColor = computed(() => props.testimonial.colors?.bg?.hex)
+const textColor = computed(() => props.testimonial.colors?.text?.hex)
 
 </script>
 

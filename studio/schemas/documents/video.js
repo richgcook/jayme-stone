@@ -28,7 +28,7 @@ export default defineType({
 			name: 'colors',
 			options: {
 				collapsible: true,
-				collapsed: true
+				collapsed: false
 			},
 			fields: [
 				defineField({
@@ -79,9 +79,9 @@ export default defineType({
 			],
 		}),
 		defineField({
-			type: 'boolean',
-			title: 'Add graphic',
-			name: 'hasGraphic',
+			type: 'imageVideoGraphic',
+			title: 'Graphic',
+			name: 'imageVideoGraphic',
 		}),
 		defineField({
 			type: 'image',

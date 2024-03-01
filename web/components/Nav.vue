@@ -78,7 +78,7 @@ nav.main {
 		mask-image: url('/graphics/nav.png');
 		mask-repeat: no-repeat;
 		mask-size: auto 100%;
-		position: absolute;
+		position: fixed;
 		inset: 0;
 		height: 100%;
 		width: 100%;

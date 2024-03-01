@@ -153,7 +153,7 @@ export default defineType({
 				}),
 			]
 		}),
-		defineType({
+		defineField({
 			type: 'newsletterSelection',
 			name: 'newsletterSelection',
 			title: 'Newsletter selection',

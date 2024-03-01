@@ -1,5 +1,6 @@
 <template>
 	<div class="projects-category" :class="{ '--first': isFirst }">
+		<div class="graphic" v-if="!isFirst"></div>
 		<h2 class="category-title" v-if="title">{{ title }}</h2>
 		<div class="projects-layout">
 			<div v-for="project in projects" :key="project._id" class="project">
@@ -83,8 +84,22 @@ const linkIsExternal = (project) => {
 div.projects-category {
 	padding: 100px 7%;
 	background-color: v-bind(bgColor);
+	position: relative;
 	&.--first {
 		padding-top: 0;
+	}
+	div.graphic {
+		background-color: var(--color-black);
+		mask-image: url('/graphics/projects-integrator.png');
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 50%;
+		height: 100%;
+		max-height: 140px;
+		mask-position: top right;
 	}
 	h2.category-title {
 		color: v-bind(categoryTitleColor);

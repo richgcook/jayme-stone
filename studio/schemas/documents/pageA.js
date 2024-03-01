@@ -79,19 +79,19 @@ export default defineType({
 				}),
 			]
 		}),
-		defineType({
+		defineField({
 			type: 'testimonialsA',
 			name: 'testimonialsA',
 			title: 'Testimonials',
 			hidden: ({document}) => document?.slug?.current == 'about',
 		}),
-		defineType({
+		defineField({
 			type: 'testimonialsB',
 			name: 'testimonialsB',
 			title: 'Testimonials',
 			hidden: ({document}) => document?.slug?.current !== 'about',
 		}),
-		defineType({
+		defineField({
 			type: 'newsletterSelection',
 			name: 'newsletterSelection',
 			title: 'Newsletter selection',

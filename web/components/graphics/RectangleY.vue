@@ -19,7 +19,7 @@ const props = defineProps({
     	type: Number,
     	default: 1
   	},
-	  isFullColor: {
+	isFullColor: {
 		type: Boolean,
 		default: false
 	}

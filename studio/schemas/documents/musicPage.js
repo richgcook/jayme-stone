@@ -20,7 +20,7 @@ export default defineType({
 			},
 			validation: Rule => Rule.required()
 		}),
-		defineType({
+		defineField({
 			type: 'newsletterSelection',
 			name: 'newsletterSelection',
 			title: 'Newsletter selection',
