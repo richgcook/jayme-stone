@@ -1,5 +1,5 @@
 const RESEND_API_KEY = process.env.RESEND_API_KEY
-const toEmailAddresses = ['rich.g.cook@gmail.com']
+const toEmailAddresses = ['rich@rd-ck.com']
 
 const formatKey = (key) => {
 	const words = key.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1))
