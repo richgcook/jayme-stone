@@ -14,72 +14,25 @@ export async function handler(event) {
 
 	try {
 
-		//const { name, email } = JSON.parse(body)
+		const { 
+			'form-title': formTitle,
+			email
+		} = requestBody
 
 		const requestBody = JSON.parse(body)
+
 		const keys = Object.keys(requestBody)
+		const excludedFields = ['form-name', 'form-title']
+
 		let emailHtml = ''
 
-		console.log('requestBody:', requestBody)
-		console.log('keys:', keys)
-
 		keys.forEach((key, index) => {
+			if (excludedFields.includes(key)) return
 			const value = requestBody[key]
 			if (value.trim() === '') return
 			emailHtml += `<strong>${key}:</strong> ${value}`
 			if (index !== keys.length - 1) emailHtml += '<br>'
 		})
-
-		console.log('emailHtml:', emailHtml)
-
-		/*
-
-		const formDataArray = body.split('&')
-
-		let formTitle = ''
-
-		let emailReplyTo = ''
-		let emailSubject = 'New website form submission'
-		let emailHtml = ''
-
-		const emailPair = formDataArray.find(pair => {
-			const [key] = pair.split('=')
-			return key === 'email'
-		})
-
-		if (emailPair) emailReplyTo = decodeURIComponent(emailPair.split('=')[1].replace(/\+/g, ' '))
-
-		const titlePair = formDataArray.find(pair => {
-			const [key] = pair.split('=')
-			return key === 'form-title'
-		})
-		  
-		if (titlePair) {
-			formTitle = decodeURIComponent(titlePair.split('=')[1].replace(/\+/g, ' '))
-			emailSubject = `New submission from form: ${formTitle}`
-		}
-
-		const excludedFields = ['form-name', 'form-title']
-
-		const formatKey = (key) => {
-			return key.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ')
-		}
-
-		formDataArray.forEach(pair => {
-			const [key, value] = pair.split('=')
-			const decodedKey = formatKey(decodeURIComponent(key.replace(/\+/g, ' ')))
-			const decodedValue = decodeURIComponent(value.replace(/\+/g, ' '))
-
-			if (!excludedFields.includes(key) && decodedValue.trim() !== '') {
-				emailHtml += `<p><strong>${decodedKey}:</strong> ${decodedValue}</p>`
-			}
-		})
-
-		console.log('emailReplyTo:', emailReplyTo)
-		console.log('emailSubject:', emailSubject)
-		console.log('emailHtml:', emailHtml)
-
-		*/
 
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
@@ -89,12 +42,10 @@ export async function handler(event) {
 			},
 			body: JSON.stringify({
 				from: 'Acme <onboarding@resend.dev>',
-				//reply_to: emailReplyTo,
+				reply_to: email ? email : '',
 				to: ['rich.g.cook@gmail.com'],
-				//subject: emailSubject,
-				subject: 'New website form submission',
+				subject: `New submission from website form: ${formTitle}`,
 				html: emailHtml
-				//html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p>`
 			}),
 		})
 
