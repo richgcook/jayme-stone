@@ -123,7 +123,7 @@ const submitForm = () => {
 	// Honeypot
 	if (formDataObject['usercode']) {
 		formSending.value = false
-		throw new Error('Failed to submit form...')
+		return
 	}
 
 	fetch('/.netlify/functions/send-contact-form', {
@@ -175,6 +175,7 @@ div.form-layout {
 	form {
 		display: grid;
 		row-gap: 10px;
+		position: relative;
 		input[type="text"],
 		input[type="email"] {
 			all: unset;
@@ -189,6 +190,15 @@ div.form-layout {
 			font-family: var(--font-family-mono);
 			font-size: var(--font-size-mono-md);
 			border: 1px solid currentColor;
+			&[name="usercode"] {
+				opacity: 0;
+				pointer-events: none;
+				position: absolute;
+				inset: 0;
+				height: 0;
+				width: 0;
+				z-index: -1;
+			}
 		}
 		textarea {
 			all: unset;
