@@ -17,6 +17,13 @@ export async function handler(event) {
 	}
 
 	try {
+
+		let formDataString = ''
+		for (const [key, value] of formData.entries()) {
+		  formDataString += `${key}: ${value}\n`
+		}
+		console.log(formDataString)
+
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
 			headers: {
@@ -27,7 +34,7 @@ export async function handler(event) {
 				from: 'Acme <onboarding@resend.dev>',
 				to: ['rich.g.cook@gmail.com'],
 				subject: 'hello world',
-				html: '<strong>it works!</strong>',
+				html: formDataString
 			}),
 		});
 
@@ -39,42 +46,12 @@ export async function handler(event) {
 		} else {
 			throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
 		}
+
 	} catch (error) {
 		return {
 			statusCode: 500,
 			body: JSON.stringify({ error: error.message }),
 		};
 	}
-
-	/*
-
-	// Parse the incoming JSON body
-	const requestData = JSON.parse(body)
-	console.log('requestData', requestData)
-
-	*/
-
-	/*
-
-	try {
-
-		
-
-		// Return a 200 OK response after handling the request
-		return {
-			statusCode: 200,
-			body: JSON.stringify({ message: "OK" }),
-		};
-
-	  } catch (error) {
-		// Log any errors and return a 500 Internal Server Error response
-		console.error("Error:", error);
-		return {
-			statusCode: 500,
-			body: JSON.stringify({ error: "Internal Server Error" }),
-		};
-	}
-
-	*/
 
 }
