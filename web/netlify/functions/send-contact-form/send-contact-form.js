@@ -12,6 +12,13 @@ export async function handler(event) {
 		}
 	}
 
+	const toEmailAddresses = ['rich.g.cook@gmail.com']
+
+	const formatKey = (key) => {
+		const words = key.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  		return words.join(' ')
+	}
+
 	try {
 
 		const requestBody = JSON.parse(body)
@@ -26,14 +33,12 @@ export async function handler(event) {
 
 		let emailHtml = ''
 
-		console.log('formTitle', formTitle)
-		console.log('email', email)
-
 		keys.forEach((key, index) => {
 			if (excludedFields.includes(key)) return
 			const value = requestBody[key]
 			if (value.trim() === '') return
-			emailHtml += `<strong>${key}:</strong> ${value}`
+			const formattedKey = formatKey(key)
+			emailHtml += `<strong>${formattedKey}:</strong> ${value}`
 			if (index !== keys.length - 1) emailHtml += '<br>'
 		})
 
@@ -46,7 +51,7 @@ export async function handler(event) {
 			body: JSON.stringify({
 				from: 'Acme <onboarding@resend.dev>',
 				reply_to: email ? email : '',
-				to: ['rich.g.cook@gmail.com'],
+				to: toEmailAddresses,
 				subject: `New submission from website form: ${formTitle}`,
 				html: emailHtml
 			}),
