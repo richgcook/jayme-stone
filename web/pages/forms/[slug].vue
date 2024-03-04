@@ -50,7 +50,7 @@
 					</button>
 				</form>
 				<div class="message" v-show="formSucess">{{ formMessage }}</div>
-				<div class="message -error" v-show="formError">{{ formMessage }}</div>
+				<div class="message --error" v-show="formError">{{ formMessage }}</div>
 			</div>
 			<div>
 				<GraphicsRectangleY :index="5" :isFullColor="true" />
@@ -112,11 +112,11 @@ const submitForm = () => {
 	fetch('/.netlify/functions/send-contact-form', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-		body: new URLSearchParams(formData).toString()
+		body: formData
 	})
 	.then(response => {
 		if (!response.ok) {
-			throw new Error('Failed to submit form')
+			throw new Error('Failed to submit form, please try again later')
 		}
 		return response.json()
 	})
@@ -127,6 +127,7 @@ const submitForm = () => {
 	.catch((error) => {
 		formError.value = true
 		formMessage.value = error
+		console.error(error)
 	})
 }
 
