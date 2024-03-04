@@ -14,7 +14,20 @@ export async function handler(event) {
 
 	try {
 
-		const { name, email } = JSON.parse(body)
+		//const { name, email } = JSON.parse(body)
+
+		const requestBody = JSON.parse(body)
+		const keys = Object.keys(requestBody)
+		let emailHtml = ''
+
+		for (const key in requestBody) {
+			if (requestBody.hasOwnProperty(key)) {
+				const value = requestBody[key]
+				if (value.trim() == '') continue
+				emailHtml += `<strong>${key}:</strong> ${value}`
+				if (index !== keys.length - 1) emailHtml += '<br>'
+			}
+		}
 
 		/*
 
@@ -77,8 +90,8 @@ export async function handler(event) {
 				to: ['rich.g.cook@gmail.com'],
 				//subject: emailSubject,
 				subject: 'New website form submission',
-				//html: emailHtml
-				html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p>`
+				html: emailHtml
+				//html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p>`
 			}),
 		})
 

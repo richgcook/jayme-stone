@@ -111,19 +111,14 @@ const submitForm = () => {
 	const formData = new FormData(form.value)
 
 	const formDataObject = {}
-
 	formData.forEach((value, key) => {
-		formDataObject[key] = value;
-	});
-
-	const requestBody = JSON.stringify(formDataObject);
-
-	console.log(requestBody)
+		formDataObject[key] = value
+	})
 
 	fetch('/.netlify/functions/send-contact-form', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-		body: requestBody
+		body: JSON.stringify(formDataObject)
 	})
 	.then(response => {
 		if (!response.ok) {
