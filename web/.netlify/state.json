@@ -1,0 +1,20 @@
+{
+	"siteId": "5453508f-4a7c-4619-b39d-b2d8c03a983d",
+	"geolocation": {
+		"data": {
+			"city": "Glasgow",
+			"country": {
+				"code": "GB",
+				"name": "United Kingdom"
+			},
+			"subdivision": {
+				"code": "SCT",
+				"name": "Scotland"
+			},
+			"timezone": "Europe/London",
+			"latitude": 55.8393,
+			"longitude": -4.2892
+		},
+		"timestamp": 1709542809447
+	}
+}

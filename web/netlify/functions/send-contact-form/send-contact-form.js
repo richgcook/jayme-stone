@@ -1,4 +1,10 @@
 const RESEND_API_KEY = process.env.RESEND_API_KEY
+const toEmailAddresses = ['rich.g.cook@gmail.com']
+
+const formatKey = (key) => {
+	const words = key.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1))
+	return words.join(' ')
+}
 
 export async function handler(event) {
 
@@ -10,13 +16,6 @@ export async function handler(event) {
 			statusCode: 405,
 			body: JSON.stringify({ error: "Method not allowed" })
 		}
-	}
-
-	const toEmailAddresses = ['rich.g.cook@gmail.com']
-
-	const formatKey = (key) => {
-		const words = key.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1))
-  		return words.join(' ')
 	}
 
 	try {

@@ -11,4 +11,6 @@
 	SANITY_PROJECT_DATASET="production"
 	SANITY_API_VERSION="2024-02-15"
 
-	RESEND_API_KEY="re_DerpyCpp_NvXoBJYj7tCYgtWRjEfxJWja"
+[dev]
+	targetPort = 3000
+	port = 8888
