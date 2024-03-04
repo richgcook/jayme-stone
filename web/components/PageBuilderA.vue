@@ -9,7 +9,7 @@
 						:src="block.image.asset.url"
 						:alt="block.image.asset.alt"
 					/>
-					<GraphicsImageVideo :index="6" :fill="block.colors?.graphic?.hex" :position="block.imageVideoGraphic?.position" v-if="block.imageVideoGraphic?.active" />
+					<GraphicsImageVideo :index="block.imageVideoGraphic?.graphic" :fill="block.colors?.graphic?.hex" :position="block.imageVideoGraphic?.position" v-if="block.imageVideoGraphic?.active" />
 				</div>
 				<div class="text">
 					<TitleWithArrow 

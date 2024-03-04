@@ -14,7 +14,7 @@
 						:pageTitle="data.videosPage.title"
 					/>
 				</div>
-				<GraphicsImageVideo :index="1" :fill="video.colors?.graphic?.hex" :position="video.imageVideoGraphic?.position" v-if="video.imageVideoGraphic?.active" />
+				<GraphicsImageVideo :index="video.imageVideoGraphic?.graphic" :fill="video.colors?.graphic?.hex" :position="video.imageVideoGraphic?.position" v-if="video.imageVideoGraphic?.active" />
 			</div>
 		</div>
 		<NewsletterSignup :title="data.videosPage.newsletterSelection?.active ? data.videosPage.newsletterSelection.title : undefined" />
