@@ -23,14 +23,12 @@ export async function handler(event) {
 		console.log('requestBody:', requestBody)
 		console.log('keys:', keys)
 
-		for (const key in requestBody) {
-			if (requestBody.hasOwnProperty(key)) {
-				const value = requestBody[key]
-				if (value.trim() == '') continue
-				emailHtml += `<strong>${key}:</strong> ${value}`
-				if (index !== keys.length - 1) emailHtml += '<br>'
-			}
-		}
+		keys.forEach((key, index) => {
+			const value = requestBody[key]
+			if (value.trim() === '') return
+			emailHtml += `<strong>${key}:</strong> ${value}`
+			if (index !== keys.length - 1) emailHtml += '<br>'
+		})
 
 		console.log('emailHtml:', emailHtml)
 
