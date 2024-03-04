@@ -130,6 +130,7 @@ const submitForm = () => {
 		return response.json()
 	})
 	.then(() => {
+		window.scrollTo({ top: 0, behavior: "smooth" })
 		formSucess.value = true
 		formMessage.value = data?.value.form.successMessage
 	})
