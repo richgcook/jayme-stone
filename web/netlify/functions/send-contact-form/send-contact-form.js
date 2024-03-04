@@ -43,6 +43,8 @@ export async function handler(event) {
 			if (index !== keys.length - 1) emailHtml += '<br>'
 		})
 
+		console.log('emailHtml:', emailHtml)
+
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
 			headers: {
