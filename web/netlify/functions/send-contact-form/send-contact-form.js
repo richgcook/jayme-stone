@@ -20,9 +20,8 @@ export async function handler(event) {
 
 		let formDataString = ''
 		for (const [key, value] of formData.entries()) {
-		  formDataString += `${key}: ${value}\n`
+			formDataString += `${key}: ${value}\n`
 		}
-		console.log(formDataString)
 
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
