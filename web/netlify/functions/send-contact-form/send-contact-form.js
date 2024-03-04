@@ -14,12 +14,12 @@ export async function handler(event) {
 
 	try {
 
+		const requestBody = JSON.parse(body)
+
 		const { 
 			'form-title': formTitle,
 			email
 		} = requestBody
-
-		const requestBody = JSON.parse(body)
 
 		const keys = Object.keys(requestBody)
 		const excludedFields = ['form-name', 'form-title']
