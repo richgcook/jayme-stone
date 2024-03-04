@@ -1,7 +1,3 @@
-//import { Resend } from 'resend'
-
-//const resend = new Resend(process.env.RESEND_API_KEY)
-
 const RESEND_API_KEY = process.env.RESEND_API_KEY
 
 export async function handler(event) {
@@ -56,6 +52,10 @@ export async function handler(event) {
 				emailHtml += `<p><strong>${decodedKey}:</strong> ${decodedValue}</p>`
 			}
 		})
+
+		console.log('emailReplyTo:', emailReplyTo)
+		console.log('emailSubject:', emailSubject)
+		console.log('emailHtml:', emailHtml)
 
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
