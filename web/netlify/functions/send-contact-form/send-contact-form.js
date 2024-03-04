@@ -30,7 +30,7 @@ export async function handler(event) {
 				from: 'Acme <onboarding@resend.dev>',
 				to: ['rich.g.cook@gmail.com'],
 				subject: 'hello world',
-				html: '<strong>ok</strong>'
+				html: body
 			}),
 		});
 
