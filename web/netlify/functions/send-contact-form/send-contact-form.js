@@ -26,6 +26,9 @@ export async function handler(event) {
 
 		let emailHtml = ''
 
+		console.log('formTitle', formTitle)
+		console.log('email', email)
+
 		keys.forEach((key, index) => {
 			if (excludedFields.includes(key)) return
 			const value = requestBody[key]
