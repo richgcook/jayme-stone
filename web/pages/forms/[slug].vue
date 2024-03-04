@@ -116,6 +116,7 @@ const submitForm = () => {
 		body: formData
 	})
 	.then(response => {
+		console.log('response', response)
 		if (!response.ok) {
 			throw new Error('Failed to submit form, please try again later')
 		}
