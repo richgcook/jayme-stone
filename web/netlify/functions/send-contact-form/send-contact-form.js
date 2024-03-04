@@ -4,7 +4,7 @@
 
 export async function handler(event) {
 
-	const { body, httpMethod: method } = event;
+	const { body, httpMethod: method } = event
 
 	// Ignore non-POST requests
 	if (method !== "POST") {
@@ -14,9 +14,18 @@ export async function handler(event) {
 		}
 	}
 
+	return {
+		statusCode: 200,
+		body: JSON.stringify({ message: "OK" }),
+	};
+
+	/*
+
 	// Parse the incoming JSON body
 	const requestData = JSON.parse(body)
 	console.log('requestData', requestData)
+
+	*/
 
 	/*
 

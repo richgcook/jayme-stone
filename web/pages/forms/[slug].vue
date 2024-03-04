@@ -109,6 +109,8 @@ const formMessage = ref('')
 const submitForm = () => {
 	const formData = new FormData(form.value)
 
+	console.log('submitting form', formData)
+
 	fetch('/.netlify/functions/send-contact-form', {
 		method: 'POST',
 		body: formData
