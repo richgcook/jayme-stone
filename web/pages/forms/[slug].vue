@@ -109,15 +109,9 @@ const formMessage = ref('')
 const submitForm = () => {
 	const formData = new FormData(form.value)
 
-	let emailContent = ''
-
-	formData.forEach((value, key) => {
-		if (value.trim() !== '') emailContent += `<p><strong>${key}:</strong> ${value}</p>`
-	});
-
 	fetch('/.netlify/functions/send-contact-form', {
 		method: 'POST',
-		body: emailContent
+		body: formData
 	})
 	.then(response => {
 		if (!response.ok) {
