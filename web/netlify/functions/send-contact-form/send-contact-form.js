@@ -14,6 +14,10 @@ export async function handler(event) {
 
 	try {
 
+		const { name, email } = JSON.parse(body)
+
+		/*
+
 		const formDataArray = body.split('&')
 
 		let formTitle = ''
@@ -59,6 +63,8 @@ export async function handler(event) {
 		console.log('emailSubject:', emailSubject)
 		console.log('emailHtml:', emailHtml)
 
+		*/
+
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
 			headers: {
@@ -67,10 +73,12 @@ export async function handler(event) {
 			},
 			body: JSON.stringify({
 				from: 'Acme <onboarding@resend.dev>',
-				reply_to: emailReplyTo,
+				//reply_to: emailReplyTo,
 				to: ['rich.g.cook@gmail.com'],
-				subject: emailSubject,
-				html: emailHtml
+				//subject: emailSubject,
+				subject: 'New website form submission',
+				//html: emailHtml
+				html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p>`
 			}),
 		})
 

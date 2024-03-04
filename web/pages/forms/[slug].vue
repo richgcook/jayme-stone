@@ -110,15 +110,24 @@ const formMessage = ref('')
 const submitForm = () => {
 	const formData = new FormData(form.value)
 
+	const formDataObject = {}
+
+	formData.forEach((value, key) => {
+		formDataObject[key] = value;
+	});
+
+	const requestBody = JSON.stringify(formDataObject);
+
+	console.log(requestBody)
+
 	fetch('/.netlify/functions/send-contact-form', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-		body: new URLSearchParams(formData).toString()
+		body: requestBody
 	})
 	.then(response => {
-		console.log('response', response)
 		if (!response.ok) {
-			throw new Error('Failed to submit form, please try again later')
+			throw new Error('Failed to submit form...')
 		}
 		return response.json()
 	})
@@ -129,7 +138,6 @@ const submitForm = () => {
 	.catch((error) => {
 		formError.value = true
 		formMessage.value = error
-		console.error(error)
 	})
 
 }
