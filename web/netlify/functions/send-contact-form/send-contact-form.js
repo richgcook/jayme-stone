@@ -20,6 +20,9 @@ export async function handler(event) {
 		const keys = Object.keys(requestBody)
 		let emailHtml = ''
 
+		console.log('requestBody:', requestBody)
+		console.log('keys:', keys)
+
 		for (const key in requestBody) {
 			if (requestBody.hasOwnProperty(key)) {
 				const value = requestBody[key]
