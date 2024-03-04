@@ -14,6 +14,9 @@ export async function handler(event) {
 		}
 	}
 
+	console.log('body', body)
+	console.log('body', JSON.parse(body))
+
 	return {
 		statusCode: 200,
 		body: JSON.stringify({ message: "OK" }),
