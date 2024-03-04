@@ -18,10 +18,7 @@ export async function handler(event) {
 
 	try {
 
-		let formDataString = ''
-		for (const [key, value] of formData.entries()) {
-			formDataString += `${key}: ${value}\n`
-		}
+		console.log(body)
 
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
@@ -33,7 +30,7 @@ export async function handler(event) {
 				from: 'Acme <onboarding@resend.dev>',
 				to: ['rich.g.cook@gmail.com'],
 				subject: 'hello world',
-				html: formDataString
+				html: '<strong>ok</strong>'
 			}),
 		});
 
