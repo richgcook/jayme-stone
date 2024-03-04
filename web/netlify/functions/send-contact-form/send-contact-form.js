@@ -16,6 +16,8 @@ export async function handler(event) {
 
 		const formDataArray = body.split('&')
 
+		let formTitle = ''
+
 		let emailReplyTo = ''
 		let emailSubject = 'New website form submission'
 		let emailHtml = ''
