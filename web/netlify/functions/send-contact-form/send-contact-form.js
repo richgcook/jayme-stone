@@ -60,6 +60,8 @@ export async function handler(event) {
 			}),
 		})
 
+		console.log('res:', res)
+
 		if (res.ok) {
 			return {
 				statusCode: 200,
