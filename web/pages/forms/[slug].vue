@@ -132,7 +132,9 @@ const submitForm = () => {
 	})
 	.then(response => {
 		if (!response.ok) {
-			throw new Error('Failed to submit form...')
+			return response.json().then(error => {
+				throw new Error(error.message)
+			})
 		}
 		return response.json()
 	})
