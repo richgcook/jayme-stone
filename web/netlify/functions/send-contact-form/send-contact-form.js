@@ -32,22 +32,20 @@ export async function handler(event) {
 		});
 
 		if (res.ok) {
-			const data = await res.json();
-	  
 			return {
-			  statusCode: 200,
-			  body: data,
-			};
-		  } else {
+				statusCode: 200,
+				body: JSON.stringify({ message: "OK" }),
+			}
+		} else {
 			throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
-		  }
-		} catch (error) {
-		  return {
+		}
+	} catch (error) {
+		return {
 			statusCode: 500,
 			body: JSON.stringify({ error: error.message }),
-		  };
-		}
-		
+		};
+	}
+
 	/*
 
 	// Parse the incoming JSON body
