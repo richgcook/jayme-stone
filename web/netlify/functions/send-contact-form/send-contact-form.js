@@ -1,6 +1,6 @@
-import { Resend } from 'resend'
+//import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+//const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function handler(event) {
 
@@ -17,6 +17,8 @@ export async function handler(event) {
 	// Parse the incoming JSON body
 	const requestData = JSON.parse(body)
 	console.log('requestData', requestData)
+
+	/*
 
 	try {
 
@@ -36,5 +38,7 @@ export async function handler(event) {
 			body: JSON.stringify({ error: "Internal Server Error" }),
 		};
 	}
+
+	*/
 
 }
