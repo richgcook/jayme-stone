@@ -23,6 +23,8 @@
 					<input type="hidden" name="form-title" :value="data?.form.title" />
 					<input type="hidden" name="form-name" :value="data?.form.slug.current" />
 
+					<input type="text" name="usercode" tabindex="-1" value="" autocomplete="off" />
+
 					<template v-for="(field, index) in data?.form.formFields">
 
 						<input type="text" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :required="field.required" :key="index" v-if="field._type === 'textInput'" />
@@ -118,9 +120,14 @@ const submitForm = () => {
 		formDataObject[key] = value
 	})
 
+	// Honeypot
+	if (formDataObject['usercode']) {
+		formSending.value = false
+		throw new Error('Failed to submit form...')
+	}
+
 	fetch('/.netlify/functions/send-contact-form', {
 		method: 'POST',
-		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 		body: JSON.stringify(formDataObject)
 	})
 	.then(response => {
