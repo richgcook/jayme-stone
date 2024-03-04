@@ -20,6 +20,24 @@ export async function handler(event) {
 
 		console.log('body (formData)', body)
 
+		const formDataArray = body.split('&')
+		let htmlContent = '';
+
+		const formatKey = (key) => {
+			return key.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
+		};
+
+		formDataArray.forEach(pair => {
+		const [key, value] = pair.split('=');
+		const decodedKey = formatKey(decodeURIComponent(key.replace(/\+/g, ' '))); // Decode and format key
+		const decodedValue = decodeURIComponent(value.replace(/\+/g, ' ')); // Decode value
+		if (decodedValue.trim() !== '') { // Exclude blank fields
+			htmlContent += `<p><strong>${decodedKey}:</strong> ${decodedValue}</p>`;
+		}
+		});
+
+
+
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
 			headers: {
@@ -30,7 +48,7 @@ export async function handler(event) {
 				from: 'Acme <onboarding@resend.dev>',
 				to: ['rich.g.cook@gmail.com'],
 				subject: 'hello world',
-				html: body
+				html: htmlContent
 			}),
 		});
 
