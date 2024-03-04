@@ -109,12 +109,16 @@ const formMessage = ref('')
 const submitForm = () => {
 	const formData = new FormData(form.value)
 
-	console.log('formData', formData)
+	let emailContent = ''
+
+	formData.forEach((value, key) => {
+		if (value.trim() !== '') emailContent += `<p><strong>${key}:</strong> ${value}</p>`
+	});
 
 	fetch('/.netlify/functions/send-contact-form', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-		body: formData
+		body: emailContent
 	})
 	.then(response => {
 		if (!response.ok) {
@@ -131,6 +135,7 @@ const submitForm = () => {
 		formMessage.value = error
 		console.error(error)
 	})
+
 }
 
 const sanitizeFieldLabel = (label) => {
