@@ -32,6 +32,8 @@ export async function handler(event) {
 			}
 		}
 
+		console.log('emailHtml:', emailHtml)
+
 		/*
 
 		const formDataArray = body.split('&')
