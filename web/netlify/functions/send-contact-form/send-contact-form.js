@@ -18,7 +18,7 @@ export async function handler(event) {
 
 	try {
 
-		console.log(body)
+		console.log('body (formData)', body)
 
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
