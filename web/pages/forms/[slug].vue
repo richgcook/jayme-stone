@@ -42,7 +42,7 @@
 
 					</template>
 
-					<button type="submit">
+					<button type="submit" :disabled="formSending">
 						<span class="label">{{ data?.form.submitLabel }}</span>
 						<span class="line-arrow">
 							<span class="line"></span>
@@ -105,9 +105,12 @@ const form = ref(null)
 
 const formSucess = ref(false)
 const formError = ref(false)
+const formSending = ref(false)
 const formMessage = ref('')
 
 const submitForm = () => {
+	formSending.value = true
+	
 	const formData = new FormData(form.value)
 
 	const formDataObject = {}
@@ -131,6 +134,7 @@ const submitForm = () => {
 		formMessage.value = data?.value.form.successMessage
 	})
 	.catch((error) => {
+		formSending.value = false
 		formError.value = true
 		formMessage.value = error
 	})
