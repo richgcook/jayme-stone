@@ -30,8 +30,6 @@ export async function handler(event) {
 		const keys = Object.keys(requestBody)
 		const excludedFields = ['form-name', 'form-title', 'usercode']
 
-		console.log('requestBody:', requestBody)
-
 		let emailHtml = ''
 
 		keys.forEach((key, index) => {
@@ -42,8 +40,6 @@ export async function handler(event) {
 			emailHtml += `<strong>${formattedKey}:</strong> ${value}`
 			if (index !== keys.length - 1) emailHtml += '<br>'
 		})
-
-		console.log('emailHtml:', emailHtml)
 
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
@@ -59,8 +55,6 @@ export async function handler(event) {
 				html: emailHtml
 			}),
 		})
-
-		console.log('res:', res)
 
 		if (res.ok) {
 			return {

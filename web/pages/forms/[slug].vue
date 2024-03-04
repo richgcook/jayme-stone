@@ -131,6 +131,7 @@ const submitForm = () => {
 		body: JSON.stringify(formDataObject)
 	})
 	.then(response => {
+		console.log(response)
 		if (!response.ok) {
 			return response.json().then(error => {
 				throw new Error(error.message)
