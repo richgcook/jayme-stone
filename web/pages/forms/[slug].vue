@@ -20,7 +20,8 @@
 					ref="form"
 					v-show="!formSucess"
 				>
-					<input type="hidden" name="form-name" :value="route.params.slug" />
+					<input type="hidden" name="form-title" :value="data?.form.title" />
+					<input type="hidden" name="form-name" :value="data?.form.slug.current" />
 
 					<template v-for="(field, index) in data?.form.formFields">
 
