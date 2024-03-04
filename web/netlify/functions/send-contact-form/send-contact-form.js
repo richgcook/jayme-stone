@@ -30,6 +30,8 @@ export async function handler(event) {
 		const keys = Object.keys(requestBody)
 		const excludedFields = ['form-name', 'form-title', 'usercode']
 
+		console.log('requestBody:', requestBody)
+
 		let emailHtml = ''
 
 		keys.forEach((key, index) => {
