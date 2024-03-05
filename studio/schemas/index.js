@@ -27,6 +27,7 @@ import testimonialsA from './objects/testimonialsA'
 import testimonialsB from './objects/testimonialsB'
 import newsletterSelection from './objects/newsletterSelection'
 import imageVideoGraphic from './objects/imageVideoGraphic'
+import squareGraphic from './objects/squareGraphic'
 
 export const schemaTypes = [
 	// Documents
@@ -62,5 +63,6 @@ export const schemaTypes = [
 	testimonialsB,
 	newsletterSelection,
 	imageVideoGraphic,
+	squareGraphic,
 
 ]

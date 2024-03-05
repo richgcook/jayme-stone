@@ -1,10 +1,10 @@
 <template>
 	<footer>
 		<div class="grid">
-			<div><GraphicsSquareColored :bgColor="'white'" :fill="`var(--color-beige)`" :index="3" /></div>
-			<div><GraphicsSquareColored :bgColor="'white'" :fill="`var(--color-beige)`" :index="2" /></div>
-			<div><GraphicsSquareColored :bgColor="'white'" :fill="`var(--color-beige)`" :index="5" /></div>
-			<div><GraphicsSquareColored :bgColor="'white'" :fill="`var(--color-beige)`" :index="4" /></div>
+			<div><GraphicsSquare :bgColor="'white'" :fill="`var(--color-beige)`" :index="3" /></div>
+			<div><GraphicsSquare :bgColor="'white'" :fill="`var(--color-beige)`" :index="2" /></div>
+			<div><GraphicsSquare :bgColor="'white'" :fill="`var(--color-beige)`" :index="5" /></div>
+			<div><GraphicsSquare :bgColor="'white'" :fill="`var(--color-beige)`" :index="4" /></div>
 		</div>
 		<ul class="social-links" v-if="data.settingsGeneral?.socialLinks?.length">
 			<li v-for="(link, index) in data.settingsGeneral.socialLinks" :key="index"><NuxtLink :to="link.url" target="_blank">{{ link.title }}</NuxtLink></li>

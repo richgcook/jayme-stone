@@ -16,7 +16,7 @@
 			</div>
 
 			<div class="block" data-type="graphic">
-				<GraphicsSquareColored :bgColor="'var(--color-yellow)'" :fill="`var(--color-black)`" :index="5" />
+				<GraphicsSquare :bgColor="'var(--color-yellow)'" :fill="`var(--color-black)`" :index="5" />
 			</div>
 
 			<div class="block" data-type="text">
@@ -30,24 +30,24 @@
 				<RichText :blocks="data.homePage.introduction" />
 			</div>
 
-			<div class="block" data-type="graphic" :style="{ 'background-color': 'var(--color-pink)' }">
-				<GraphicsSquare :fill="`var(--color-black)`" :index="6" />
+			<div class="block" data-type="graphic">
+				<GraphicsSquare :bgColor="'var(--color-pink)'" :fill="`var(--color-black)`" :index="6" />
 			</div>
 
 			<div class="block" data-type="graphic">
-				<GraphicsSquareColored :bgColor="'var(--color-blue)'" :fill="`var(--color-black)`" :index="1" />
+				<GraphicsSquare :bgColor="'var(--color-blue)'" :fill="`var(--color-black)`" :index="1" />
 			</div>
 
 			<div class="block" data-type="graphic">
-				<GraphicsSquareColored :bgColor="'var(--color-pink)'" :fill="`var(--color-black)`" :index="2" />
+				<GraphicsSquare :bgColor="'var(--color-pink)'" :fill="`var(--color-black)`" :index="2" />
 			</div>
 
 			<div class="block" data-type="graphic">
-				<GraphicsSquareColored :bgColor="'var(--color-red)'" :fill="`var(--color-black)`" :index="3" />
+				<GraphicsSquare :bgColor="'var(--color-red)'" :fill="`var(--color-black)`" :index="3" />
 			</div>
 
 			<div class="block" data-type="graphic">
-				<GraphicsSquareColored :bgColor="'var(--color-green)'" :fill="`var(--color-black)`" :index="4" />
+				<GraphicsSquare :bgColor="'var(--color-green)'" :fill="`var(--color-black)`" :index="4" />
 			</div>
 
 			<div class="block" data-type="music" :style="{ 'background-color': data.homePage.featuredMusic?.colors?.bg?.hex }">

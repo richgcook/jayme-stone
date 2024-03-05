@@ -1,14 +1,10 @@
 import { defineField } from 'sanity'
-import { GraphicInput } from '../components/GraphicSelectInput'
+import { GraphicInput } from '../components/GraphicSelectInputB'
 
-export const GRAPHICS = [
-	{ title: 'Option 1', value: '1' },
-	{ title: 'Option 2', value: '2' },
-	{ title: 'Option 3', value: '3' },
-	{ title: 'Option 4', value: '4' },
-	{ title: 'Option 5', value: '5' },
-	{ title: 'Option 6', value: '6' },
-]
+export const GRAPHICS = Array.from({ length: 6 }, (_, index) => ({
+    title: `Option ${index + 1}`,
+    value: `${index + 1 < 10 ? '0' : ''}${index + 1}`
+}))
 
 export default defineField({
 	type: 'object',
@@ -29,6 +25,7 @@ export default defineField({
 				layout: 'radio',
 				direction: 'horizontal',
 			},
+			hidden: ({ parent }) => !parent?.active,
 			components: { input: GraphicInput },
 		}),
 		defineField({

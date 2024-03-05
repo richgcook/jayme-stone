@@ -142,6 +142,11 @@ export default defineField({
 						}),
 					],
 				}),
+				defineField({
+					type: 'squareGraphic',
+					title: 'Graphic',
+					name: 'squareGraphic',
+				}),
 			],
 			preview: {
 				select: {

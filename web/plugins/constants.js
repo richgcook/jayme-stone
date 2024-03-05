@@ -54,7 +54,7 @@ const testimonialsAQuery =
 		centerText, colors, blockWidth, blockHeight
 	},
 	_type == "graphic" => {
-		blockWidth, colors
+		blockWidth, colors, squareGraphic
 	}
 	`
 
