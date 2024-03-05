@@ -54,7 +54,7 @@ const query = groq`{
 		_id, title, slug, seo {
 			${$seoQuery}
 		},
-		upcomingEvents[dateTime(endDate + "T00:00:00Z") > dateTime(now())] {
+		upcomingEvents[dateTime(endDate + "T23:59:59Z") >= dateTime(now())] {
 			dates, endDate,
 			location[] {
 				${$richTextQuery}

@@ -24,10 +24,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="writing section" v-if="data.pressPage.writing?.length">
-				<h2 class="section-title">Writing</h2>
+			<div class="resources section" v-if="data.pressPage.resources?.length">
+				<h2 class="section-title">Resources</h2>
 				<div class="downloads">
-					<NuxtLink :to="download.file" v-for="(download, index) in data.pressPage.writing" :key="index" class="download">
+					<NuxtLink :to="download.file" v-for="(download, index) in data.pressPage.resources" :key="index" target="_blank" class="download">
 						<div>{{ download.title }}</div>
 						<div>
 							<div class="download">
@@ -65,7 +65,7 @@ const query = groq`{
 			title, credits,
 			"file": file.asset->url
 		},
-		writing[] {
+		resources[] {
 			title,
 			"file": file.asset->url
 		},
@@ -165,7 +165,7 @@ div.press-overview {
 					}
 				}
 			}
-			&.writing {
+			&.resources {
 				div.downloads {
 					display: grid;
 					grid-template-columns: repeat(3, 1fr);

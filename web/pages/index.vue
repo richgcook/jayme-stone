@@ -26,6 +26,7 @@
 					:lineLength="'100%'" 
 					:color="`var(--color-green)`" 
 					:label="`About`"
+					:link="`/${data.aboutPage.slug.current}`"
 				/>
 				<RichText :blocks="data.homePage.introduction" />
 			</div>
@@ -92,6 +93,7 @@
 						:link="`/${data.videosPage.slug.current}`"
 					/>
 					<div class="content" :style="{ 'color': data.homePage.featuredVideo?.colors?.text?.hex }">
+						<h3>{{ data.homePage.featuredVideo.video.title }}</h3>
 						<VideoEmbed 
 							:poster="data.homePage.featuredVideo.video.coverImage" 
 							:html="data.homePage.featuredVideo.video.embedCode" 
@@ -99,14 +101,14 @@
 							:iconColor="data.homePage.featuredVideo?.colors?.icon?.hex"
 							:size="'sm'"
 						/>
-						<h3>{{ data.homePage.featuredVideo.video.title }}</h3>
 					</div>	
 				</div>
 				<div class="graphic" :style="{ 'background-color': data.homePage.featuredVideo?.colors?.graphic?.hex }"></div>
 			</div>
 
 			<div class="block" data-type="projects">
-				<TitleWithArrow 
+				<div class="title-container">
+					<TitleWithArrow 
 						:arrowDirection="'next'" 
 						:arrowPosition="'after'" 
 						:lineLength="'50%'" 
@@ -115,6 +117,7 @@
 						:rotation="`-1`"
 						:link="`/${data.projectsPage.slug.current}`"
 					/>
+				</div>
 				<ProjectsCategory :projects="data.homePage.featuredProjects" :isFirst="true" />
 				<div class="graphic"></div>
 			</div>
@@ -182,6 +185,12 @@ const query = groq`{
 			${$testimonialsAQuery}
 		},
 		newsletterSelection
+	}[0],
+
+	"aboutPage": *[_type == "pageA" && slug.current == "about"] {
+		_id, title, slug, seo {
+			${$seoQuery}
+		},
 	}[0],
 
 	"projectsPage": *[_type == "projectsPage"] {
@@ -353,7 +362,7 @@ div.blocks-layout {
 				div.content {
 					margin-top: 100px;
 					h3 {
-						margin-top: 10px;
+						margin-bottom: 10px;
 					}
 				}
 			}
@@ -377,7 +386,7 @@ div.blocks-layout {
 			background-color: var(--color-beige);
 			position: relative;
 			overflow: hidden;
-			h3.title-arrow {
+			div.title-container {
 				padding: 100px 7% 50px 7%;
 			}
 			div.graphic {

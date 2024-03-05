@@ -78,8 +78,8 @@ export default defineType({
 		}),
 		defineField({
 			type: 'array',
-			title: 'Writing',
-			name: 'writing',
+			title: 'Resources',
+			name: 'resources',
 			of: [
 				defineArrayMember({
 					type: 'object',
