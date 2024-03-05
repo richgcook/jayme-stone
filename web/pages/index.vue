@@ -99,7 +99,6 @@
 							:html="data.homePage.featuredVideo.video.embedCode" 
 							:buttonColor="data.homePage.featuredVideo?.colors?.button?.hex" 
 							:iconColor="data.homePage.featuredVideo?.colors?.icon?.hex"
-							:size="'sm'"
 						/>
 					</div>	
 				</div>

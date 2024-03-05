@@ -109,7 +109,7 @@ div.video-embed {
 				position: absolute;
 				inset: 0;
 				height: 100%;
-				swidth: 100%;
+				width: 100%;
 			}
 		}
 	}
@@ -139,16 +139,9 @@ div.video-embed {
 			z-index: 1;
 			display: block;
 			background-color: v-bind(buttonColor);
-			height: 200px;
-			width: 200px;
+			height: 100px;
+			width: 100px;
 			border-radius: 50%;
-			&.--sm {
-				height: 100px;
-				width: 100px;
-				svg {
-					height: 30px;
-				}
-			}
 			@include media('phone') {
 				height: 100px;
 				width: 100px;
@@ -158,7 +151,7 @@ div.video-embed {
 				top: 50%;
 				left: 50%;
 				transform: translate(-30%, -50%);
-				height: 60px;
+				height: 30px;
 			}
 		}
 	}

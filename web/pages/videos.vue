@@ -72,9 +72,9 @@ useHead({
 div.videos-layout {
 	div.video {
 		position: relative;
-		height: 70vh;
+		height: 80vh;
 		@supports (height: 100svh) {
-			height: 70svh;
+			height: 80svh;
 		}
 		div.inner {
 			height: 100%;

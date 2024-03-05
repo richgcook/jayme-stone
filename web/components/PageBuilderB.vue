@@ -26,7 +26,6 @@
 								:html="video.embedCode" 
 								:buttonColor="video.colors?.button?.hex" 
 								:iconColor="video.colors?.icon?.hex"
-								:size="'sm'"
 							/>
 							<h3>{{ video.title }}</h3>
 						</div>
@@ -36,7 +35,6 @@
 								:html="video.video.embedCode" 
 								:buttonColor="video.video.colors?.button?.hex" 
 								:iconColor="video.video.colors?.icon?.hex"
-								:size="'sm'"
 							/>
 							<h3>{{ video.video.title }}</h3>
 						</div>
