@@ -35,9 +35,14 @@ export default defineField({
 					fields: [
 						defineField({
 							type: 'string',
-							title: 'Name',
-							name: 'name',
+							title: 'First name(s)',
+							name: 'firstNames',
 							validation: Rule => Rule.required()
+						}),
+						defineField({
+							type: 'string',
+							title: 'Last name(s)',
+							name: 'lastNames',
 						}),
 						defineField({
 							type: 'image',

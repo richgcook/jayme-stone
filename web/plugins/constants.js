@@ -46,7 +46,7 @@ const testimonialsAQuery =
 		}, 
 		textSize,
 		referrer {
-			name,
+			firstNames, lastNames,
 			image {
 				${imageQuery}
 			}

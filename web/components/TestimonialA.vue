@@ -3,7 +3,7 @@
 		<RichText :blocks="testimonial.text" />
 		<div class="referrer">
 			<Img :src="testimonial.referrer.image.asset.url" :alt="testimonial.referrer.image.asset.alt" v-if="testimonial.referrer.image" />
-			<h5>{{ testimonial.referrer.name }}</h5>
+			<h5><span>{{ testimonial.referrer.firstNames }}</span><span v-if="testimonial.referrer.lastNames">{{ testimonial.referrer.lastNames }}</span></h5>
 		</div>
 	</div>
 </template>
@@ -73,7 +73,9 @@ div.testimonial {
 			letter-spacing: 0.05em;
 			line-height: 1.5;
 			text-transform: uppercase;
-			max-width: 150px;
+			span {
+				display: block;
+			}
 		}
 	}
 }
