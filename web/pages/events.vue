@@ -1,7 +1,7 @@
 <template>
 	<div class="events-overview">
 		<PageHeader :title="data.eventsPage.title" />
-		<div class="upcoming-events">
+		<div class="upcoming-events" v-if="hasUpcomingEvents">
 			<h2 class="title">Upcoming Dates</h2>
 			<div class="events">
 				<div v-for="(event, index) in data.eventsPage.upcomingEvents" :key="index" class="event">
@@ -17,7 +17,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="events-archive">
+		<div class="events-archive" :class="{ '--no-upcoming-events': !hasUpcomingEvents }">
 			<div>
 				<GraphicsRectangleY :index="4" :isFullColor="true" />
 			</div>
@@ -88,6 +88,8 @@ useHead({
 	}
 })
 
+const hasUpcomingEvents = data?.value?.eventsPage?.upcomingEvents?.length
+
 </script>
 
 <style lang="scss" scoped>
@@ -135,6 +137,9 @@ div.events-archive {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	background-color: white;
+	&.--no-upcoming-events {
+		margin-top: 50px;
+	}
 	> div.content {
 		grid-column: 2 / span 2;
 		padding: 90px;
