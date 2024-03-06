@@ -7,7 +7,7 @@
 <style lang="scss" scoped>
 
 span {
-	color: var(--color-red);
+	color: var(--color-green);
 }
 
 </style>
