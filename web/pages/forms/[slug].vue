@@ -184,6 +184,10 @@ div.form-layout {
 			width: 100%;
 			padding: 0 25px;
 			color: var(--color-black);
+			@include media('phone') {
+				height: 50px;
+				padding: 0 15px;
+			}
 			@include placeholder {
 				color: currentColor;
 			}
@@ -249,6 +253,10 @@ div.form-layout {
 			background-color: var(--color-green);
 			color: var(--color-beige);
 			text-decoration: none;
+			@include media('phone') {
+				height: 50px;
+				padding: 0 15px;
+			}
 			&[disabled] {
 				cursor: not-allowed;
 				opacity: 0.5;

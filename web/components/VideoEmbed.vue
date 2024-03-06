@@ -82,12 +82,18 @@ div.video-embed {
   		width: 100%;
 		div.poster, div.embed {
 			max-height: 60%;
-			max-width: 60%;
+			max-width: 80%;
+			@include media('phone') {
+				max-width: calc(100% - (30px * 2));
+			}
 			@media (orientation: landscape) {
 				height: 60%;
 			}
 			@media (orientation: portrait) {
 				width: 80%;
+				@include media('phone') {
+					width: 100%;
+				}
 			}
 			:deep(h3.title-arrow) {
 				position: absolute;

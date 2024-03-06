@@ -32,9 +32,17 @@ div.section {
 	grid-template-columns: 1fr 2fr;
 	background-color: v-bind(sectionBgColor);
 	color: v-bind(sectionTextColor);
+	@include media('phone') {
+		grid-template-columns: 1fr;
+		padding: 60px 30px;
+	}
 	div.titles {
 		padding: 50px;
 		text-align: center;
+		@include media('phone') {
+			padding: 0 0 30px 0;
+			text-align: left;
+		}
 		h5 {
 			font-family: var(--font-family-mono);
 			font-size: var(--font-size-mono-sm);
@@ -48,6 +56,9 @@ div.section {
 	}
 	div.testimonials {
 		padding: 50px;
+		@include media('phone') {
+			padding: 0;
+		}
 		div.testimonial {
 			&:not(:last-child) {
 				&:after {

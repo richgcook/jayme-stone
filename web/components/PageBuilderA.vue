@@ -73,12 +73,12 @@ div.blocks-layout {
 						grid-row: 1;
 						@include media('phone') {
 							grid-column: 1;
-							grid-row: 2;
+							grid-row: 1;
 						}
 					}
 					> div.text {
 						grid-column: 1;
-						grid-row: 1;
+						grid-row: 2;
 					}
 				}
 				> div.image {

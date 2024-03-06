@@ -76,6 +76,12 @@ div.videos-layout {
 		@supports (height: 100svh) {
 			height: 80svh;
 		}
+		@include media('phone') {
+			height: 50vh;
+			@supports (height: 100svh) {
+				height: 50svh;
+			}
+		}
 		div.inner {
 			height: 100%;
   			width: 100%;

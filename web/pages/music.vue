@@ -71,14 +71,25 @@ div.music-layout {
 	div.music {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+		@include media('phone') {
+			grid-template-columns: 1fr;
+		}
 		&:nth-child(even) {
 			> div.image {
 				grid-column: 2;
 				grid-row: 1;
+				@include media('phone') {
+					grid-column: 1;
+					grid-row: 2;
+				}
 			}
 			> div.text {
 				grid-column: 1;
 				grid-row: 1;
+				@include media('phone') {
+					grid-column: 1;
+					grid-row: 1;
+				}
 			}
 		}
 		> div.image {
@@ -88,6 +99,10 @@ div.music-layout {
 			}
 			@supports not (aspect-ratio: 1 / 1) {
 				padding-bottom: calc(1 / 1 * 100%);
+			}
+			@include media('phone') {
+				grid-column: 1;
+				grid-row: 2;
 			}
 			img {
 				position: absolute;
@@ -103,6 +118,11 @@ div.music-layout {
 			justify-content: center;
 			row-gap: 5px;
 			padding: 0 100px;
+			@include media('phone') {
+				grid-column: 1;
+				grid-row: 1;
+				padding: 60px 30px;
+			}
 			h2 {
 				font-size: var(--font-size-lg);
 				line-height: 1.3;

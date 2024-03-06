@@ -114,12 +114,20 @@ div.press-overview {
 		display: grid;
 		row-gap: 75px;
 		padding: 0 100px 100px 100px;
+		@include media('phone') {
+			row-gap: 60px;
+			padding: 0 30px 60px 30px;
+		}
 		div.section {
 			&.photos {
 				div.downloads {
 					display: grid;
 					grid-template-columns: repeat(6, 1fr);
 					gap: 40px;
+					@include media('phone') {
+						grid-template-columns: 1fr 1fr;
+						gap: 30px 15px;
+					}
 					div.download {
 						a.image {
 							display: block;
@@ -146,6 +154,9 @@ div.press-overview {
 							justify-content: space-between;
 							column-gap: 10px;
 							margin-top: 10px;
+							@include media('phone') {
+								column-gap: 15px;
+							}
 							a.download {
 								display: block;
 								position: relative;
@@ -153,12 +164,19 @@ div.press-overview {
 								width: 40px;
 								background-color: white;
 								border-radius: 50%;
+								@include media('phone') {
+									height: 30px;
+									width: 30px;
+								}
 								svg {
 									position: absolute;
 									top: 50%;
 									left: 50%;
 									transform: translate(-50%, -50%);
 									height: 19px;
+									@include media('phone') {
+										height: 13px;
+									}
 								}
 							}
 						}
@@ -170,6 +188,10 @@ div.press-overview {
 					display: grid;
 					grid-template-columns: repeat(3, 1fr);
 					gap: 40px;
+					@include media('phone') {
+						grid-template-columns: 1fr;
+						gap: 15px;
+					}
 					a.download {
 						display: block;
 						height: 85px;
@@ -185,6 +207,10 @@ div.press-overview {
 						align-items: center;
 						column-gap: 10px;
 						padding: 0 15px 0 25px;
+						@include media('phone') {
+							height: 50px;
+							padding: 0 10px 0 15px;
+						}
 						div.download {
 							display: block;
 							position: relative;
@@ -192,12 +218,19 @@ div.press-overview {
 							width: 40px;
 							background-color: white;
 							border-radius: 50%;
+							@include media('phone') {
+								height: 30px;
+								width: 30px;
+							}
 							svg {
 								position: absolute;
 								top: 50%;
 								left: 50%;
 								transform: translate(-50%, -50%);
 								height: 19px;
+								@include media('phone') {
+									height: 13px;
+								}
 							}
 						}
 					}

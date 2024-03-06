@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<div class="events-archive" :class="{ '--no-upcoming-events': !hasUpcomingEvents }">
-			<div>
+			<div class="graphic">
 				<GraphicsRectangleY :index="4" :isFullColor="true" />
 			</div>
 			<div class="content">
@@ -36,7 +36,7 @@
 					</div>
 				</div>
 			</div>
-			<div>
+			<div class="graphic">
 				<GraphicsRectangleY :index="5" :isFullColor="true" />
 			</div>
 		</div>
@@ -99,6 +99,9 @@ div.events-overview {
 }
 div.upcoming-events {
 	padding: 0 100px 100px 100px;
+	@include media('phone') {
+		padding: 0 30px 60px 30px;
+	}
 	h2.title {
 		color: var(--color-green);
 		&:after {
@@ -114,6 +117,10 @@ div.upcoming-events {
 		div.event {
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;
+			@include media('phone') {
+				grid-template-columns: 1fr;
+				row-gap: 5px;
+			}
 			&:not(:last-child) {
 				&:after {
 					content: '';
@@ -137,14 +144,28 @@ div.events-archive {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	background-color: white;
+	@include media('phone') {
+		grid-template-columns: 1fr;
+	}
 	&.--no-upcoming-events {
 		margin-top: 50px;
+		@include media('phone') {
+			margin-top: 30px;
+		}
+	}
+	> div.graphic {
+		@include media('phone') {
+			display: none;
+		}
 	}
 	> div.content {
 		grid-column: 2 / span 2;
 		padding: 90px;
 		display: grid;
 		row-gap: 1.6em;
+		@include media('phone') {
+			padding: 60px 30px;
+		}
 		div.events {
 			display: grid;
 			row-gap: 1.6em;

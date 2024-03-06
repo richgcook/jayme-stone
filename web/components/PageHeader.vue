@@ -25,7 +25,7 @@ div.page-header {
 	padding: 100px 100px 50px 100px;
 	max-width: calc(50% + 20px);
 	@include media('phone') {
-		//padding: 60px 30px 30px 30px;
+		padding: 60px 30px 30px 30px;
 	}
 }
 

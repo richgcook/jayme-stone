@@ -63,6 +63,7 @@ h3.title-arrow {
 			flex-shrink: 0;
 		}
 		span.label {
+			flex-shrink: 1;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
@@ -87,9 +88,6 @@ h3.title-arrow {
 	}
 	span.label {
 		flex-shrink: 0;
-		@include media('phone') {
-			flex-shrink: 1;
-		}
 	}
 }
 

@@ -64,6 +64,10 @@ a {
 		background-color: var(--color-green);
 		color: var(--color-beige);
 		text-decoration: none;
+		@include media('phone') {
+			height: 50px;
+			padding: 0 15px;
+		}
 		span.line-arrow {
 			display: flex;
 			flex-flow: row nowrap;
