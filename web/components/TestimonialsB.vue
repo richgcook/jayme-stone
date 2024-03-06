@@ -29,6 +29,7 @@ div.testimonials-layout {
 		grid-template-columns: 1fr;
 	}
 	div.graphic {
+		position: relative;
 		@include media('phone') {
 			display: none;
 		}

@@ -154,6 +154,7 @@ div.events-archive {
 		}
 	}
 	> div.graphic {
+		position: relative;
 		@include media('phone') {
 			display: none;
 		}
@@ -164,6 +165,7 @@ div.events-archive {
 		display: grid;
 		row-gap: 1.6em;
 		@include media('phone') {
+			grid-column: 1 / -1;
 			padding: 60px 30px;
 		}
 		div.events {

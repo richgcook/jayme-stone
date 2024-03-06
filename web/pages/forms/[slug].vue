@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="form-layout">
-			<div>
+			<div class="graphic">
 				<GraphicsRectangleY :index="5" :isFullColor="true" />
 			</div>
 			<div class="content">
@@ -161,11 +161,24 @@ div.form-layout {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	background-color: var(--color-beige);
+	@include media('phone') {
+		grid-template-columns: 1fr 1fr;
+	}
+	div.graphic {
+		position: relative;
+		@include media('phone') {
+			display: none;
+		}
+	}
 	> div.content {
 		grid-column: 2 / span 2;
 		padding: 90px;
 		display: grid;
 		row-gap: 1.6em;
+		@include media('phone') {
+			grid-column: 1 / -1;
+			padding: 60px 30px;
+		}
 		div.message {
 			&.--error {
 				color: var(--color-red);
