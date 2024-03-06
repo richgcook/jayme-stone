@@ -35,8 +35,16 @@ footer {
 	div.grid {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
+		@include media('phone') {
+			grid-template-columns: 1fr 1fr;
+		}
 		> div {
 			aspect-ratio: 1 / 1;
+			&:nth-child(3), &:nth-child(4) {
+				@include media('phone') {
+					display: none;
+				}
+			}
 		}
 	}
 	ul.social-links {
@@ -47,6 +55,11 @@ footer {
 		display: flex;
 		flex-flow: row nowrap;
 		column-gap: 2ch;
+		@include media('phone') {
+			flex-flow: column nowrap;
+			left: 30px;
+			bottom: 30px;
+		}
 		li {
 			font-family: var(--font-family-mono);
 			font-size: var(--font-size-mono-sm);
@@ -59,6 +72,10 @@ footer {
 		right: 40px;
 		bottom: 40px;
 		z-index: 1;
+		@include media('phone') {
+			right: 30px;
+			bottom: 30px;
+		}
 	}
 }
 

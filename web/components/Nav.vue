@@ -51,6 +51,9 @@ nav.main {
 	overflow-y: auto;
 	background-color: var(--color-green);
 	z-index: 10;
+	@include media('phone') {
+		padding: calc(80px + 30px) 30px;
+	}
 	&.fade-enter-active,
 	&.fade-leave-active {
 		transition: opacity 0.3s ease;
@@ -67,6 +70,10 @@ nav.main {
 		li {
 			font-size: 50px;
 			line-height: 1.3;
+			@include media('phone') {
+				font-size: var(--font-size-lg);
+				line-height: 1.5;
+			}
 			a {
 				color: var(--color-beige);
 			}

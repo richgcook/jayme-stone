@@ -42,10 +42,14 @@
 }
 @include media('phone') {
 	:root { 
-		--font-size-base: 16px;
-		--font-size-sm: 12px;
-		--font-size-md: 23px;
-		--font-size-lg: 25px;
+		--font-size-base: 14px;
+		--font-size-md: 16px;
+		--font-size-lg: 20px;
+		--font-size-xl: 40px;
+
+		--font-size-mono-sm: 10px;
+		--font-size-mono-md: 12px;
+		--font-size-mono-caps: 13px;
 	}
 }
 * {

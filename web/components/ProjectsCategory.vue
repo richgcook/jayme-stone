@@ -85,6 +85,9 @@ div.projects-category {
 	padding: 100px 7%;
 	background-color: v-bind(bgColor);
 	position: relative;
+	@include media('phone') {
+		padding: 60px 30px;
+	}
 	&.--first {
 		padding-top: 0;
 	}
@@ -118,6 +121,10 @@ div.projects-layout {
 		display: grid;
 		grid-template-columns: 1fr 2fr;
 		column-gap: 40px;
+		@include media('phone') {
+			grid-template-columns: 1fr;
+			row-gap: 10px;
+		}
 		&:not(:last-child) {
 			&:after {
 				content: '';
@@ -127,6 +134,9 @@ div.projects-layout {
 				width: 100%;
 				background-color: v-bind(lineColor);
 				margin: 35px 0;
+				@include media('phone') {
+					margin: 5px 0 20px 0;
+				}
 			}
 		}
 		> a.image {
@@ -172,6 +182,9 @@ div.projects-layout {
 				text-transform: lowercase;
 				color: v-bind(linkColor);
 				margin-top: 3px;
+				@include media('phone') {
+					margin-top: 5px;
+				}
 			}
 		}
 	}

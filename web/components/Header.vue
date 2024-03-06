@@ -35,6 +35,9 @@ header {
 	grid-template-columns: 1fr 1fr;
 	background-color: var(--color-green);
 	z-index: 20;
+	@include media('phone') {
+		grid-template-columns: 1fr;
+	}
 	&.--nav-open {
 		div.left {
 			background-color: var(--color-red);	
@@ -73,6 +76,9 @@ header {
 			align-items: center;
 			width: 100%;
 			padding: 0 20px 0 40px;
+			@include media('phone') {
+				padding: 0 30px;
+			}
 			span.logo {
 				color: var(--color-beige);
 				transform: rotate(1deg);
@@ -89,6 +95,9 @@ header {
 				transform: rotate(1deg);
 				transform-origin: left;
 				transition: color 0.3s ease;
+				@include media('phone') {
+					display: none;
+				}
 			}
 		}
 		> button.nav-trigger {
@@ -127,6 +136,9 @@ header {
 		background-color: var(--color-blue);
 		transition: opacity 0.3s ease;
 		position: relative;
+		@include media('phone') {
+			display: none;
+		}
 		div.graphic {
 			mask-image: url('/graphics/home-image-featured.png');
 			mask-repeat: no-repeat;

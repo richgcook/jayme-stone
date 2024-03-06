@@ -36,6 +36,9 @@ div.track {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	column-gap: 50px;
+	@include media('phone') {
+		grid-template-columns: 1fr;
+	}
 	&:not(:last-child) {
 		&:after {
 			content: '';
@@ -45,12 +48,20 @@ div.track {
 			width: 100%;
 			background-color: var(--color-blue);
 			margin: 25px 0;
+			@include media('phone') {
+				margin: 15px 0 25px 0;
+			}
 		}
 	}
 	div.image-controls {
 		display: grid;
 		grid-template-columns: 200px 200px;
 		column-gap: 25px;
+		@include media('phone') {
+			grid-template-columns: 1fr auto;
+			align-items: center;
+			column-gap: 15px;
+		}
 		div.image {
 			position: relative;
 			@supports (aspect-ratio: 1 / 1) {
@@ -70,6 +81,9 @@ div.track {
 	}
 	div.titles {
 		padding-top: 40px;
+		@include media('phone') {
+			padding-top: 15px;
+		}
 		h3 {
 			color: var(--color-beige);
 		}
@@ -80,6 +94,9 @@ div.track {
 	div.role {
 		padding-top: 40px;
 		color: var(--color-beige);
+		@include media('phone') {
+			padding-top: 5px;
+		}
 		span {
 			font-family: var(--font-family-mono);
 			font-size: var(--font-size-mono-caps);

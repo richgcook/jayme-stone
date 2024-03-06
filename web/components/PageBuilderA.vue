@@ -55,16 +55,26 @@ const props = defineProps({
 div.blocks-layout {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
+	@include media('phone') {
+		grid-template-columns: 1fr 1fr;
+	}
 	> div.block {
 		&[data-type="image-text"] {
 			grid-column: 1 / -1;
 			> div {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
+				@include media('phone') {
+					grid-template-columns: 1fr;
+				}
 				&.--flip {
 					> div.image {
 						grid-column: 2;
 						grid-row: 1;
+						@include media('phone') {
+							grid-column: 1;
+							grid-row: 2;
+						}
 					}
 					> div.text {
 						grid-column: 1;
@@ -95,6 +105,9 @@ div.blocks-layout {
 					font-size: var(--font-size-md);
 					line-height: 1.5;
 					padding: 50px 100px;
+					@include media('phone') {
+						padding: 60px 30px;
+					}
 				}
 			}
 		}
@@ -104,10 +117,17 @@ div.blocks-layout {
 				display: grid;
 				grid-template-columns: repeat(4, 1fr);
 				background-color: var(--color-beige);
+				@include media('phone') {
+					grid-template-columns: 1fr 1fr;
+				}
 				> div.content {
 					grid-column: 2 / span 2;
 					background-color: var(--color-beige);
 					padding: 90px;
+					@include media('phone') {
+						grid-column: 1 / -1;
+						padding: 60px 30px;
+					}
 					div.blocks-layout {
 						grid-template-columns: 1fr;
 					}

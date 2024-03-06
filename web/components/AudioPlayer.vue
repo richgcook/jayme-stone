@@ -94,8 +94,8 @@ div.audio-player {
 			width: 200px;
 			border-radius: 50%;
 			@include media('phone') {
-				height: 100px;
-				width: 100px;
+				height: 70px;
+				width: 70px;
 			}
 			svg {
 				position: absolute;
@@ -103,6 +103,9 @@ div.audio-player {
 				left: 50%;
 				transform: translate(-25%, -50%);
 				height: 60px;
+				@include media('phone') {
+					height: 26px;
+				}
 				&.--pause {
 					transform: translate(-50%, -50%);
 				}

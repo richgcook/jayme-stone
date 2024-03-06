@@ -29,12 +29,21 @@ div.testimonial {
 	padding: 75px;
 	background-color: v-bind(bgColor);
 	color: v-bind(textColor);
+	@include media('phone') {
+		padding: 60px 30px;
+	}
 	@for $i from 1 through 4 {
 		&[data-block-width="#{$i}"] {
 			grid-column: span #{$i};
+			@include media('phone') {
+				grid-column: 1 / -1;
+			}
 		}
 		&[data-block-height="#{$i}"] {
 			grid-row: span #{$i};
+			@include media('phone') {
+				grid-row: auto;
+			}
 		}
 	}
 	&[data-text-size="lg"] {

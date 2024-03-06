@@ -123,6 +123,10 @@ form.newsletter {
 		height: 85px;
 		padding: 0 25px;
 		color: var(--color-beige);
+		@include media('phone') {
+			height: 50px;
+			padding: 0 15px;
+		}
 		@include placeholder {
 			color: currentColor;
 			font-size: var(--font-size-mono-caps);
@@ -145,6 +149,10 @@ form.newsletter {
 		letter-spacing: 0.05em;
 		text-transform: uppercase;
 		background-color: var(--color-yellow);
+		@include media('phone') {
+			height: 50px;
+			padding: 0 15px;
+		}
 		&[disabled] {
 			opacity: 0.5;
 		}

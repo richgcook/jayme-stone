@@ -27,6 +27,9 @@ const props = defineProps({
 div.testimonials-layout {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
+	@include media('phone') {
+		grid-template-columns: 1fr 1fr;
+	}
 }
 
 </style>

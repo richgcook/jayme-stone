@@ -143,8 +143,8 @@ div.video-embed {
 			width: 100px;
 			border-radius: 50%;
 			@include media('phone') {
-				height: 100px;
-				width: 100px;
+				height: 70px;
+				width: 70px;
 			}
 			svg {
 				position: absolute;
@@ -152,6 +152,9 @@ div.video-embed {
 				left: 50%;
 				transform: translate(-30%, -50%);
 				height: 30px;
+				@include media('phone') {
+					height: 26px;
+				}
 			}
 		}
 	}

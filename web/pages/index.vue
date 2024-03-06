@@ -93,13 +93,14 @@
 						:link="`/${data.videosPage.slug.current}`"
 					/>
 					<div class="content" :style="{ 'color': data.homePage.featuredVideo?.colors?.text?.hex }">
-						<h3>{{ data.homePage.featuredVideo.video.title }}</h3>
+						<h3 class="title --top">{{ data.homePage.featuredVideo.video.title }}</h3>
 						<VideoEmbed 
 							:poster="data.homePage.featuredVideo.video.coverImage" 
 							:html="data.homePage.featuredVideo.video.embedCode" 
 							:buttonColor="data.homePage.featuredVideo?.colors?.button?.hex" 
 							:iconColor="data.homePage.featuredVideo?.colors?.icon?.hex"
 						/>
+						<h3 class="title --bottom">{{ data.homePage.featuredVideo.video.title }}</h3>
 					</div>	
 				</div>
 				<div class="graphic" :style="{ 'background-color': data.homePage.featuredVideo?.colors?.graphic?.hex }"></div>
@@ -235,11 +236,18 @@ useHead({
 div.blocks-layout {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
+	@include media('phone') {
+		grid-template-columns: repeat(2, 1fr);
+	}
 	> div.block {
 		&[data-type="featured-image"] {
 			grid-column: span 4;
 			display: grid;
 			grid-template-columns: 1fr 1fr;
+			@include media('phone') {
+				grid-column: 1 / -1;
+				grid-template-columns: 1fr;
+			}
 			> div.image {
 				position: relative;
 				@supports (aspect-ratio: 1 / 1) {
@@ -283,14 +291,24 @@ div.blocks-layout {
 			font-size: var(--font-size-md);
 			line-height: 1.5;
 			padding: 50px 25%;
+			@include media('phone') {
+				grid-column: 1 / -1;
+				padding: 60px 30px;
+			}
 		}
 		&[data-type="music"] {
 			grid-column: span 2;
 			position: relative;
+			@include media('phone') {
+				grid-column: 1 / -1;
+			}
 			div.inner {
 				padding: 75px 100px 150px 100px;
 				position: relative;
 				z-index: 1;
+				@include media('phone') {
+					padding: 60px 30px;
+				}
 				h3.title-arrow {
 					margin-bottom: 20px;
 				}
@@ -301,10 +319,16 @@ div.blocks-layout {
 						column-gap: 20px;
 						align-items: baseline;
 						margin-bottom: 10px;
+						@include media('phone') {
+							grid-template-columns: 1fr;
+						}
 						ul.streaming-links {
 							justify-self: flex-end;
 							display: flex;
 							flex-flow: row wrap;
+							@include media('phone') {
+								justify-self: flex-start;
+							}
 							li {
 								font-family: var(--font-family-mono);
 								font-size: var(--font-size-mono-sm);
@@ -354,14 +378,35 @@ div.blocks-layout {
 			display: flex;
 			flex-flow: column nowrap;
 			justify-content: flex-end;
+			@include media('phone') {
+				grid-column: 1 / -1;
+			}
 			div.inner {
 				padding: 75px 100px 150px 100px;
 				position: relative;
 				z-index: 1;
+				@include media('phone') {
+					padding: 100px 30px 60px 30px;
+				}
 				div.content {
 					margin-top: 100px;
-					h3 {
-						margin-bottom: 10px;
+					@include media('phone') {
+						margin-top: 10px;
+					}
+					h3.title {
+						&.--top {
+							margin-bottom: 10px;
+							@include media('phone') {
+								display: none;
+							}
+						}
+						&.--bottom {
+							margin-top: 10px;
+							display: none;
+							@include media('phone') {
+								display: block;
+							}
+						}
 					}
 				}
 			}
@@ -375,6 +420,9 @@ div.blocks-layout {
 				height: 100%;
 				width: 60%;
 				mask-position: 0 20%;
+				@include media('phone') {
+					mask-position: 0 10%;
+				}
 			}
 		}
 		&[data-type="graphic"] {
@@ -385,8 +433,14 @@ div.blocks-layout {
 			background-color: var(--color-beige);
 			position: relative;
 			overflow: hidden;
+			@include media('phone') {
+				grid-column: 1 / -1;
+			}
 			div.title-container {
 				padding: 100px 7% 50px 7%;
+				@include media('phone') {
+					padding: 60px 30px 30px 30px;
+				}
 			}
 			div.graphic {
 				pointer-events: none;

@@ -62,6 +62,11 @@ h3.title-arrow {
 		div.line-arrow {
 			flex-shrink: 0;
 		}
+		span.label {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
 	}
 	div.line-arrow {
 		display: flex;
@@ -82,6 +87,9 @@ h3.title-arrow {
 	}
 	span.label {
 		flex-shrink: 0;
+		@include media('phone') {
+			flex-shrink: 1;
+		}
 	}
 }
 

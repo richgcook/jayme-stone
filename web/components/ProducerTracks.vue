@@ -17,6 +17,9 @@ const props = defineProps({
 div.tracks-layout {
 	background-color: var(--color-green);
 	padding: 100px;
+	@include media('phone') {
+		padding: 60px 30px;
+	}
 }
 
 </style>

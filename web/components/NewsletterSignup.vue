@@ -32,6 +32,9 @@ const props = defineProps({
 div.newsletter-signup {
 	background-color: var(--color-green);
 	height: 666px;
+	@include media('phone') {
+		height: auto;
+	}
 	div.inner {
 		display: flex;
 		flex-flow: column nowrap;
@@ -39,9 +42,8 @@ div.newsletter-signup {
 		row-gap: 20px;
 		height: 100%;
 		padding: 0 100px;
-		div.title-graphic {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
+		@include media('phone') {
+			padding: 60px 30px;
 		}
 		div.form {
 			width: 100%;
@@ -58,6 +60,9 @@ div.newsletter-signup {
 				height: 60px;
 				transform: translateY(-100%);
 				mask-position: bottom right;
+				@include media('phone') {
+					display: none;
+				}
 			}
 		}
 	}

@@ -15,6 +15,9 @@ div.testimonials-header {
 	height: 400px;
 	background-color: var(--color-black);
 	position: relative;
+	@include media('phone') {
+		height: 300px;
+	}
 	div.graphic {
 		background-color: var(--color-blue);
 		mask-image: url('/graphics/testimonials.png');
@@ -23,6 +26,10 @@ div.testimonials-header {
 		position: absolute;
 		height: 80%;
     	width: 100%;
+		@include media('phone') {
+			mask-size: cover;
+    		mask-position: 150% 100%;
+		}
 	}
 	h3 {
 		font-family: var(--font-family-mono);
