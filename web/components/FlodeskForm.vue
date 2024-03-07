@@ -2,7 +2,7 @@
 	<div>
 		<form class="newsletter" @submit.prevent="subscribeUser()">
 			<input type="text" v-model="honeypot" name="usercode" tabindex="-1" autocomplete="off" />
-			<input type="text" v-model="subscriber.first_name" placeholder="Name">
+			<input type="text" v-model="subscriber.first_name" placeholder="First name">
 			<input type="email" v-model="subscriber.email" placeholder="Email address" required>
 			<button type="submit" :disabled="loading || success">
 				<TitleWithArrow 
