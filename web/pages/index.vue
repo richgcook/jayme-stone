@@ -268,6 +268,9 @@ div.blocks-layout {
 				pointer-events: none;
 				position: relative;
 				background-color: var(--color-blue);
+				@include media('phone') {
+					display: none;
+				}
 				> div {
 					mask-image: url('/graphics/home-image-featured.png');
 					mask-repeat: no-repeat;
