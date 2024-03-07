@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<PageBuilderA :content="data.project.pageBuilder" v-if="data.project.pageBuilder?.length" />
-		<NewsletterSignup :title="data.projectsPage.newsletterSelection?.active ? data.projectsPage.newsletterSelection.title : undefined" :segmentId="data.projectsPage.newsletterSelection?.segment ?? ''" />
+		<NewsletterSignup :title="data.projectsPage.newsletterSelection?.active ? data.projectsPage.newsletterSelection.title : undefined" :segmentId="data.projectsPage.newsletterSelection?.segment" />
 	</div>
 </template>
 

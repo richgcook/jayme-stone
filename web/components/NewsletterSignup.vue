@@ -25,7 +25,7 @@ const props = defineProps({
 	},
 	segmentId: {
 		type: String,
-		default: ''
+		default: '65e7b5d61caf744c3a7479fd'
 	}
 })
 

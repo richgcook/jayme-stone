@@ -25,7 +25,7 @@
 const props = defineProps({
 	segmentId: {
 		type: String,
-		default: ''
+		default: '65e7b5d61caf744c3a7479fd'
 	}
 })
 
@@ -74,7 +74,7 @@ const subscribeUser = async () => {
     	const responseData = await response.json()
     	const subscriberId = responseData.id
 
-		if (props.segmentId) {
+		if (props.segmentId) { // Redundant check for now due to setting a default segment
 			await addSubscriberToSegment(subscriberId)
 		} else {
 			loading.value = false
