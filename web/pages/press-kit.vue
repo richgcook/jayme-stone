@@ -44,7 +44,7 @@
 				</ul>
 			</div>
 		</div>
-		<NewsletterSignup :title="data.pressPage.newsletterSelection?.active ? data.pressPage.newsletterSelection.title : undefined" :segmentId="data.pressPage.newsletterSelection.segment ?? ''" />
+		<NewsletterSignup :title="data.pressPage.newsletterSelection?.active ? data.pressPage.newsletterSelection.title : undefined" :segmentId="data.pressPage.newsletterSelection?.segment ?? ''" />
 	</div>
 </template>
 

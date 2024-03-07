@@ -12,7 +12,7 @@
 			:linkColor="`var(--color-beige)`"
 			:lineColor="`var(--color-green)`"
 		/>
-		<NewsletterSignup :title="data.projectsPage.newsletterSelection?.active ? data.projectsPage.newsletterSelection.title : undefined" :segmentId="data.projectsPage.newsletterSelection.segment ?? ''" />
+		<NewsletterSignup :title="data.projectsPage.newsletterSelection?.active ? data.projectsPage.newsletterSelection.title : undefined" :segmentId="data.projectsPage.newsletterSelection?.segment ?? ''" />
 	</div>
 </template>
 
