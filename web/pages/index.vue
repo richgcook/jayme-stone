@@ -124,7 +124,7 @@
 
 		</div>
 		<TestimonialsA :content="data.homePage.testimonialsA" :includeHeader="false" v-if="data.homePage.testimonialsA?.length" />
-		<NewsletterSignup :title="data.homePage.newsletterSelection?.active ? data.homePage.newsletterSelection.title : undefined" :segmentId="data.homePage.newsletterSelection.segment" />
+		<NewsletterSignup :title="data.homePage.newsletterSelection?.active ? data.homePage.newsletterSelection.title : undefined" :segmentId="data.homePage.newsletterSelection.segment ?? ''" />
 	</div>
 </template>
 

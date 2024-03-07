@@ -59,7 +59,7 @@
 				<GraphicsRectangleY :index="5" :isFullColor="true" />
 			</div>
 		</div>
-		<NewsletterSignup :title="data.form.newsletterSelection?.active ? data.form.newsletterSelection.title : undefined" :segmentId="data.form.newsletterSelection.segment" />
+		<NewsletterSignup :title="data.form.newsletterSelection?.active ? data.form.newsletterSelection.title : undefined" :segmentId="data.form.newsletterSelection.segment ?? ''" />
 	</div>
 </template>
 

@@ -18,7 +18,7 @@
 				</div>
 			</div>
 		</div>
-		<NewsletterSignup :title="data.musicPage.newsletterSelection?.active ? data.musicPage.newsletterSelection.title : undefined" :segmentId="data.musicPage.newsletterSelection.segment" />
+		<NewsletterSignup :title="data.musicPage.newsletterSelection?.active ? data.musicPage.newsletterSelection.title : undefined" :segmentId="data.musicPage.newsletterSelection.segment ?? ''" />
 	</div>
 </template>
 
