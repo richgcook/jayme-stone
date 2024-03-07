@@ -8,7 +8,7 @@
 						:src="data.homePage.featuredImage.image.asset.url"
 						:alt="data.homePage.featuredImage.image.asset.alt"
 					/>
-					<GraphicsImageVideo :index="data.homePage.featuredImage.imageVideoGraphic?.graphic" :fill="data.homePage.featuredImage.colors?.graphic?.hex" :position="data.homePage.featuredImage.imageVideoGraphic?.position" v-if="data.homePage.featuredImage.imageVideoGraphic?.active" />
+					<GraphicsImageVideo :index="Number(data.homePage.featuredImage.imageVideoGraphic?.graphic)" :fill="data.homePage.featuredImage.colors?.graphic?.hex" :position="data.homePage.featuredImage.imageVideoGraphic?.position" v-if="data.homePage.featuredImage.imageVideoGraphic?.active" />
 				</div>
 				<div class="graphic">
 					<div></div>

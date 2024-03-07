@@ -9,7 +9,7 @@
 						:src="block.image.asset.url"
 						:alt="block.image.asset.alt"
 					/>
-					<GraphicsImageVideo :index="block.imageVideoGraphic?.graphic" :fill="block.colors?.graphic?.hex" :position="block.imageVideoGraphic?.position" v-if="block.imageVideoGraphic?.active" />
+					<GraphicsImageVideo :index="Number(block.imageVideoGraphic?.graphic)" :fill="block.colors?.graphic?.hex" :position="block.imageVideoGraphic?.position" v-if="block.imageVideoGraphic?.active" />
 				</div>
 				<div class="text">
 					<TitleWithArrow 
@@ -78,7 +78,10 @@ div.blocks-layout {
 					}
 					> div.text {
 						grid-column: 1;
-						grid-row: 2;
+						grid-row: 1;
+						@include media('phone') {
+							grid-row: 2;
+						}
 					}
 				}
 				> div.image {
