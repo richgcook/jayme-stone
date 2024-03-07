@@ -40,7 +40,7 @@
 				<GraphicsRectangleY :index="5" :isFullColor="true" />
 			</div>
 		</div>
-		<NewsletterSignup :title="data.eventsPage.newsletterSelection?.active ? data.eventsPage.newsletterSelection.title : undefined" />
+		<NewsletterSignup :title="data.eventsPage.newsletterSelection?.active ? data.eventsPage.newsletterSelection.title : undefined" :segmentId="data.eventsPage.newsletterSelection.segment" />
 	</div>
 </template>
 

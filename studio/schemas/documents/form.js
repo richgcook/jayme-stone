@@ -194,6 +194,11 @@ export default defineType({
 			initialValue: `Thank you for getting in touch!`,
 		}),
 		defineField({
+			type: 'newsletterSelection',
+			name: 'newsletterSelection',
+			title: 'Newsletter selection',
+		}),
+		defineField({
 			title: 'SEO',
 			name: 'seo',
 			type: 'seo'

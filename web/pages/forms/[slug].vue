@@ -18,7 +18,7 @@
 					method="POST" 
 					@submit.prevent="submitForm"
 					ref="form"
-					v-show="!formSucess"
+					v-show="!formSuccess"
 				>
 					<input type="hidden" name="form-title" :value="data?.form.title" />
 					<input type="hidden" name="form-name" :value="data?.form.slug.current" />
@@ -52,14 +52,14 @@
 						</span>
 					</button>
 				</form>
-				<div class="message" v-show="formSucess">{{ formMessage }}</div>
+				<div class="message" v-show="formSuccess">{{ formMessage }}</div>
 				<div class="message --error" v-show="formError">{{ formMessage }}</div>
 			</div>
 			<div>
 				<GraphicsRectangleY :index="5" :isFullColor="true" />
 			</div>
 		</div>
-		<NewsletterSignup />
+		<NewsletterSignup :title="data.form.newsletterSelection?.active ? data.form.newsletterSelection.title : undefined" :segmentId="data.form.newsletterSelection.segment" />
 	</div>
 </template>
 
@@ -80,7 +80,7 @@ const query = groq`{
 			${$richTextQuery}
 		},
 		formFields,
-		submitLabel, successMessage
+		submitLabel, successMessage, newsletterSelection
 	}[0],
 	
 }`
@@ -105,7 +105,7 @@ useHead({
 
 const form = ref(null)
 
-const formSucess = ref(false)
+const formSuccess = ref(false)
 const formError = ref(false)
 const formSending = ref(false)
 const formMessage = ref('')
@@ -138,7 +138,7 @@ const submitForm = () => {
 	})
 	.then(() => {
 		window.scrollTo({ top: 0 })
-		formSucess.value = true
+		formSuccess.value = true
 		formMessage.value = data?.value.form.successMessage
 	})
 	.catch((error) => {

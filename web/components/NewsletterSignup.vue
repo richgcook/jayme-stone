@@ -10,7 +10,7 @@
 			/>
 			<div class="form">
 				<div class="graphic"></div>
-				<MailChimpForm />
+				<FlodeskForm :segmentId="segmentId" />
 			</div>
 		</div>
 	</div>
@@ -22,7 +22,8 @@ const props = defineProps({
 	title: {
 		type: String,
 		default: 'Sign up to hear about new releases and projects'
-	}
+	},
+	segmentId: String
 })
 
 </script>

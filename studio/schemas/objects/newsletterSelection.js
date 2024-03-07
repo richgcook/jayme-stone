@@ -19,11 +19,11 @@ export default defineField({
 		}),
 		defineField({
 			type: 'string',
-			title: 'List type',
-			name: 'list',
+			title: 'Segment',
+			name: 'segment',
 			options: {
 				list: [
-					{ title: 'List A', value: '234234csdfs' },
+					{ title: 'dev test', value: '65e987731caf744c3a8cc3d3' },
 					{ title: 'List B', value: '23423dddd' },
 				],
 			},

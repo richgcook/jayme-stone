@@ -25,6 +25,7 @@ const props = defineProps({
 		default: null
 	}
 })
+
 </script>
 
 <style scoped lang="scss">

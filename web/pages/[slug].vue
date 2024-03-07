@@ -4,7 +4,7 @@
 		<ProducerTracks :tracks="data.page.selectedTracks" v-if="data.page.selectedTracks?.length" />
 		<TestimonialsA :content="data.page.testimonialsA" v-if="data.page.testimonialsA?.length" />
 		<TestimonialsB :content="data.page.testimonialsB" v-if="data.page.testimonialsB?.length" />
-		<NewsletterSignup :title="data.page.newsletterSelection?.active ? data.page.newsletterSelection.title : undefined" />
+		<NewsletterSignup :title="data.page.newsletterSelection?.active ? data.page.newsletterSelection.title : undefined" :segmentId="data.page.newsletterSelection.segment" />
 	</div>
 </template>
 

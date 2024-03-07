@@ -18,7 +18,8 @@ export default defineNuxtConfig({
 
 	runtimeConfig: {
 		public: {
-			siteTitle: process.env.SITE_TITLE
+			siteTitle: process.env.SITE_TITLE,
+			FLODESK_API_KEY: process.env.FLODESK_API_KEY,
 		}
 	},
 
