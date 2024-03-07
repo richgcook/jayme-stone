@@ -79,7 +79,7 @@ const subscribeUser = async () => {
 		} else {
 			loading.value = false
 			success.value = true
-			message.value = 'You have been subscribed successfully! Thanks!'
+			message.value = 'Thanks for subscribing. Keep an eye on your inbox!'
 		}
 
   	} catch(error) {
@@ -112,7 +112,7 @@ const addSubscriberToSegment = async (subscriberId) => {
 
     	loading.value = false
 		success.value = true
-		message.value = 'You have been subscribed successfully! Thanks!'
+		message.value = 'Thanks for subscribing. Keep an eye on your inbox!'
 
   	} catch (error) {
     	console.error('Error adding subscriber to segment:', error)
