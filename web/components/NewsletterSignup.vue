@@ -23,7 +23,10 @@ const props = defineProps({
 		type: String,
 		default: 'Sign up to hear about new releases and projects'
 	},
-	segmentId: String
+	segmentId: {
+		type: String,
+		default: ''
+	}
 })
 
 </script>

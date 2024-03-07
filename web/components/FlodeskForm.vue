@@ -23,7 +23,10 @@
 <script setup>
 
 const props = defineProps({
-	segmentId: String
+	segmentId: {
+		type: String,
+		default: ''
+	}
 })
 
 const config = useRuntimeConfig()
