@@ -255,7 +255,7 @@ div.form-layout {
 			display: flex;
 			flex-flow: row nowrap;
 			align-items: center;
-			column-gap: 2ch;
+			column-gap: 1ch;
 			height: 85px;
 			width: 100%;
 			padding: 0 25px;

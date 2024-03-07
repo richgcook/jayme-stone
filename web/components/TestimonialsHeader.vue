@@ -12,10 +12,17 @@
 <style scoped lang="scss">
 
 div.testimonials-header {
-	height: 400px;
+	@supports (aspect-ratio: 1 / 1) {
+		aspect-ratio: 4 / 1;
+	}
+	@supports not (aspect-ratio: 1 / 1) {
+		padding-bottom: calc(1 / 4 * 100%);
+	}
 	background-color: var(--color-black);
 	position: relative;
 	@include media('phone') {
+		aspect-ratio: auto;
+		padding-bottom: 0;
 		height: 300px;
 	}
 	div.graphic {
@@ -27,8 +34,9 @@ div.testimonials-header {
 		height: 80%;
     	width: 100%;
 		@include media('phone') {
-			mask-size: cover;
-    		mask-position: 150% 100%;
+			mask-size: auto 110%;
+			mask-position: 150% 150%;
+    		height: 100%;
 		}
 	}
 	h3 {

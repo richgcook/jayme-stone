@@ -43,7 +43,7 @@ h3.title-arrow {
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
-	column-gap: 2ch;
+	column-gap: 1ch;
 	font-family: var(--font-family-mono);
 	font-size: var(--font-size-mono-caps);
 	letter-spacing: 0.05em;
