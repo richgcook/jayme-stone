@@ -33,7 +33,6 @@ header {
 	height: 80px;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	background-color: var(--color-green);
 	z-index: 20;
 	@include media('phone') {
 		grid-template-columns: 1fr;
@@ -60,15 +59,13 @@ header {
 			}
 		}
 		div.right {
-			opacity: 0;
-			pointer-events: none;
+			display: none;
 		}
 	}
 	div.left {
 		display: flex;
 		flex-flow: row nowrap;
 		background-color: var(--color-green);
-		transition: background-color 0.3s ease;
 		> a {
 			display: flex;
 			flex-flow: row nowrap;
@@ -83,7 +80,6 @@ header {
 				color: var(--color-beige);
 				transform: rotate(1deg);
 				transform-origin: left;
-				transition: color 0.3s ease;
 			}
 			span.strapline {
 				font-family: var(--font-family-mono);
@@ -94,7 +90,6 @@ header {
 				border-bottom: 1px solid currentColor;
 				transform: rotate(1deg);
 				transform-origin: left;
-				transition: color 0.3s ease;
 				@include media('phone') {
 					display: none;
 				}
@@ -134,7 +129,6 @@ header {
 	}
 	div.right {
 		background-color: var(--color-blue);
-		transition: opacity 0.3s ease;
 		position: relative;
 		@include media('phone') {
 			display: none;

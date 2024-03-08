@@ -1,12 +1,10 @@
 <template>
-	<Transition name="fade">
-		<nav class="main" v-show="isOpen" v-cloak ref="nav">
-			<ul class="menu" v-if="data?.settingsGeneral?.menuA?.length">
-				<li v-for="menuItem in data.settingsGeneral.menuA" :key="menuItem._id"><NuxtLink :to="`/${menuItem.slug.current}`">{{ menuItem.title }}</NuxtLink></li>
-			</ul>
-			<div class="graphic"></div>
-		</nav>
-	</Transition>
+	<nav class="main" v-show="isOpen" v-cloak ref="nav">
+		<ul class="menu" v-if="data?.settingsGeneral?.menuA?.length">
+			<li v-for="menuItem in data.settingsGeneral.menuA" :key="menuItem._id"><NuxtLink :to="`/${menuItem.slug.current}`">{{ menuItem.title }}</NuxtLink></li>
+		</ul>
+		<div class="graphic"></div>
+	</nav>
 </template>
 
 <script setup>
@@ -53,14 +51,6 @@ nav.main {
 	z-index: 10;
 	@include media('phone') {
 		padding: calc(80px + 30px) 30px;
-	}
-	&.fade-enter-active,
-	&.fade-leave-active {
-		transition: opacity 0.3s ease;
-	}
-	&.fade-enter-from,
-	&.fade-leave-to {
-		opacity: 0;
 	}
 	ul.menu {
 		display: flex;

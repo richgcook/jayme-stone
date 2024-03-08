@@ -1,9 +1,11 @@
 <template>
 	<div class="testimonial" :class="{ '--centered': testimonial.centerText }" :data-block-width="testimonial.blockWidth" :data-block-height="testimonial.blockHeight" :data-text-size="testimonial.textSize">
-		<RichText :blocks="testimonial.text" />
-		<div class="referrer">
-			<Img :src="testimonial.referrer.image.asset.url" :alt="testimonial.referrer.image.asset.alt" v-if="testimonial.referrer.image" />
-			<h5><span>{{ testimonial.referrer.firstNames }}</span><span v-if="testimonial.referrer.lastNames">{{ testimonial.referrer.lastNames }}</span></h5>
+		<div class="inner">
+			<RichText :blocks="testimonial.text" />
+			<div class="referrer">
+				<Img :src="testimonial.referrer.image.asset.url" :alt="testimonial.referrer.image.asset.alt" v-if="testimonial.referrer.image" />
+				<h5><span>{{ testimonial.referrer.firstNames }}</span><span v-if="testimonial.referrer.lastNames">{{ testimonial.referrer.lastNames }}</span></h5>
+			</div>
 		</div>
 	</div>
 </template>
@@ -22,10 +24,6 @@ const textColor = computed(() => props.testimonial.colors?.text?.hex)
 <style scoped lang="scss">
 
 div.testimonial {
-	display: grid;
-	row-gap: 15px;
-	align-items: center;
-    align-content: center;
 	padding: 75px;
 	background-color: v-bind(bgColor);
 	color: v-bind(textColor);
@@ -49,20 +47,36 @@ div.testimonial {
 	&[data-text-size="lg"] {
 		font-size: var(--font-size-lg);
 		line-height: 1.5;
+		div.inner {
+			max-width: none;
+		}
 	}
 	&[data-text-size="xl"] {
 		font-size: var(--font-size-xl);
 		line-height: 1.5;
+		div.inner {
+			max-width: none;
+		}
 	}
 	&.--centered {
-		text-align: center;
-		div.referrer {
-			justify-content: center;
-			h5 {
-				max-width: none;
+		div.inner {
+			text-align: center;
+			div.referrer {
+				justify-content: center;
+				h5 {
+					max-width: none;
+				}
 			}
-		
 		}
+	}
+	div.inner {
+		display: grid;
+		row-gap: 15px;
+		align-items: center;
+		align-content: center;
+		height: 100%;
+		max-width: 850px;
+		margin: 0 auto;
 	}
 	div.referrer {
 		display: flex;

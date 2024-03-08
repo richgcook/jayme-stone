@@ -84,6 +84,10 @@ div.blocks-layout {
 				margin: 9px 0 15px 0;
 			}
 		}
+		&[data-type="text"] {
+			max-width: 850px;
+			margin: 0 auto;
+		}
 		&[data-type="videos"] {
 			div.videos {
 				div.videos-layout {

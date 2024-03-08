@@ -56,6 +56,7 @@ div.section {
 	}
 	div.testimonials {
 		padding: 50px;
+		max-width: 850px;
 		@include media('phone') {
 			padding: 0;
 		}

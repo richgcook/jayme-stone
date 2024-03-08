@@ -26,6 +26,7 @@ const props = defineProps({
 })
 
 const bgUrl = (i) => `url('/graphics/rectangle-y-${i.toString().padStart(2, '0')}.png')`
+const bgUrlXs = (i) => `url('/graphics/rectangle-x-${i.toString().padStart(2, '0')}.png')`
 
 </script>
 
@@ -41,6 +42,12 @@ div.graphic {
 		background-image: v-bind(bgUrl(index));
 		background-repeat: repeat-y;
 		background-size: 100%;
+		@include media('phone') {
+			background-image: v-bind(bgUrlXs(index));
+			background-size: cover;
+			background-repeat: repeat-x;
+    		background-position: center;
+		}
 		> div {
 			display: none;
 		}

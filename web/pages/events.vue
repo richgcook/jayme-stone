@@ -156,7 +156,7 @@ div.events-archive {
 	> div.graphic {
 		position: relative;
 		@include media('phone') {
-			display: none;
+			aspect-ratio: 3 / 1;
 		}
 	}
 	> div.content {

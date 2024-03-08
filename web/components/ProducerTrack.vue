@@ -36,6 +36,8 @@ div.track {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	column-gap: 50px;
+	max-width: 1400px;
+    margin: 0 auto;
 	@include media('phone') {
 		grid-template-columns: 1fr;
 	}

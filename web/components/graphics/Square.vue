@@ -1,5 +1,5 @@
 <template>
-	<div class="graphic" :class="{ '--cover': cover }">
+	<div class="graphic" :class="{ '--cover': cover }" :data-context="context">
 		<div></div>
 	</div>
 </template>
@@ -22,7 +22,8 @@ const props = defineProps({
 	cover: {
 		type: Boolean,
 		default: false
-	}
+	},
+	context: String
 })
 
 const resolvedIndex = computed(() => {
@@ -43,6 +44,11 @@ div.graphic {
 	&.--cover {
 		height: 100%;
 		width: 100%;
+	}
+	&[data-context="testimonials"] {
+		@include media('phone') {
+			aspect-ratio: 3 / 1;
+		}
 	}
 	> div {
 		mask-image:  v-bind(bgUrl(resolvedIndex));

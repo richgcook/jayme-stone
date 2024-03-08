@@ -15,7 +15,7 @@
 				</div>
 			</div>
 
-			<div class="block" data-type="graphic">
+			<div class="block" data-type="graphic" data-graphic-count="1">
 				<GraphicsSquare :bgColor="'var(--color-yellow)'" :fill="`var(--color-black)`" :index="5" />
 			</div>
 
@@ -31,23 +31,23 @@
 				<RichText :blocks="data.homePage.introduction" />
 			</div>
 
-			<div class="block" data-type="graphic">
+			<div class="block" data-type="graphic" data-graphic-count="2">
 				<GraphicsSquare :bgColor="'var(--color-pink)'" :fill="`var(--color-black)`" :index="6" />
 			</div>
 
-			<div class="block" data-type="graphic">
+			<div class="block" data-type="graphic" data-graphic-count="3">
 				<GraphicsSquare :bgColor="'var(--color-blue)'" :fill="`var(--color-black)`" :index="1" />
 			</div>
 
-			<div class="block" data-type="graphic">
+			<div class="block" data-type="graphic" data-graphic-count="4">
 				<GraphicsSquare :bgColor="'var(--color-pink)'" :fill="`var(--color-black)`" :index="2" />
 			</div>
 
-			<div class="block" data-type="graphic">
+			<div class="block" data-type="graphic" data-graphic-count="5">
 				<GraphicsSquare :bgColor="'var(--color-red)'" :fill="`var(--color-black)`" :index="3" />
 			</div>
 
-			<div class="block" data-type="graphic">
+			<div class="block" data-type="graphic" data-graphic-count="6">
 				<GraphicsSquare :bgColor="'var(--color-green)'" :fill="`var(--color-black)`" :index="4" />
 			</div>
 
@@ -430,6 +430,21 @@ div.blocks-layout {
 		}
 		&[data-type="graphic"] {
 			aspect-ratio: 1 / 1;
+			&[data-graphic-count="1"] {
+				grid-row: 2;
+				grid-column: 1;
+			}
+			&[data-graphic-count="3"] {
+				grid-row: 2;
+				grid-column: 2;
+			}
+			&[data-graphic-count="2"],
+			&[data-graphic-count="4"],
+			&[data-graphic-count="5"],
+			&[data-graphic-count="6"],
+			&[data-graphic-count="7"] {
+				display: none;
+			}
 		}
 		&[data-type="projects"] {
 			grid-column: span 4;
