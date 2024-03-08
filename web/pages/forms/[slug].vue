@@ -2,7 +2,7 @@
 	<div>
 		<div class="form-layout">
 			<div class="graphic">
-				<GraphicsRectangleY :index="5" :isFullColor="true" />
+				<GraphicsRectangleY :index="6" :isFullColor="true" />
 			</div>
 			<div class="content">
 				<TitleWithArrow 
