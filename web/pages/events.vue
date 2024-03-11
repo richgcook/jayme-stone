@@ -98,7 +98,7 @@ div.events-overview {
 	background-color: var(--color-beige);
 }
 div.upcoming-events {
-	padding: 0 100px 100px 100px;
+	padding: 0 7% 100px 7%;
 	@include media('phone') {
 		padding: 0 30px 60px 30px;
 	}

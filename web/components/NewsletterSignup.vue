@@ -45,7 +45,7 @@ div.newsletter-signup {
 		justify-content: center;
 		row-gap: 20px;
 		height: 100%;
-		padding: 0 100px;
+		padding: 0 7%;
 		@include media('phone') {
 			padding: 60px 30px;
 		}

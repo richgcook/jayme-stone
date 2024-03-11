@@ -22,7 +22,7 @@ const props = defineProps({
 <style scoped lang="scss">
 
 div.page-header {
-	padding: 100px 100px 50px 100px;
+	padding: 100px 7% 50px 7%;
 	max-width: calc(50% + 20px);
 	@include media('phone') {
 		padding: 60px 30px 30px 30px;
