@@ -431,19 +431,25 @@ div.blocks-layout {
 		&[data-type="graphic"] {
 			aspect-ratio: 1 / 1;
 			&[data-graphic-count="1"] {
-				grid-row: 2;
-				grid-column: 1;
+				@include media('phone') {
+					grid-row: 2;
+					grid-column: 1;
+				}
 			}
 			&[data-graphic-count="3"] {
-				grid-row: 2;
-				grid-column: 2;
+				@include media('phone') {
+					grid-row: 2;
+					grid-column: 2;
+				}
 			}
 			&[data-graphic-count="2"],
 			&[data-graphic-count="4"],
 			&[data-graphic-count="5"],
 			&[data-graphic-count="6"],
 			&[data-graphic-count="7"] {
-				display: none;
+				@include media('phone') {
+					display: none;
+				}
 			}
 		}
 		&[data-type="projects"] {
