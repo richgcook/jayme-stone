@@ -40,10 +40,22 @@ export default defineType({
 			validation: Rule => Rule.required()
 		}),
 		defineField({
-			type: 'url',
+			type: 'object',
 			title: 'External link',
 			name: 'externalLink',
 			description: 'If used the project will link to the provided link',
+			fields: [
+				defineField({
+					type: 'string',
+					title: 'Label',
+					name: 'label',
+				}),
+				defineField({
+					type: 'string',
+					title: 'URL',
+					name: 'url',
+				}),
+			],
 		}),
 		defineField({
 			type: 'pageBuilderA',

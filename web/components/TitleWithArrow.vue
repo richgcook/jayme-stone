@@ -59,14 +59,14 @@ h3.title-arrow {
 		width: 100%;
 	}
 	&.--line-before {
+		align-items: flex-start;
 		div.line-arrow {
 			flex-shrink: 0;
+			position: relative;
+   	 		top: 0.5em;
 		}
 		span.label {
 			flex-shrink: 1;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
 		}
 	}
 	div.line-arrow {

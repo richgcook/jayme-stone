@@ -65,7 +65,7 @@ const linkUrl = (project) => {
 }
 
 const linkTitle = (project) => {
-	if (project.externalLink && project.externalLink.label) return project.externalLink.label
+	if (project.externalLink && project.externalLink.url && project.externalLink.label) return project.externalLink.label
 	return `Learn more`
 }
 
