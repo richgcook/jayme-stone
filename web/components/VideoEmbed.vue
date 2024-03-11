@@ -152,6 +152,12 @@ div.video-embed {
 				height: 70px;
 				width: 70px;
 			}
+			&:hover {
+				background-color: v-bind(iconColor);
+				svg {
+					fill: v-bind(buttonColor);
+				}
+			}
 			svg {
 				position: absolute;
 				top: 50%;

@@ -185,6 +185,12 @@ div.projects-layout {
 				@include media('phone') {
 					margin-top: 5px;
 				}
+				&:hover {
+					text-decoration-line: underline;
+					text-decoration-color: currentColor;
+					text-decoration-thickness: 1px;
+					text-underline-offset: 4px;
+				}
 			}
 		}
 	}

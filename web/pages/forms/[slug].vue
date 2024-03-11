@@ -270,6 +270,9 @@ div.form-layout {
 				height: 50px;
 				padding: 0 15px;
 			}
+			&:hover {
+				background-color: var(--color-blue);
+			}
 			&[disabled] {
 				cursor: not-allowed;
 				opacity: 0.5;

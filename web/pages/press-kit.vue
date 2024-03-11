@@ -168,6 +168,12 @@ div.press-overview {
 									height: 30px;
 									width: 30px;
 								}
+								&:hover {
+									background-color: var(--color-pink);
+									svg {
+										fill: var(--color-black);
+									}
+								}
 								svg {
 									position: absolute;
 									top: 50%;
@@ -211,6 +217,14 @@ div.press-overview {
 							height: 50px;
 							padding: 0 10px 0 15px;
 						}
+						&:hover {
+							div.download {
+								background-color: var(--color-pink);
+								svg {
+									fill: var(--color-black);
+								}
+							}
+						}
 						div.download {
 							display: block;
 							position: relative;
@@ -236,6 +250,14 @@ div.press-overview {
 					}
 				}
 			}
+			&.contact {
+				ul li a:hover {
+					text-decoration-line: underline;
+					text-decoration-color: currentColor;
+					text-decoration-thickness: 1px;
+					text-underline-offset: 4px;
+				}
+			}	
 		}
 	}
 }

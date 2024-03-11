@@ -51,6 +51,9 @@ a {
 			height: 50px;
 			padding: 0 15px;
 		}
+		&:hover {
+			background-color: var(--color-blue);
+		}
 		span.line-arrow {
 			display: flex;
 			flex-flow: row nowrap;

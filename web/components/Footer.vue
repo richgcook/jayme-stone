@@ -63,6 +63,12 @@ footer {
 		li {
 			font-family: var(--font-family-mono);
 			font-size: var(--font-size-mono-sm);
+			a:hover {
+				text-decoration-line: underline;
+				text-decoration-color: currentColor;
+				text-decoration-thickness: 1px;
+				text-underline-offset: 4px;
+			}
 		}
 	}
 	span.copyright {

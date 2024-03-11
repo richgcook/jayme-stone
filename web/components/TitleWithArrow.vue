@@ -1,5 +1,5 @@
 <template>
-	<h3 class="title-arrow" :class="{ '--line-before': arrowPosition == 'before' }">
+	<h3 class="title-arrow" :class="{ '--line-before': arrowPosition == 'before', '--is-link': link }">
 		<NuxtLink :to="link" v-if="link"></NuxtLink>
 		<span class="label" v-if="arrowPosition == 'after'">{{ label }}</span>
 		<div class="line-arrow">
@@ -67,6 +67,16 @@ h3.title-arrow {
 		}
 		span.label {
 			flex-shrink: 1;
+		}
+	}
+	&.--is-link {
+		&:hover {
+			span.label {
+				text-decoration-line: underline;
+				text-decoration-color: currentColor;
+				text-decoration-thickness: 1px;
+				text-underline-offset: 4px;
+			}
 		}
 	}
 	div.line-arrow {
