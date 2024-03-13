@@ -57,7 +57,7 @@ export default defineField({
 							}),
 							defineField({
 								type: 'boolean',
-								title: 'Style link as a button',
+								title: 'Add link as a button',
 								name: 'button',
 							}),
 						],
