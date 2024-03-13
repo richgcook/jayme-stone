@@ -1,4 +1,4 @@
-import { defineConfig } from 'sanity'
+import { defineConfig, isDev } from 'sanity'
 import { structureTool}  from 'sanity/structure'
 import { visionTool} from '@sanity/vision'
 import { schemaTypes } from './schemas'
@@ -6,6 +6,8 @@ import { deskStructure } from './desk'
 import { dashboardTool } from '@sanity/dashboard'
 import { netlifyWidget } from 'sanity-plugin-dashboard-widget-netlify'
 import { colorInput } from '@sanity/color-input'
+
+const devOnlyPlugins = [visionTool()]
 
 export default defineConfig({
 	name: 'default',
@@ -26,7 +28,6 @@ export default defineConfig({
 		structureTool({
 			structure: deskStructure,
 		}), 
-		visionTool(),
 		dashboardTool({
 			widgets: [
 				netlifyWidget({
@@ -43,6 +44,7 @@ export default defineConfig({
 			]
 		}),
 		colorInput(),
+		...(isDev ? devOnlyPlugins : []),
 	],
   	schema: {
     	types: schemaTypes,
