@@ -1,5 +1,6 @@
 const RESEND_API_KEY = process.env.RESEND_API_KEY
-const toEmailAddresses = ['jayme@jaymestone.com']
+const primaryEmailAddress = 'jayme@jaymestone.com'
+const toEmailAddresses = [primaryEmailAddress]
 
 const formatKey = (key) => {
 	const words = key.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -48,7 +49,7 @@ export async function handler(event) {
 				'Authorization': `Bearer ${RESEND_API_KEY}`,
 			},
 			body: JSON.stringify({
-				from: 'Acme <onboarding@resend.dev>',
+				from: `Jayme Stone <${primaryEmailAddress}>`,
 				reply_to: email ? email : '',
 				to: toEmailAddresses,
 				subject: `New submission from website form: ${formTitle}`,
