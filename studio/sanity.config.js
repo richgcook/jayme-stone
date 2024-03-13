@@ -34,9 +34,9 @@ export default defineConfig({
 					sites: [
 						{
 							title: 'Jayme Stone website',
-							apiId: '5453508f-4a7c-4619-b39d-b2d8c03a983d',
-							buildHookId: '65df421671dbda1a6fa67032',
-							name: 'jayme-stone-dev-a0f8f3',
+							apiId: 'ae3ebde6-380d-4ae0-8e7e-2c9199634cc6',
+							buildHookId: '65f21c04bacbc83401a0f16a',
+							name: 'jayme-stone',
 						}
 					]
 				})
