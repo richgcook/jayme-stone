@@ -97,6 +97,9 @@ div.audio-player {
 				height: 70px;
 				width: 70px;
 			}
+			&:hover {
+				background-color: var(--color-pink);
+			}
 			svg {
 				position: absolute;
 				top: 50%;

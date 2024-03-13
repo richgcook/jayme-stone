@@ -66,6 +66,9 @@ nav.main {
 			}
 			a {
 				color: var(--color-beige);
+				&:hover {
+					color: var(--color-pink);
+				}
 			}
 		}
 	}

@@ -342,6 +342,12 @@ div.blocks-layout {
 										margin-right: 1ch;
 									}
 								}
+								a:hover {
+									text-decoration-line: underline;
+									text-decoration-color: currentColor;
+									text-decoration-thickness: 1px;
+									text-underline-offset: 4px;
+								}
 							}
 						}
 					}
