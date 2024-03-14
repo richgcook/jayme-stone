@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="music-layout">
-			<div v-for="music in data.music" :key="music._id" class="music">
+			<div v-for="(music, index) in data.music" :key="music._id" class="music">
 				<div class="image">
 					<Img
 						:src="music.featuredImage.asset.url"
@@ -15,6 +15,7 @@
 							<NuxtLink :to="link.link" target="_blank">{{ link.title }}</NuxtLink>
 						</li>
 					</ul>
+					<span class="script" :style="{ 'color': music.colors?.text?.hex }" v-if="index == 0">{{ data.musicPage.title }}</span>
 				</div>
 			</div>
 		</div>
@@ -118,6 +119,8 @@ div.music-layout {
 			justify-content: center;
 			row-gap: 5px;
 			padding: 0 100px;
+			position: relative;
+			overflow: hidden;
 			@include media('phone') {
 				grid-column: 1;
 				grid-row: 1;
@@ -145,6 +148,23 @@ div.music-layout {
 						text-decoration-thickness: 1px;
 						text-underline-offset: 4px;
 					}
+				}
+			}
+			span.script {
+				font-family: var(--font-family-script);
+				position: absolute;
+				top: 0;
+				right: 0;
+				transform: translate(50%, 100px) rotate(-90deg);
+				font-size: 60px;
+				line-height: 1;
+				text-transform: lowercase;
+				pointer-events: none;
+				@include media('tablet') {
+					display: none;
+				}
+				@include media('phone') {
+					display: none;
 				}
 			}
 		}

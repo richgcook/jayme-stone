@@ -16,6 +16,7 @@
 					</div>
 				</div>
 			</div>
+			<span class="script">{{ data.eventsPage.title }}</span>
 		</div>
 		<div class="events-archive" :class="{ '--no-upcoming-events': !hasUpcomingEvents }">
 			<div class="graphic">
@@ -99,6 +100,8 @@ div.events-overview {
 }
 div.upcoming-events {
 	padding: 0 7% 100px 7%;
+	position: relative;
+	overflow: hidden;
 	@include media('phone') {
 		padding: 0 30px 60px 30px;
 	}
@@ -111,6 +114,21 @@ div.upcoming-events {
 			width: 100%;
 			background-color: white;
 			margin: 25px 0;
+		}
+	}
+	span.script {
+		font-family: var(--font-family-script);
+		color: var(--color-blue);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		transform: translate(100%, 50%);
+		font-size: 60px;
+		line-height: 1;
+		text-transform: lowercase;
+		pointer-events: none;
+		@include media('phone') {
+			display: none;
 		}
 	}
 	div.events {

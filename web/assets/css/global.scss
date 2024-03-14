@@ -7,9 +7,16 @@
     font-style: normal;
     font-weight: 400;
 }
+@font-face {
+	font-family: 'Friendlist';
+	src: url('../fonts/friendlist-regular.woff2') format('woff2');
+	font-style: normal;
+	font-weight: normal;
+}
 :root {
 	--font-family-base: 'Sporting Grotesque', sans-serif;
 	--font-family-mono: 'IBM Plex Mono', monospace;
+	--font-family-script: 'Friendlist', cursive;
 
 	--font-size-base: 16px;
 	--font-size-md: 20px;

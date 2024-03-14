@@ -43,6 +43,7 @@
 					<li v-for="(link, index) in data.pressPage.contact" :key="index"><NuxtLink :to="link.link" target="_blank">{{ link.title }}</NuxtLink></li>
 				</ul>
 			</div>
+			<span class="script">{{ data.pressPage.title }}</span>
 		</div>
 		<NewsletterSignup :title="data.pressPage.newsletterSelection?.active ? data.pressPage.newsletterSelection.title : undefined" :segmentId="data.pressPage.newsletterSelection?.segment" />
 	</div>
@@ -114,6 +115,7 @@ div.press-overview {
 		display: grid;
 		row-gap: 75px;
 		padding: 0 100px 100px 100px;
+		position: relative;
 		@include media('phone') {
 			row-gap: 60px;
 			padding: 0 30px 60px 30px;
@@ -257,7 +259,25 @@ div.press-overview {
 					text-decoration-thickness: 1px;
 					text-underline-offset: 4px;
 				}
-			}	
+			}
+		}
+		span.script {
+			font-family: var(--font-family-script);
+			color: var(--color-pink);
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			transform: translate(50%, -200%) rotate(-90deg);
+			font-size: 60px;
+			line-height: 1;
+			text-transform: lowercase;
+			pointer-events: none;
+			@include media('tablet-portrait') {
+				display: none;
+			}
+			@include media('phone') {
+				display: none;
+			}
 		}
 	}
 }

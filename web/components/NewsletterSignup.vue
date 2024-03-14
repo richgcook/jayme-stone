@@ -13,6 +13,7 @@
 				<FlodeskForm :segmentId="segmentId" />
 			</div>
 		</div>
+		<span class="script">newsletter</span>
 	</div>
 </template>
 
@@ -36,6 +37,8 @@ const props = defineProps({
 div.newsletter-signup {
 	background-color: var(--color-green);
 	height: 666px;
+	position: relative;
+	overflow: hidden;
 	@include media('phone') {
 		height: auto;
 	}
@@ -68,6 +71,21 @@ div.newsletter-signup {
 					display: none;
 				}
 			}
+		}
+	}
+	span.script {
+		font-family: var(--font-family-script);
+		color: var(--color-pink);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		transform: translate(50%, 50%);
+		font-size: 60px;
+		line-height: 1;
+		text-transform: lowercase;
+		pointer-events: none;
+		@include media('phone') {
+			display: none;
 		}
 	}
 }

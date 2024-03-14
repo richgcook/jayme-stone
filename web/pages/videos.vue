@@ -15,6 +15,7 @@
 					/>
 				</div>
 				<GraphicsImageVideo :index="Number(video.imageVideoGraphic?.graphic)" :fill="video.colors?.graphic?.hex" :position="video.imageVideoGraphic?.position" v-if="video.imageVideoGraphic?.active" />
+				<span class="script" :style="{ 'color': video.colors?.text?.hex }" v-if="index == 0">{{ data.videosPage.title }}</span>
 			</div>
 		</div>
 		<NewsletterSignup :title="data.videosPage.newsletterSelection?.active ? data.videosPage.newsletterSelection.title : undefined" :segmentId="data.videosPage.newsletterSelection?.segment" />
@@ -87,6 +88,23 @@ div.videos-layout {
   			width: 100%;
 			position: relative;
 			z-index: 1;
+		}
+		span.script {
+			font-family: var(--font-family-script);
+			position: absolute;
+			top: 0;
+			right: 0;
+			transform: translate(-100px, -50%);
+			font-size: 60px;
+			line-height: 1;
+			text-transform: lowercase;
+			pointer-events: none;
+			@include media('tablet') {
+				display: none;
+			}
+			@include media('phone') {
+				display: none;
+			}
 		}
 	}
 }

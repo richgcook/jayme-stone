@@ -29,6 +29,7 @@
 					:link="`/${data.aboutPage.slug.current}`"
 				/>
 				<RichText :blocks="data.homePage.introduction" />
+				<span class="script">{{ data.aboutPage.title }}</span>
 			</div>
 
 			<div class="block" data-type="graphic" data-graphic-count="2">
@@ -104,6 +105,7 @@
 					</div>	
 				</div>
 				<div class="graphic" :style="{ 'background-color': data.homePage.featuredVideo?.colors?.graphic?.hex }"></div>
+				<span class="script">{{ data.videosPage.title }}</span>
 			</div>
 
 			<div class="block" data-type="projects">
@@ -118,7 +120,7 @@
 						:link="`/${data.projectsPage.slug.current}`"
 					/>
 				</div>
-				<ProjectsCategory :projects="data.homePage.featuredProjects" :isFirst="true" />
+				<ProjectsCategory :projects="data.homePage.featuredProjects" :isFirst="true" :isHome="true" />
 				<div class="graphic"></div>
 			</div>
 
@@ -294,9 +296,25 @@ div.blocks-layout {
 			font-size: var(--font-size-md);
 			line-height: 1.5;
 			padding: 50px 25%;
+			position: relative;
+			overflow: hidden;
 			@include media('phone') {
 				grid-column: 1 / -1;
 				padding: 60px 30px;
+			}
+			span.script {
+				font-family: var(--font-family-script);
+				position: absolute;
+				top: 0;
+				right: 0;
+				transform: translate(-75%, -45%);
+				font-size: 60px;
+				line-height: 1;
+				text-transform: lowercase;
+				pointer-events: none;
+				@include media('phone') {
+					display: none;
+				}
 			}
 		}
 		&[data-type="music"] {
@@ -431,6 +449,20 @@ div.blocks-layout {
 				mask-position: 0 20%;
 				@include media('phone') {
 					mask-position: 0 10%;
+				}
+			}
+			span.script {
+				font-family: var(--font-family-script);
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				transform: translate(50%, -100%) rotate(-90deg);
+				font-size: 60px;
+				line-height: 1;
+				text-transform: lowercase;
+				pointer-events: none;
+				@include media('phone') {
+					display: none;
 				}
 			}
 		}

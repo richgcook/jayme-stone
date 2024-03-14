@@ -1,5 +1,5 @@
 <template>
-	<div class="projects-category" :class="{ '--first': isFirst }">
+	<div class="projects-category" :class="{ '--first': isFirst, '--home': isHome }">
 		<div class="graphic" v-if="!isFirst"></div>
 		<h2 class="category-title" v-if="title">{{ title }}</h2>
 		<div class="projects-layout">
@@ -17,6 +17,7 @@
 				</div>
 			</div>
 		</div>
+		<span class="script" v-if="isFirst">projects</span>
 	</div>
 </template>
 
@@ -53,7 +54,7 @@ const props = defineProps({
 		type: String,
 		default: 'white'
 	},
-	isOverview: {
+	isHome: {
 		type: Boolean,
 		default: false
 	}
@@ -91,6 +92,11 @@ div.projects-category {
 	&.--first {
 		padding-top: 0;
 	}
+	&.--home {
+		span.script {
+			transform: translate(-50%, 50px) rotate(90deg);
+		}
+	}
 	div.graphic {
 		background-color: var(--color-black);
 		mask-image: url('/graphics/projects-integrator.png');
@@ -115,12 +121,31 @@ div.projects-category {
 			margin: 25px 0 35px 0;
 		}
 	}
+	span.script {
+		font-family: var(--font-family-script);
+		color: var(--color-yellow);
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translate(-50%, 150px) rotate(90deg);
+		font-size: 60px;
+		line-height: 1;
+		text-transform: lowercase;
+		pointer-events: none;
+		@include media('tablet-portrait') {
+			display: none;
+		}
+		@include media('phone') {
+			display: none;
+		}
+	}
 }
 div.projects-layout {
 	div.project {
 		display: grid;
 		grid-template-columns: 1fr 2fr;
 		column-gap: 40px;
+		position: relative;
 		@include media('phone') {
 			grid-template-columns: 1fr;
 			row-gap: 10px;

@@ -10,6 +10,8 @@
 				<span></span>
 				<span></span>
 			</button>
+			<span class="script --a">stone</span>
+			<span class="script --b">stone</span>
 		</div>
 		<div class="right">
 			<div class="graphic"></div>
@@ -57,6 +59,9 @@ header {
 					}
 				}
 			}
+			> span.script {
+				color: var(--color-pink);
+			}
 		}
 		div.right {
 			display: none;
@@ -66,6 +71,8 @@ header {
 		display: flex;
 		flex-flow: row nowrap;
 		background-color: var(--color-green);
+		position: relative;
+		overflow: hidden;
 		> a {
 			display: flex;
 			flex-flow: row nowrap;
@@ -73,6 +80,7 @@ header {
 			align-items: center;
 			width: 100%;
 			padding: 0 20px 0 40px;
+			z-index: 1;
 			@include media('phone') {
 				padding: 0 30px;
 			}
@@ -90,6 +98,9 @@ header {
 				border-bottom: 1px solid currentColor;
 				transform: rotate(1deg);
 				transform-origin: left;
+				@include media('tablet-portrait') {
+					display: none;
+				}
 				@include media('phone') {
 					display: none;
 				}
@@ -105,6 +116,7 @@ header {
 			width: 80px;
 			background-color: var(--color-pink);
 			position: relative;
+			z-index: 1;
 			span {
 				position: absolute;
 				top: 50%;
@@ -123,6 +135,33 @@ header {
 				}
 				&:nth-child(3) {
 					transform: translate(-50%, -50%) translateY(7px);
+				}
+			}
+		}
+		> span.script {
+			font-family: var(--font-family-script);
+			position: absolute;
+			font-size: 60px;
+			line-height: 1;
+			text-transform: lowercase;
+			pointer-events: none;
+			&.--a {
+				top: 0;
+				right: 25%;
+				transform: translate(-50%, -50%);
+				@include media('phone') {
+					top: auto;
+					bottom: 0;
+					right: 0;
+					transform: translate(-60px, 0) translate(-50%, 50%);
+				}
+			}
+			&.--b {
+				bottom: 0;
+				left: 0;
+				transform: translate(-65%, 25%);
+				@include media('phone') {
+					display: none;
 				}
 			}
 		}
