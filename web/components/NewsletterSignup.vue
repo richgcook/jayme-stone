@@ -39,6 +39,9 @@ div.newsletter-signup {
 	height: 666px;
 	position: relative;
 	overflow: hidden;
+	@include media('tablet-portrait') {
+		height: 555px;
+	}
 	@include media('phone') {
 		height: auto;
 	}

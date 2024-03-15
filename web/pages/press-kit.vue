@@ -116,7 +116,7 @@ div.press-overview {
 		row-gap: 75px;
 		padding: 0 100px 100px 100px;
 		position: relative;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			row-gap: 60px;
 			padding: 0 30px 60px 30px;
 		}
@@ -126,6 +126,12 @@ div.press-overview {
 					display: grid;
 					grid-template-columns: repeat(6, 1fr);
 					gap: 40px;
+					@include media('tablet-landscape') {
+						grid-template-columns: repeat(4, 1fr);
+					}
+					@include media('tablet-portrait') {
+						grid-template-columns: repeat(3, 1fr);
+					}
 					@include media('phone') {
 						grid-template-columns: 1fr 1fr;
 						gap: 30px 15px;
@@ -166,7 +172,7 @@ div.press-overview {
 								width: 40px;
 								background-color: white;
 								border-radius: 50%;
-								@include media('phone') {
+								@include media('tablet-portrait-and-phone') {
 									height: 30px;
 									width: 30px;
 								}
@@ -182,7 +188,7 @@ div.press-overview {
 									left: 50%;
 									transform: translate(-50%, -50%);
 									height: 19px;
-									@include media('phone') {
+									@include media('tablet-portrait-and-phone') {
 										height: 13px;
 									}
 								}
@@ -196,7 +202,7 @@ div.press-overview {
 					display: grid;
 					grid-template-columns: repeat(3, 1fr);
 					gap: 40px;
-					@include media('phone') {
+					@include media('tablet-portrait-and-phone') {
 						grid-template-columns: 1fr;
 						gap: 15px;
 					}
@@ -234,7 +240,7 @@ div.press-overview {
 							width: 40px;
 							background-color: white;
 							border-radius: 50%;
-							@include media('phone') {
+							@include media('tablet-portrait-and-phone') {
 								height: 30px;
 								width: 30px;
 							}
@@ -244,7 +250,7 @@ div.press-overview {
 								left: 50%;
 								transform: translate(-50%, -50%);
 								height: 19px;
-								@include media('phone') {
+								@include media('tablet-portrait-and-phone') {
 									height: 13px;
 								}
 							}
@@ -272,10 +278,7 @@ div.press-overview {
 			line-height: 1;
 			text-transform: lowercase;
 			pointer-events: none;
-			@include media('tablet-portrait') {
-				display: none;
-			}
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				display: none;
 			}
 		}

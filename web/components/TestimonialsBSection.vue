@@ -32,14 +32,14 @@ div.section {
 	grid-template-columns: 1fr 2fr;
 	background-color: v-bind(sectionBgColor);
 	color: v-bind(sectionTextColor);
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		grid-template-columns: 1fr;
 		padding: 60px 30px;
 	}
 	div.titles {
 		padding: 50px;
 		text-align: center;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			padding: 0 0 30px 0;
 			text-align: left;
 		}
@@ -57,7 +57,7 @@ div.section {
 	div.testimonials {
 		padding: 50px;
 		max-width: 850px;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			padding: 0;
 		}
 		div.testimonial {

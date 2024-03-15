@@ -72,14 +72,14 @@ div.music-layout {
 	div.music {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			grid-template-columns: 1fr;
 		}
 		&:nth-child(even) {
 			> div.image {
 				grid-column: 2;
 				grid-row: 1;
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					grid-column: 1;
 					grid-row: 2;
 				}
@@ -87,7 +87,7 @@ div.music-layout {
 			> div.text {
 				grid-column: 1;
 				grid-row: 1;
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					grid-column: 1;
 					grid-row: 1;
 				}
@@ -101,7 +101,7 @@ div.music-layout {
 			@supports not (aspect-ratio: 1 / 1) {
 				padding-bottom: calc(1 / 1 * 100%);
 			}
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				grid-column: 1;
 				grid-row: 2;
 			}
@@ -121,7 +121,7 @@ div.music-layout {
 			padding: 0 100px;
 			position: relative;
 			overflow: hidden;
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				grid-column: 1;
 				grid-row: 1;
 				padding: 60px 30px;
@@ -160,10 +160,7 @@ div.music-layout {
 				line-height: 1;
 				text-transform: lowercase;
 				pointer-events: none;
-				@include media('tablet') {
-					display: none;
-				}
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					display: none;
 				}
 			}

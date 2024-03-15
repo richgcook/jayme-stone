@@ -24,7 +24,7 @@ const props = defineProps({
 div.page-header {
 	padding: 100px 7% 50px 7%;
 	max-width: calc(50% + 20px);
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		padding: 60px 30px 30px 30px;
 	}
 }

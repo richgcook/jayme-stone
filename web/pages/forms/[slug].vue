@@ -161,12 +161,12 @@ div.form-layout {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	background-color: var(--color-beige);
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		grid-template-columns: 1fr 1fr;
 	}
 	div.graphic {
 		position: relative;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			display: none;
 		}
 	}
@@ -175,7 +175,7 @@ div.form-layout {
 		padding: 90px;
 		display: grid;
 		row-gap: 1.6em;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			grid-column: 1 / -1;
 			padding: 60px 30px;
 		}
@@ -296,6 +296,9 @@ div.form-layout {
 			span.label {
 				flex-shrink: 0;
 			}
+		}
+		> div {
+			display: flex;
 		}
 	}
 }

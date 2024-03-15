@@ -238,7 +238,7 @@ useHead({
 div.blocks-layout {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		grid-template-columns: repeat(2, 1fr);
 	}
 	> div.block {
@@ -246,7 +246,7 @@ div.blocks-layout {
 			grid-column: span 4;
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				grid-column: 1 / -1;
 				grid-template-columns: 1fr;
 			}
@@ -270,7 +270,7 @@ div.blocks-layout {
 				pointer-events: none;
 				position: relative;
 				background-color: var(--color-blue);
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					display: none;
 				}
 				> div {
@@ -298,7 +298,7 @@ div.blocks-layout {
 			padding: 50px 25%;
 			position: relative;
 			overflow: hidden;
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				grid-column: 1 / -1;
 				padding: 60px 30px;
 			}
@@ -312,7 +312,7 @@ div.blocks-layout {
 				line-height: 1;
 				text-transform: lowercase;
 				pointer-events: none;
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					display: none;
 				}
 			}
@@ -320,14 +320,14 @@ div.blocks-layout {
 		&[data-type="music"] {
 			grid-column: span 2;
 			position: relative;
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				grid-column: 1 / -1;
 			}
 			div.inner {
 				padding: 75px 100px 150px 100px;
 				position: relative;
 				z-index: 1;
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					padding: 60px 30px;
 				}
 				h3.title-arrow {
@@ -340,14 +340,14 @@ div.blocks-layout {
 						column-gap: 20px;
 						align-items: baseline;
 						margin-bottom: 10px;
-						@include media('phone') {
+						@include media('tablet-portrait-and-phone') {
 							grid-template-columns: 1fr;
 						}
 						ul.streaming-links {
 							justify-self: flex-end;
 							display: flex;
 							flex-flow: row wrap;
-							@include media('phone') {
+							@include media('tablet-portrait-and-phone') {
 								justify-self: flex-start;
 							}
 							li {
@@ -405,32 +405,32 @@ div.blocks-layout {
 			display: flex;
 			flex-flow: column nowrap;
 			justify-content: flex-end;
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				grid-column: 1 / -1;
 			}
 			div.inner {
 				padding: 75px 100px 150px 100px;
 				position: relative;
 				z-index: 1;
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					padding: 100px 30px 60px 30px;
 				}
 				div.content {
 					margin-top: 100px;
-					@include media('phone') {
+					@include media('tablet-portrait-and-phone') {
 						margin-top: 10px;
 					}
 					h3.title {
 						&.--top {
 							margin-bottom: 10px;
-							@include media('phone') {
+							@include media('tablet-portrait-and-phone') {
 								display: none;
 							}
 						}
 						&.--bottom {
 							margin-top: 10px;
 							display: none;
-							@include media('phone') {
+							@include media('tablet-portrait-and-phone') {
 								display: block;
 							}
 						}
@@ -447,7 +447,7 @@ div.blocks-layout {
 				height: 100%;
 				width: 60%;
 				mask-position: 0 20%;
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					mask-position: 0 10%;
 				}
 			}
@@ -461,7 +461,7 @@ div.blocks-layout {
 				line-height: 1;
 				text-transform: lowercase;
 				pointer-events: none;
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					display: none;
 				}
 			}
@@ -469,13 +469,13 @@ div.blocks-layout {
 		&[data-type="graphic"] {
 			aspect-ratio: 1 / 1;
 			&[data-graphic-count="1"] {
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					grid-row: 2;
 					grid-column: 1;
 				}
 			}
 			&[data-graphic-count="3"] {
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					grid-row: 2;
 					grid-column: 2;
 				}
@@ -485,7 +485,7 @@ div.blocks-layout {
 			&[data-graphic-count="5"],
 			&[data-graphic-count="6"],
 			&[data-graphic-count="7"] {
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					display: none;
 				}
 			}
@@ -495,12 +495,12 @@ div.blocks-layout {
 			background-color: var(--color-beige);
 			position: relative;
 			overflow: hidden;
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				grid-column: 1 / -1;
 			}
 			div.title-container {
 				padding: 100px 7% 50px 7%;
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					padding: 60px 30px 30px 30px;
 				}
 			}

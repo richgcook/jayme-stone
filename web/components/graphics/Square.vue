@@ -46,7 +46,7 @@ div.graphic {
 		width: 100%;
 	}
 	&[data-context="testimonials"] {
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			aspect-ratio: 3 / 1;
 		}
 	}

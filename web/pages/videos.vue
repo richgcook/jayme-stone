@@ -77,7 +77,7 @@ div.videos-layout {
 		@supports (height: 100svh) {
 			height: 80svh;
 		}
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			height: 50vh;
 			@supports (height: 100svh) {
 				height: 50svh;
@@ -99,10 +99,7 @@ div.videos-layout {
 			line-height: 1;
 			text-transform: lowercase;
 			pointer-events: none;
-			@include media('tablet') {
-				display: none;
-			}
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				display: none;
 			}
 		}

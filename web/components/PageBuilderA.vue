@@ -55,7 +55,7 @@ const props = defineProps({
 div.blocks-layout {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		grid-template-columns: 1fr 1fr;
 	}
 	> div.block {
@@ -64,14 +64,14 @@ div.blocks-layout {
 			> div {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					grid-template-columns: 1fr;
 				}
 				&.--flip {
 					> div.image {
 						grid-column: 2;
 						grid-row: 1;
-						@include media('phone') {
+						@include media('tablet-portrait-and-phone') {
 							grid-column: 1;
 							grid-row: 1;
 						}
@@ -79,7 +79,7 @@ div.blocks-layout {
 					> div.text {
 						grid-column: 1;
 						grid-row: 1;
-						@include media('phone') {
+						@include media('tablet-portrait-and-phone') {
 							grid-row: 2;
 						}
 					}
@@ -108,7 +108,7 @@ div.blocks-layout {
 					font-size: var(--font-size-md);
 					line-height: 1.5;
 					padding: 50px 100px;
-					@include media('phone') {
+					@include media('tablet-portrait-and-phone') {
 						padding: 60px 30px;
 					}
 				}
@@ -120,14 +120,14 @@ div.blocks-layout {
 				display: grid;
 				grid-template-columns: repeat(4, 1fr);
 				background-color: var(--color-beige);
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					grid-template-columns: 1fr 1fr;
 				}
 				> div.content {
 					grid-column: 2 / span 2;
 					background-color: var(--color-beige);
 					padding: 90px;
-					@include media('phone') {
+					@include media('tablet-portrait-and-phone') {
 						grid-column: 1 / -1;
 						padding: 60px 30px;
 					}

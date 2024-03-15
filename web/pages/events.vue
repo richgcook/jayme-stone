@@ -102,7 +102,7 @@ div.upcoming-events {
 	padding: 0 7% 100px 7%;
 	position: relative;
 	overflow: hidden;
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		padding: 0 30px 60px 30px;
 	}
 	h2.title {
@@ -127,7 +127,7 @@ div.upcoming-events {
 		line-height: 1;
 		text-transform: lowercase;
 		pointer-events: none;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			display: none;
 		}
 	}
@@ -135,7 +135,7 @@ div.upcoming-events {
 		div.event {
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				grid-template-columns: 1fr;
 				row-gap: 5px;
 			}
@@ -162,18 +162,18 @@ div.events-archive {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	background-color: white;
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		grid-template-columns: 1fr;
 	}
 	&.--no-upcoming-events {
 		margin-top: 50px;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			margin-top: 30px;
 		}
 	}
 	> div.graphic {
 		position: relative;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			aspect-ratio: 3 / 1;
 		}
 	}
@@ -182,7 +182,7 @@ div.events-archive {
 		padding: 90px;
 		display: grid;
 		row-gap: 1.6em;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			grid-column: 1 / -1;
 			padding: 60px 30px;
 		}

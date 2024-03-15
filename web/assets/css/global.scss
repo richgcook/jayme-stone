@@ -44,7 +44,8 @@
 }
 @include media('tablet-portrait') {
 	:root {	
-		
+		--font-size-lg: 30px;
+		--font-size-xl: 60px;
 	}
 }
 @include media('phone') {

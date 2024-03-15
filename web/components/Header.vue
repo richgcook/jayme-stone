@@ -36,7 +36,7 @@ header {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	z-index: 20;
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		grid-template-columns: 1fr;
 	}
 	&.--nav-open {
@@ -81,7 +81,7 @@ header {
 			width: 100%;
 			padding: 0 20px 0 40px;
 			z-index: 1;
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				padding: 0 30px;
 			}
 			span.logo {
@@ -98,10 +98,7 @@ header {
 				border-bottom: 1px solid currentColor;
 				transform: rotate(1deg);
 				transform-origin: left;
-				@include media('tablet-portrait') {
-					display: none;
-				}
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					display: none;
 				}
 			}
@@ -149,7 +146,7 @@ header {
 				top: 0;
 				right: 25%;
 				transform: translate(-50%, -50%);
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					top: auto;
 					bottom: 0;
 					right: 0;
@@ -160,7 +157,7 @@ header {
 				bottom: 0;
 				left: 0;
 				transform: translate(-65%, 25%);
-				@include media('phone') {
+				@include media('tablet-portrait-and-phone') {
 					display: none;
 				}
 			}
@@ -169,7 +166,7 @@ header {
 	div.right {
 		background-color: var(--color-blue);
 		position: relative;
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			display: none;
 		}
 		div.graphic {

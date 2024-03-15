@@ -22,7 +22,7 @@ div.testimonials-header {
 	background-color: var(--color-black);
 	position: relative;
 	overflow: hidden;
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		aspect-ratio: auto;
 		padding-bottom: 0;
 		height: 300px;
@@ -35,6 +35,11 @@ div.testimonials-header {
 		position: absolute;
 		height: 80%;
     	width: 100%;
+		@include media('tablet-portrait') {
+			mask-size: auto 120%;
+			mask-position: -500px 110%;
+			height: 100%;
+		}
 		@include media('phone') {
 			mask-size: auto 110%;
 			mask-position: 150% 150%;

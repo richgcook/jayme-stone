@@ -36,12 +36,12 @@ const shouldHideWhenStacked = (index) => {
 div.testimonials-layout {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		grid-template-columns: 1fr;
 	}
 	> * {
 		&.--hidden-xs {
-			@include media('phone') {
+			@include media('tablet-portrait-and-phone') {
 				display: none;
 			}
 		}
