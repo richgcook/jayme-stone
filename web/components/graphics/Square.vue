@@ -43,7 +43,7 @@ div.graphic {
 	background-color: v-bind(bgColor);
 	&.--cover {
 		height: 100%;
-		width: 100%;
+    	max-width: 100%;
 	}
 	&[data-context="testimonials"] {
 		@include media('tablet-portrait-and-phone') {
