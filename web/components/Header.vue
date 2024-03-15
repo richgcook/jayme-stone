@@ -98,7 +98,7 @@ header {
 				border-bottom: 1px solid currentColor;
 				transform: rotate(1deg);
 				transform-origin: left;
-				@include media('tablet-portrait-and-phone') {
+				@include media('tablet-and-phone') {
 					display: none;
 				}
 			}

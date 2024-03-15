@@ -182,6 +182,9 @@ div.events-archive {
 		padding: 90px;
 		display: grid;
 		row-gap: 1.6em;
+		@include media('tablet-landscape') {
+			padding: 60px;
+		}
 		@include media('tablet-portrait-and-phone') {
 			grid-column: 1 / -1;
 			padding: 60px 30px;

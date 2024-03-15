@@ -27,6 +27,9 @@ div.testimonial {
 	padding: 75px;
 	background-color: v-bind(bgColor);
 	color: v-bind(textColor);
+	@include media('tablet-landscape') {
+		padding: 60px;
+	}
 	@include media('tablet-portrait-and-phone') {
 		padding: 60px 30px;
 	}

@@ -86,7 +86,7 @@ div.projects-category {
 	padding: 100px 7%;
 	background-color: v-bind(bgColor);
 	position: relative;
-	@include media('phone') {
+	@include media('tablet-portrait-and-phone') {
 		padding: 60px 30px;
 	}
 	&.--first {
@@ -132,10 +132,7 @@ div.projects-category {
 		line-height: 1;
 		text-transform: lowercase;
 		pointer-events: none;
-		@include media('tablet-portrait') {
-			display: none;
-		}
-		@include media('phone') {
+		@include media('tablet-portrait-and-phone') {
 			display: none;
 		}
 	}

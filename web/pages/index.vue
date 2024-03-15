@@ -298,6 +298,9 @@ div.blocks-layout {
 			padding: 50px 25%;
 			position: relative;
 			overflow: hidden;
+			@include media('tablet-landscape') {
+				padding: 50px 15%;
+			}
 			@include media('tablet-portrait-and-phone') {
 				grid-column: 1 / -1;
 				padding: 60px 30px;
@@ -402,6 +405,7 @@ div.blocks-layout {
 		&[data-type="video"] {
 			grid-column: span 2;
 			position: relative;
+			overflow: hidden;
 			display: flex;
 			flex-flow: column nowrap;
 			justify-content: flex-end;

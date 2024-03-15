@@ -114,7 +114,7 @@ div.press-overview {
 	div.kit-sections {
 		display: grid;
 		row-gap: 75px;
-		padding: 0 100px 100px 100px;
+		padding: 0 7% 100px 7%;
 		position: relative;
 		@include media('tablet-portrait-and-phone') {
 			row-gap: 60px;

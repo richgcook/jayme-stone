@@ -39,7 +39,8 @@
 }
 @include media('tablet-landscape') {
 	:root {	
-		
+		--font-size-lg: 30px;
+		--font-size-xl: 60px;
 	}
 }
 @include media('tablet-portrait') {

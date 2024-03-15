@@ -121,6 +121,9 @@ div.music-layout {
 			padding: 0 100px;
 			position: relative;
 			overflow: hidden;
+			@include media('tablet-landscape') {
+				padding: 0 60px;
+			}
 			@include media('tablet-portrait-and-phone') {
 				grid-column: 1;
 				grid-row: 1;

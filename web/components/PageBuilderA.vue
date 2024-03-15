@@ -108,6 +108,9 @@ div.blocks-layout {
 					font-size: var(--font-size-md);
 					line-height: 1.5;
 					padding: 50px 100px;
+					@include media('tablet-landscape') {
+						padding: 60px;
+					}
 					@include media('tablet-portrait-and-phone') {
 						padding: 60px 30px;
 					}
@@ -127,6 +130,9 @@ div.blocks-layout {
 					grid-column: 2 / span 2;
 					background-color: var(--color-beige);
 					padding: 90px;
+					@include media('tablet-landscape') {
+						padding: 60px;
+					}
 					@include media('tablet-portrait-and-phone') {
 						grid-column: 1 / -1;
 						padding: 60px 30px;
