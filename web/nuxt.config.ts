@@ -42,7 +42,9 @@ export default defineNuxtConfig({
 
 	modules: [
 		'@nuxtjs/sanity', 
-		'@pinia/nuxt'
+		'@pinia/nuxt',
+		'@nuxtjs/sitemap',
+		'nuxt-fathom',
 	],
 
 	build: {
@@ -54,6 +56,14 @@ export default defineNuxtConfig({
     	'dataset': process.env.SANITY_PROJECT_DATASET,
 		'apiVersion': process.env.SANITY_API_VERSION,
 		'useCdn': false
+	},
+
+	fathom: {
+		siteId: "FHYWDQYE",
+	},
+
+	sitemap: {
+		xsl: false,
 	},
 
 })
