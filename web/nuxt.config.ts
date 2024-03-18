@@ -62,6 +62,10 @@ export default defineNuxtConfig({
 		siteId: "FHYWDQYE",
 	},
 
+	site: {
+		url: process.env.SITE_URL,
+	},
+
 	sitemap: {
 		xsl: false,
 	},
