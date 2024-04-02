@@ -1,5 +1,6 @@
 import { defineField, defineArrayMember } from 'sanity'
-import { TextAlignLeft, Layout } from '@phosphor-icons/react'
+import { Layout } from '@phosphor-icons/react'
+import { DocumentBasedPageBuilderAInput } from '../components/DocumentBasedPageBuilderAInput'
 
 export default defineField({
 	type: 'array',
@@ -135,5 +136,58 @@ export default defineField({
 				}
 			}
 		}),
-	]
+		defineArrayMember({
+			type: 'object',
+			title: 'Press kit',
+			name: 'pressKitBlock',
+			fields: [
+				defineField({
+					type: 'array',
+					title: 'Content',
+					name: 'content',
+					of: [
+						defineArrayMember({
+							type: 'object',
+							title: 'Photos',
+							name: 'photosBlock',
+							fields: [
+								defineField({
+									type: 'pressKitPhotos',
+									title: 'Photos',
+									name: 'photos',
+								}),
+							],
+						}),
+						defineArrayMember({
+							type: 'object',
+							title: 'Resources',
+							name: 'resourcesBlock',
+							fields: [
+								defineField({
+									type: 'pressKitResources',
+									title: 'Resources',
+									name: 'resources',
+								}),
+							],
+						}),
+						defineArrayMember({
+							type: 'object',
+							title: 'Contact',
+							name: 'contactBlock',
+							fields: [
+								defineField({
+									type: 'pressKitContact',
+									title: 'Contact',
+									name: 'contact',
+								}),
+							],
+						}),
+					]
+				}),
+			]
+		}),
+	],
+	components: {
+    	input: DocumentBasedPageBuilderAInput,
+    },
 })

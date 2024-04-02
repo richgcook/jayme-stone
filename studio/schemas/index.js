@@ -23,6 +23,9 @@ import colorPicker from './objects/colorPicker'
 import colorPickerSelect from './objects/colorPickerSelect'
 import pageBuilderA from './objects/pageBuilderA'
 import pageBuilderB from './objects/pageBuilderB'
+import pressKitPhotos from './objects/pressKitPhotos'
+import pressKitResources from './objects/pressKitResources'
+import pressKitContact from './objects/pressKitContact'
 import testimonialsA from './objects/testimonialsA'
 import testimonialsB from './objects/testimonialsB'
 import newsletterSelection from './objects/newsletterSelection'
@@ -59,6 +62,9 @@ export const schemaTypes = [
 	colorPickerSelect,
 	pageBuilderA,
 	pageBuilderB,
+	pressKitPhotos,
+	pressKitResources,
+	pressKitContact,
 	testimonialsA,
 	testimonialsB,
 	newsletterSelection,

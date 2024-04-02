@@ -11,6 +11,10 @@ export const useBlockType = (type) => {
 		case 'videoRefBlock': return 'video-ref'
 		case 'pressBlock': return 'press'
 		case 'pressItem': return 'press-item'
+		case 'pressKitBlock': return 'press-kit'
+		case 'photosBlock': return 'photos'
+		case 'resourcesBlock': return 'resources'
+		case 'contactBlock': return 'contact'
 		default: return
 	}
 }

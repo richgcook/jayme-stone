@@ -121,6 +121,31 @@ const pageBuilderAQuery =
 		},
 		colors,
 	},
+	_type == "pressKitBlock" => {
+		content[] {
+			_type,
+			_type == "photosBlock" => {
+				photos[] {
+					image {
+						${imageQuery}
+					},
+					title, credits,
+					"file": file.asset->url
+				},
+			},
+			_type == "resourcesBlock" => {
+				resources[] {
+					title,
+					"file": file.asset->url
+				},
+			},
+			_type == "contactBlock" => {
+				contact[] {
+					title, link
+				},
+			},
+		},
+	},
 	`
 
 export default defineNuxtPlugin(nuxtApp => {

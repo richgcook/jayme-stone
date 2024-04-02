@@ -38,6 +38,16 @@
 				</div>
 			</div>
 
+			<div v-else-if="useBlockType(block._type) == 'press-kit'">
+				<div class="kit-sections">
+					<template v-for="(block, index) in block.content">
+						<PressKitPhotos :downloads="block.photos" :key="index" v-if="useBlockType(block._type) == 'photos'" />
+						<PressKitResources :downloads="block.resources" :key="index" v-if="useBlockType(block._type) == 'resources'" />
+						<PressKitContact :links="block.contact" :key="index" v-if="useBlockType(block._type) == 'contact'" />
+					</template>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </template>
@@ -139,6 +149,31 @@ div.blocks-layout {
 					}
 					div.blocks-layout {
 						grid-template-columns: 1fr;
+					}
+				}
+			}
+		}
+		&[data-type="press-kit"] {
+			grid-column: 1 / -1;
+			background-color: var(--color-beige);
+			div.kit-sections {
+				display: grid;
+				row-gap: 75px;
+				padding: 100px 7%;
+				position: relative;
+				@include media('tablet-portrait-and-phone') {
+					row-gap: 60px;
+					padding: 0 30px 60px 30px;
+				}
+				:deep(h2.section-title) {
+					color: var(--color-green);
+					&:after {
+						content: '';
+						display: block;
+						height: 1px;
+						width: 100%;
+						background-color: white;
+						margin: 25px 0 35px 0;
 					}
 				}
 			}
