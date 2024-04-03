@@ -16,6 +16,9 @@ import pressPage from './documents/pressPage'
 import form from './documents/form'
 import settingsGeneral from './documents/settingsGeneral'
 
+import agencyClient from './documents/agencyClient'
+import agencyPage from './documents/agencyPage'
+
 import richText from './objects/richText'
 import altTag from './objects/altTag'
 import seo from './objects/seo'
@@ -53,6 +56,9 @@ export const schemaTypes = [
 	form,
 
 	settingsGeneral,
+
+	agencyClient,
+	agencyPage,
 
 	// Objects
 	richText,

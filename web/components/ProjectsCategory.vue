@@ -17,7 +17,7 @@
 				</div>
 			</div>
 		</div>
-		<span class="script" v-if="isFirst">projects</span>
+		<span class="script" v-if="isFirst && !isAgency">projects</span>
 	</div>
 </template>
 
@@ -57,10 +57,15 @@ const props = defineProps({
 	isHome: {
 		type: Boolean,
 		default: false
+	},
+	isAgency: {
+		type: Boolean,
+		default: false
 	}
 })
 
 const linkUrl = (project) => {
+	if (props.isAgency) return `/agency/${project.slug.current}`
 	if (project.externalLink && project.externalLink.url) return project.externalLink.url
 	return project.externalLink ? project.externalLink : `/projects/${project.slug.current}`
 }

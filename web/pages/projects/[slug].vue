@@ -7,7 +7,7 @@
 
 <script setup>
 
-const { $seoQuery, $richTextQuery, $imageQuery, $pageBuilderAQuery } = useNuxtApp()
+const { $seoQuery, $pageBuilderAQuery } = useNuxtApp()
 
 const route = useRoute()
 
@@ -20,7 +20,6 @@ const query = groq`{
 		pageBuilder[] {
 			${$pageBuilderAQuery}
 		},
-		newsletterSelection
 	}[0],
 
 	"projectsPage": *[_type == "projectsPage"] {

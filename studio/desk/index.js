@@ -5,6 +5,7 @@ import { projectsStructure } from './projects'
 import { musicStructure } from './music'
 import { videosStructure } from './videos'
 import { settingsStructure } from './settingsGeneral'
+import { agencyStructure } from './agency'
 
 const hiddenDocTypes = listItem => 
 	![
@@ -22,6 +23,8 @@ const hiddenDocTypes = listItem =>
 		'pageA',
 		'form',
 		'settingsGeneral',
+		'agencyClient',
+		'agencyPage',
 	]
 .includes(listItem.getId())
 
@@ -66,6 +69,8 @@ export const deskStructure = (S, context) =>
 			.schemaType('pressPage')
 			.documentId('pressPage')
 		),
+
+		agencyStructure(S, context),
 
 		S.documentTypeListItem('pageA').title('Pages').icon(DocumentsIcon),
 

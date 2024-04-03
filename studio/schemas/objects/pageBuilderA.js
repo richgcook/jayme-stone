@@ -1,5 +1,5 @@
 import { defineField, defineArrayMember } from 'sanity'
-import { Layout } from '@phosphor-icons/react'
+import { Layout, Folders, Images, Files, ShareNetwork } from '@phosphor-icons/react'
 import { DocumentBasedPageBuilderAInput } from '../components/DocumentBasedPageBuilderAInput'
 
 export default defineField({
@@ -157,6 +157,19 @@ export default defineField({
 									name: 'photos',
 								}),
 							],
+							preview: {
+								select: {
+									photos: 'photos',
+								},
+								prepare(selection) {
+									const { photos } = selection
+									const photosLength = typeof photos == 'object' ? Object.keys(photos)?.length : photos?.length
+									return {
+										title: `Photos (${photosLength})`,
+										media: Images
+									}
+								},
+							},
 						}),
 						defineArrayMember({
 							type: 'object',
@@ -169,10 +182,23 @@ export default defineField({
 									name: 'resources',
 								}),
 							],
+							preview: {
+								select: {
+									resources: 'resources',
+								},
+								prepare(selection) {
+									const { resources } = selection
+									const resourcesLength = typeof resources == 'object' ? Object.keys(resources)?.length : resources?.length
+									return {
+										title: `Resources (${resourcesLength})`,
+										media: Files
+									}
+								},
+							},
 						}),
 						defineArrayMember({
 							type: 'object',
-							title: 'Contact',
+							title: 'Links',
 							name: 'contactBlock',
 							fields: [
 								defineField({
@@ -181,10 +207,36 @@ export default defineField({
 									name: 'contact',
 								}),
 							],
+							preview: {
+								select: {
+									contact: 'contact',
+								},
+								prepare(selection) {
+									const { contact } = selection
+									const contactLength = typeof contact == 'object' ? Object.keys(contact)?.length : contact?.length
+									return {
+										title: `Links (${contactLength})`,
+										media: ShareNetwork
+									}
+								},
+							},
 						}),
 					]
 				}),
-			]
+			],
+			preview: {
+				select: {
+					content: 'content'
+				},
+				prepare(selection) {
+					const { content } = selection
+					const contentLength = typeof content == 'object' ? Object.keys(content)?.length : content?.length
+					return {
+						title: `Press kit (${contentLength} ${contentLength > 1 ? 'items' : 'item'})`,
+						media: Folders
+					}
+				}
+			}
 		}),
 	],
 	components: {
