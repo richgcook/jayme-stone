@@ -8,4 +8,6 @@ export const PAGE_REFERENCES = [
 	{ type: 'eventsPage' },
 	{ type: 'pressPage' },
 	{ type: 'form' },
+	{ type: 'agencyPage' },
+	{ type: 'agencyClient' },
   ]

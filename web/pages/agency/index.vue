@@ -1,8 +1,7 @@
 <template>
-	<div class="projects-overview">
+	<div class="agency-overview">
 		<PageHeader :title="data.agencyPage.title" />
 		<ProjectsCategory :projects="data.agencyClients" :isFirst="true" :isAgency="true" />
-		<NewsletterSignup :title="data.agencyPage.newsletterSelection?.active ? data.agencyPage.newsletterSelection.title : undefined" :segmentId="data.agencyPage.newsletterSelection?.segment" />
 	</div>
 </template>
 
@@ -51,7 +50,7 @@ useHead({
 
 <style lang="scss" scoped>
 
-div.projects-overview {
+div.agency-overview {
 	background-color: var(--color-beige);
 }
 

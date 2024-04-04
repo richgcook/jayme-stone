@@ -1,6 +1,6 @@
 <template>
 	<div class="contact">
-		<h2 class="section-title">Contact</h2>
+		<h2 class="section-title">{{ sectionTitle }}</h2>
 		<ul>
 			<li v-for="(link, index) in links" :key="index"><NuxtLink :to="link.link" target="_blank">{{ link.title }}</NuxtLink></li>
 		</ul>
@@ -10,7 +10,11 @@
 <script setup>
 
 const props = defineProps({
-	links: Array
+	links: Array,
+	sectionTitle: {
+		type: String,
+		default: 'Contact'
+	}
 })
 
 </script>

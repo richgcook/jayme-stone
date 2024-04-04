@@ -43,7 +43,7 @@
 					<template v-for="(block, index) in block.content">
 						<PressKitPhotos :downloads="block.photos" :key="index" v-if="useBlockType(block._type) == 'photos'" />
 						<PressKitResources :downloads="block.resources" :key="index" v-if="useBlockType(block._type) == 'resources'" />
-						<PressKitContact :links="block.contact" :key="index" v-if="useBlockType(block._type) == 'contact'" />
+						<PressKitContact :links="block.contact" :sectionTitle="`Links`" :key="index" v-if="useBlockType(block._type) == 'contact'" />
 					</template>
 				</div>
 			</div>

@@ -5,7 +5,7 @@ export const DocumentBasedPageBuilderBInput = (props) => {
 	const documentType = useFormValue(['_type'])
 
 	const allowedTypes =
-		documentType == 'project'
+		documentType == 'project' || documentType == 'agencyClient'
 			? schemaType.of
 			: schemaType.of.filter((type) => !['pressBlock'].includes(type.name))
 
