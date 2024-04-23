@@ -26,6 +26,8 @@ import colorPicker from './objects/colorPicker'
 import colorPickerSelect from './objects/colorPickerSelect'
 import pageBuilderA from './objects/pageBuilderA'
 import pageBuilderB from './objects/pageBuilderB'
+import eventUpcoming from './objects/eventUpcoming'
+import eventArchiveCategory from './objects/eventArchiveCategory'
 import pressKitPhotos from './objects/pressKitPhotos'
 import pressKitResources from './objects/pressKitResources'
 import pressKitContact from './objects/pressKitContact'
@@ -68,6 +70,8 @@ export const schemaTypes = [
 	colorPickerSelect,
 	pageBuilderA,
 	pageBuilderB,
+	eventUpcoming,
+	eventArchiveCategory,
 	pressKitPhotos,
 	pressKitResources,
 	pressKitContact,

@@ -48,6 +48,13 @@
 				</div>
 			</div>
 
+			<div v-else-if="useBlockType(block._type) == 'events'">
+				<template v-for="(block, index) in block.content">
+					<EventsUpcoming :events="block.upcomingEvents" :key="index" v-if="useBlockType(block._type) == 'events-upcoming'" />
+					<EventsArchive :eventsByCategory="block.eventsArchive" :key="index" v-if="useBlockType(block._type) == 'events-archive'" />
+				</template>
+			</div>
+
 		</div>
 	</div>
 </template>
@@ -177,6 +184,10 @@ div.blocks-layout {
 					}
 				}
 			}
+		}
+		&[data-type="events"] {
+			grid-column: 1 / -1;
+			background-color: var(--color-beige);
 		}
 	}
 }

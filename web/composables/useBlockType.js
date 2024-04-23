@@ -15,6 +15,9 @@ export const useBlockType = (type) => {
 		case 'photosBlock': return 'photos'
 		case 'resourcesBlock': return 'resources'
 		case 'contactBlock': return 'contact'
+		case 'eventsBlock': return 'events'
+		case 'upcomingEventsBlock': return 'events-upcoming'
+		case 'eventsArchiveBlock': return 'events-archive'
 		default: return
 	}
 }

@@ -1,5 +1,5 @@
 import { defineField, defineArrayMember } from 'sanity'
-import { Layout, Folders, Images, Files, ShareNetwork } from '@phosphor-icons/react'
+import { Layout, Folders, Calendar, Playlist, Images, Files, ShareNetwork } from '@phosphor-icons/react'
 import { DocumentBasedPageBuilderAInput } from '../components/DocumentBasedPageBuilderAInput'
 
 export default defineField({
@@ -234,6 +234,98 @@ export default defineField({
 					return {
 						title: `Press kit (${contentLength} ${contentLength > 1 ? 'items' : 'item'})`,
 						media: Folders
+					}
+				}
+			}
+		}),
+		defineArrayMember({
+			type: 'object',
+			title: 'Events',
+			name: 'eventsBlock',
+			fields: [
+				defineField({
+					type: 'array',
+					title: 'Content',
+					name: 'content',
+					of: [
+						defineArrayMember({
+							type: 'object',
+							title: 'Upcoming events',
+							name: 'upcomingEventsBlock',
+							fields: [
+								defineField({
+									type: 'array',
+									title: 'Upcoming events',
+									name: 'upcomingEvents',
+									of: [
+										defineArrayMember({
+											type: 'eventUpcoming',
+											title: 'Event',
+											name: 'event',
+										}),
+									]
+								}),
+							],
+							preview: {
+								select: {
+									events: 'upcomingEvents',
+								},
+								prepare(selection) {
+									const { events } = selection
+									const eventsLength = typeof events == 'object' ? Object.keys(events)?.length : events?.length
+									return {
+										title: `Upcoming events (${eventsLength})`,
+										media: Calendar
+									}
+								},
+							},
+						}),
+						defineArrayMember({
+							type: 'object',
+							title: 'Performance highlights',
+							name: 'eventsArchiveBlock',
+							fields: [
+								defineField({
+									type: 'array',
+									title: 'Performance highlights',
+									name: 'eventsArchive',
+									of: [
+										defineArrayMember({
+											type: 'eventArchiveCategory',
+											title: 'Category',
+											name: 'category',
+										}),
+									]
+								}),
+							],
+							preview: {
+								select: {
+									eventsCategories: 'eventsArchive',
+								},
+								prepare(selection) {
+									const { eventsCategories } = selection
+									const categoriesLength = typeof eventsCategories == 'object' ? Object.keys(eventsCategories)?.length : eventsCategories?.length
+									return {
+										title: `Performance highlights (${categoriesLength})`,
+										media: Playlist
+									}
+								},
+							},
+						}),
+					],
+					validation: Rule => Rule.required().min(1).max(2)
+				}),
+			],
+			preview: {
+				select: {
+					content: 'content'
+				},
+				prepare(selection) {
+					const { content } = selection
+					const contentLength = typeof content == 'object' ? Object.keys(content)?.length : content?.length
+					return {
+						title: `Events (${contentLength} ${contentLength > 1 ? 'items' : 'item'})`,
+						media: Calendar
 					}
 				}
 			}

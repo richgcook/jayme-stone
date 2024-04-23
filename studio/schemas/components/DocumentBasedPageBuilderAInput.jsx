@@ -7,7 +7,7 @@ export const DocumentBasedPageBuilderAInput = (props) => {
 	const allowedTypes =
 		documentType == 'agencyClient'
 			? schemaType.of
-			: schemaType.of.filter((type) => !['pressKitBlock'].includes(type.name))
+			: schemaType.of.filter((type) => !['pressKitBlock', 'eventsBlock'].includes(type.name))
 
 	return renderDefault({...props, schemaType: {...schemaType, of: allowedTypes}})
 }

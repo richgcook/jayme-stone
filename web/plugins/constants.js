@@ -146,6 +146,28 @@ const pageBuilderAQuery =
 			},
 		},
 	},
+	_type == "eventsBlock" => {
+		content[] {
+			_type,
+			_type == "upcomingEventsBlock" => {
+				upcomingEvents[dateTime(endDate + "T23:59:59Z") >= dateTime(now())] {
+					dates, endDate,
+					location[] {
+						${richTextQuery}
+					},
+					details
+				}
+			},
+			_type == "eventsArchiveBlock" => {
+				eventsArchive[] {
+					title, 
+					events[] {
+						${richTextQuery}
+					},
+				}
+			},
+		}
+	},
 	`
 
 export default defineNuxtPlugin(nuxtApp => {
