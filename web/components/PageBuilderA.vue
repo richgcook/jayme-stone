@@ -7,7 +7,7 @@
 				<div class="image">
 					<Img
 						:src="block.image.asset.url"
-						:alt="block.image.asset.alt"
+						:alt="block.image.alt"
 					/>
 					<GraphicsImageVideo :index="Number(block.imageVideoGraphic?.graphic)" :fill="block.colors?.graphic?.hex" :position="block.imageVideoGraphic?.position" v-if="block.imageVideoGraphic?.active" />
 				</div>

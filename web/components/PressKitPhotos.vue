@@ -6,7 +6,7 @@
 				<NuxtLink :to="download.file" class="image">
 					<Img
 						:src="download.image.asset.url"
-						:alt="download.image.asset.alt"
+						:alt="download.image.alt"
 					/>
 				</NuxtLink>
 				<div class="text">

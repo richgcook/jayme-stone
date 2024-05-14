@@ -3,7 +3,7 @@
 		<div class="inner">
 			<RichText :blocks="testimonial.text" />
 			<div class="referrer">
-				<Img :src="testimonial.referrer.image.asset.url" :alt="testimonial.referrer.image.asset.alt" v-if="testimonial.referrer.image" />
+				<Img :src="testimonial.referrer.image.asset.url" :alt="testimonial.referrer.image.alt" v-if="testimonial.referrer.image" />
 				<h5><span>{{ testimonial.referrer.firstNames }}</span><span v-if="testimonial.referrer.lastNames">{{ testimonial.referrer.lastNames }}</span></h5>
 			</div>
 		</div>

@@ -5,7 +5,7 @@
 				<div class="image">
 					<Img
 						:src="music.featuredImage.asset.url"
-						:alt="music.featuredImage.asset.alt"
+						:alt="music.featuredImage.alt"
 					/>
 				</div>
 				<div class="text" :style="{ 'background-color': music.colors?.bg?.hex, 'color': music.colors?.text?.hex }">

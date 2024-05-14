@@ -7,7 +7,7 @@
 				<NuxtLink :to="linkUrl(project)" :target="externalLinkTarget(project)" class="image">
 					<Img
 						:src="project.featuredImage.asset.url"
-						:alt="project.featuredImage.asset.alt"
+						:alt="project.featuredImage.alt"
 					/>
 				</NuxtLink>
 				<div class="text">

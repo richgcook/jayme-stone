@@ -10,7 +10,7 @@
 			<div v-else-if="useBlockType(block._type) == 'image'">
 				<ImgWithRatio 
 					:src="block.image.asset.url"
-					:alt="block.image.asset.alt"
+					:alt="block.image.alt"
 					:ratio="block.image.asset.ratio"
 				/>
 				<RichText :blocks="block.caption" v-if="block.caption?.length" />

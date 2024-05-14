@@ -6,7 +6,7 @@
 				<div class="image">
 					<Img
 						:src="data.homePage.featuredImage.image.asset.url"
-						:alt="data.homePage.featuredImage.image.asset.alt"
+						:alt="data.homePage.featuredImage.image.alt"
 					/>
 					<GraphicsImageVideo :index="Number(data.homePage.featuredImage.imageVideoGraphic?.graphic)" :fill="data.homePage.featuredImage.colors?.graphic?.hex" :position="data.homePage.featuredImage.imageVideoGraphic?.position" v-if="data.homePage.featuredImage.imageVideoGraphic?.active" />
 				</div>
@@ -74,7 +74,7 @@
 						<div class="image">
 							<Img
 								:src="data.homePage.featuredMusic.music.featuredImage.asset.url"
-								:alt="data.homePage.featuredMusic.music.featuredImage.asset.alt"
+								:alt="data.homePage.featuredMusic.music.featuredImage.alt"
 							/>
 						</div>
 					</div>	

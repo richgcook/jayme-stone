@@ -2,7 +2,7 @@
 	<div class="track">
 		<div class="image-controls">
 			<div class="image">
-				<Img :src="track.image.asset.url" :alt="track.image.asset.alt" />
+				<Img :src="track.image.asset.url" :alt="track.image.alt" />
 			</div>
 			<div>
 				<AudioPlayer 
