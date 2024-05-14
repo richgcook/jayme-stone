@@ -36,7 +36,7 @@ const { title, description, image, bodyClass } = useMetaBodyHelpers(data?.value.
 
 useHead({
 	title: title.value,
-	meta: useCreateSeoMeta({
+	meta: useSeoFields({
 		title: title.value,
 		description: description.value,
 		image: image.value
