@@ -42,12 +42,18 @@ div.graphic {
 	position: relative;
 	background-color: v-bind(bgColor);
 	&.--cover {
+		aspect-ratio: auto;
 		height: 100%;
     	max-width: 100%;
 	}
 	&[data-context="testimonials"] {
 		@include media('tablet-portrait-and-phone') {
 			aspect-ratio: 3 / 1;
+		}
+		&.--cover {
+			@include media('tablet-portrait-and-phone') {
+				aspect-ratio: 3 / 1;
+			}
 		}
 	}
 	> div {
