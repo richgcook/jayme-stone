@@ -70,4 +70,16 @@ export default defineNuxtConfig({
 		xsl: false,
 	},
 
+	routeRules: {
+
+		// Redirects
+		'/agency/danaya': {
+			redirect: {
+				to: '/agency/djekady',
+				statusCode: 301 
+			},
+		},
+
+	},
+
 })
