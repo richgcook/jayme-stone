@@ -33,6 +33,13 @@ export default defineType({
 			name: 'introduction',
 		}),
 		defineField({
+			type: 'text',
+			title: 'Embed code',
+			name: 'embedCode',
+			rows: 6,
+			description: 'If you have an embeddable form then you can add the embed code here which will replace the form below'
+		}),
+		defineField({
 			type: 'array',
 			title: 'Form',
 			name: 'formFields',

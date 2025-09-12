@@ -13,47 +13,52 @@
 					:label="data?.form.subtitle"
 				/>
 				<RichText :blocks="data?.form.introduction" />
-				<form 
-					:name="route.params.slug" 
-					method="POST" 
-					@submit.prevent="submitForm"
-					ref="form"
-					v-show="!formSuccess"
-				>
-					<input type="hidden" name="form-title" :value="data?.form.title" />
-					<input type="hidden" name="form-name" :value="data?.form.slug.current" />
+				<template v-if="data?.form.embedCode">
+					<div v-html="data.form.embedCode"></div>
+				</template>
+				<template v-else>
+					<form 
+						:name="route.params.slug" 
+						method="POST" 
+						@submit.prevent="submitForm"
+						ref="form"
+						v-show="!formSuccess"
+					>
+						<input type="hidden" name="form-title" :value="data?.form.title" />
+						<input type="hidden" name="form-name" :value="data?.form.slug.current" />
 
-					<input type="text" name="usercode" tabindex="-1" value="" autocomplete="off" />
+						<input type="text" name="usercode" tabindex="-1" value="" autocomplete="off" />
 
-					<template v-for="(field, index) in data?.form.formFields">
+						<template v-for="(field, index) in data?.form.formFields">
 
-						<input type="text" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :required="field.required" :key="index" v-if="field._type === 'textInput'" />
+							<input type="text" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :required="field.required" :key="index" v-if="field._type === 'textInput'" />
 
-						<input type="email" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :required="field.required" :key="index" v-if="field._type === 'emailInput'" />
+							<input type="email" :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :required="field.required" :key="index" v-if="field._type === 'emailInput'" />
 
-						<div v-if="field._type === 'textarea'" :key="index">
-							<textarea :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :required="field.required" rows="5" ></textarea>
-						</div>
+							<div v-if="field._type === 'textarea'" :key="index">
+								<textarea :name="sanitizeFieldLabel(field.label)" :placeholder="field.label" :required="field.required" rows="5" ></textarea>
+							</div>
 
-						<div v-if="field._type === 'select'" :key="index">
-							<select :name="sanitizeFieldLabel(field.label)" :required="field.required">
-								<option value="" disabled selected>{{ field.label }}</option>
-								<option v-for="option in field.options" :key="option._key" :value="option">{{ option }}</option>
-							</select>
-						</div>
+							<div v-if="field._type === 'select'" :key="index">
+								<select :name="sanitizeFieldLabel(field.label)" :required="field.required">
+									<option value="" disabled selected>{{ field.label }}</option>
+									<option v-for="option in field.options" :key="option._key" :value="option">{{ option }}</option>
+								</select>
+							</div>
 
-					</template>
+						</template>
 
-					<button type="submit" :disabled="formSending">
-						<span class="label">{{ data?.form.submitLabel }}</span>
-						<span class="line-arrow">
-							<span class="line"></span>
-							<SymbolArrowHeadNext :fill="`var(--color-beige)`" />
-						</span>
-					</button>
-				</form>
-				<div class="message" v-show="formSuccess">{{ formMessage }}</div>
-				<div class="message --error" v-show="formError">{{ formMessage }}</div>
+						<button type="submit" :disabled="formSending">
+							<span class="label">{{ data?.form.submitLabel }}</span>
+							<span class="line-arrow">
+								<span class="line"></span>
+								<SymbolArrowHeadNext :fill="`var(--color-beige)`" />
+							</span>
+						</button>
+					</form>
+					<div class="message" v-show="formSuccess">{{ formMessage }}</div>
+					<div class="message --error" v-show="formError">{{ formMessage }}</div>
+				</template>
 			</div>
 			<div>
 				<GraphicsRectangleY :index="5" :isFullColor="true" />
@@ -79,6 +84,7 @@ const query = groq`{
 		introduction[] {
 			${$richTextQuery}
 		},
+		embedCode,
 		formFields,
 		submitLabel, successMessage, newsletterSelection
 	}[0],
