@@ -3,9 +3,15 @@
 		<div class="music-layout">
 			<div v-for="(music, index) in data.music" :key="music._id" class="music">
 				<div class="image">
-					<Img
-						:src="music.featuredImage.asset.url"
+					<NuxtImg
+						loading="lazy"
+						:src="music.featuredImage.assetRef"
 						:alt="music.featuredImage.alt"
+						sizes="100vw phone:100vw tablet-portrait:50vw tablet-landscape:50vw laptop:50vw desktop:50vw"
+						width="1"
+						height="1"
+						fit="cover"
+						:modifiers="buildImageModifiers(music.featuredImage)"
 					/>
 				</div>
 				<div class="text" :style="{ 'background-color': music.colors?.bg?.hex, 'color': music.colors?.text?.hex }">

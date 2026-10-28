@@ -8,11 +8,17 @@
 			</div>
 
 			<div v-else-if="useBlockType(block._type) == 'image'">
-				<ImgWithRatio 
-					:src="block.image.asset.url"
-					:alt="block.image.alt"
-					:ratio="block.image.asset.ratio"
-				/>
+				<div class="image" :style="{ 'aspect-ratio': block.image.asset.ratio }">
+					<NuxtImg
+						loading="lazy"
+						:src="block.image.assetRef"
+						:alt="block.image.alt"
+						:width="block.image.asset.width"
+						:height="block.image.asset.height"
+						sizes="100vw phone:100vw tablet-portrait:50vw tablet-landscape:50vw laptop:50vw desktop:50vw"
+						:modifiers="buildImageModifiers(block.image)"
+					/>
+				</div>
 				<RichText :blocks="block.caption" v-if="block.caption?.length" />
 			</div>
 
@@ -26,6 +32,7 @@
 								:html="video.embedCode" 
 								:buttonColor="video.colors?.button?.hex" 
 								:iconColor="video.colors?.icon?.hex"
+								sizes="100vw phone:100vw tablet-portrait:50vw tablet-landscape:50vw laptop:50vw desktop:50vw"
 							/>
 							<h3>{{ video.title }}</h3>
 						</div>
@@ -35,6 +42,7 @@
 								:html="video.video.embedCode" 
 								:buttonColor="video.video.colors?.button?.hex" 
 								:iconColor="video.video.colors?.icon?.hex"
+								sizes="100vw phone:100vw tablet-portrait:50vw tablet-landscape:50vw laptop:50vw desktop:50vw"
 							/>
 							<h3>{{ video.video.title }}</h3>
 						</div>
@@ -87,6 +95,17 @@ div.blocks-layout {
 		&[data-type="text"] {
 			max-width: 850px;
 			margin: 0 auto;
+		}
+		&[data-type="image"] {
+			div.image {
+				position: relative;
+				img {
+					position: absolute;
+					inset: 0;
+					height: 100%;
+					width: 100%;
+				}
+			}
 		}
 		&[data-type="videos"] {
 			div.videos {

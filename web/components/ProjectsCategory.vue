@@ -5,9 +5,15 @@
 		<div class="projects-layout">
 			<div v-for="project in projects" :key="project._id" class="project">
 				<NuxtLink :to="linkUrl(project)" :target="externalLinkTarget(project)" class="image">
-					<Img
-						:src="project.featuredImage.asset.url"
+					<NuxtImg
+						loading="lazy"
+						:src="project.featuredImage.assetRef"
 						:alt="project.featuredImage.alt"
+						sizes="100vw phone:30vw tablet-portrait:30vw tablet-landscape:30vw laptop:30vw desktop:30vw"
+						width="1"
+						height="1"
+						fit="cover"
+						:modifiers="buildImageModifiers(project.featuredImage)"
 					/>
 				</NuxtLink>
 				<div class="text">

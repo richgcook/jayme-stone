@@ -17,6 +17,9 @@ const richTextQuery =
 const imageQuery = 
 	`
 	alt,
+	crop,
+	hotspot,
+	"assetRef": asset._ref,
 	asset->{
 		_id,
 		url,

@@ -9,7 +9,17 @@
 				:label="pageTitle"
 				v-if="isOverview && isFirst && pageTitle"
 			/>
-			<Img :src="poster.asset.url" :alt="poster.alt" v-if="poster" />
+			<NuxtImg
+				loading="lazy"
+				v-if="poster?.assetRef"
+				:src="poster.assetRef"
+				:alt="poster.alt"
+				:sizes="sizes"
+				width="16"
+				height="9"
+				fit="cover"
+				:modifiers="buildImageModifiers(poster)"
+			/>
 			<button @click="playInitiated = true" :class="{ '--sm': size == 'sm' }"><SymbolPlay :fill="iconColor" /></button>
 			<h3 class="title" v-if="isOverview && title">{{ title }}</h3>
 		</div>
@@ -36,6 +46,10 @@ const props = defineProps({
 	buttonColor: String,
 	iconColor: String,
 	size: String,
+	sizes: {
+		type: String,
+		default: '100vw phone:80vw tablet-portrait:80vw tablet-landscape:80vw laptop:80vw desktop:80vw'
+	},
 	isOverview: {
 		type: Boolean,
 		default: false

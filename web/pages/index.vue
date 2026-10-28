@@ -4,9 +4,17 @@
 
 			<div class="block" data-type="featured-image" v-if="data.homePage.featuredImage?.image">
 				<div class="image">
-					<Img
-						:src="data.homePage.featuredImage.image.asset.url"
+					<NuxtImg
+						:src="data.homePage.featuredImage.image.assetRef"
 						:alt="data.homePage.featuredImage.image.alt"
+						sizes="100vw phone:100vw tablet-portrait:50vw tablet-landscape:50vw laptop:50vw desktop:50vw"
+						width="800"
+						height="947"
+						fit="cover"
+						:modifiers="buildImageModifiers(data.homePage.featuredImage.image)"
+						preload
+						loading="eager"
+						fetchpriority="high"
 					/>
 					<GraphicsImageVideo :index="Number(data.homePage.featuredImage.imageVideoGraphic?.graphic)" :fill="data.homePage.featuredImage.colors?.graphic?.hex" :position="data.homePage.featuredImage.imageVideoGraphic?.position" v-if="data.homePage.featuredImage.imageVideoGraphic?.active" />
 				</div>
@@ -72,9 +80,15 @@
 							</ul>
 						</div>
 						<div class="image">
-							<Img
-								:src="data.homePage.featuredMusic.music.featuredImage.asset.url"
+							<NuxtImg
+								loading="lazy"
+								:src="data.homePage.featuredMusic.music.featuredImage.assetRef"
 								:alt="data.homePage.featuredMusic.music.featuredImage.alt"
+								sizes="100vw phone:100vw tablet-portrait:50vw tablet-landscape:50vw laptop:50vw desktop:50vw"
+								width="1"
+								height="1"
+								fit="cover"
+								:modifiers="buildImageModifiers(data.homePage.featuredMusic.music.featuredImage)"
 							/>
 						</div>
 					</div>	
@@ -100,6 +114,7 @@
 							:html="data.homePage.featuredVideo.video.embedCode" 
 							:buttonColor="data.homePage.featuredVideo?.colors?.button?.hex" 
 							:iconColor="data.homePage.featuredVideo?.colors?.icon?.hex"
+							sizes="100vw phone:100vw tablet-portrait:50vw tablet-landscape:50vw laptop:50vw desktop:50vw"
 						/>
 						<h3 class="title --bottom">{{ data.homePage.featuredVideo.video.title }}</h3>
 					</div>	

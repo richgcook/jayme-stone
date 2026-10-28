@@ -2,7 +2,16 @@
 	<div class="track">
 		<div class="image-controls">
 			<div class="image">
-				<Img :src="track.image.asset.url" :alt="track.image.alt" />
+				<NuxtImg
+					loading="lazy"
+					:src="track.image.assetRef"
+					:alt="track.image.alt"
+					sizes="70vw phone:50vw tablet-portrait:200px"
+					width="1"
+					height="1"
+					fit="cover"
+					:modifiers="buildImageModifiers(track.image)"
+				/>
 			</div>
 			<div>
 				<AudioPlayer 

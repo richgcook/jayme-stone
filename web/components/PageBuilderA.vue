@@ -5,9 +5,15 @@
 
 			<div v-if="useBlockType(block._type) == 'image-text'" :class="{ '--flip': block.orientation == 'even' }">
 				<div class="image">
-					<Img
-						:src="block.image.asset.url"
+					<NuxtImg
+						loading="lazy"
+						:src="block.image.assetRef"
 						:alt="block.image.alt"
+						sizes="100vw phone:100vw tablet-portrait:50vw tablet-landscape:50vw laptop:50vw desktop:50vw"
+						width="1"
+						height="1"
+						fit="cover"
+						:modifiers="buildImageModifiers(block.image)"
 					/>
 					<GraphicsImageVideo :index="Number(block.imageVideoGraphic?.graphic)" :fill="block.colors?.graphic?.hex" :position="block.imageVideoGraphic?.position" v-if="block.imageVideoGraphic?.active" />
 				</div>

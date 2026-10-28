@@ -3,7 +3,17 @@
 		<div class="inner">
 			<RichText :blocks="testimonial.text" />
 			<div class="referrer">
-				<Img :src="testimonial.referrer.image.asset.url" :alt="testimonial.referrer.image.alt" v-if="testimonial.referrer.image" />
+				<NuxtImg
+					loading="lazy"
+					v-if="testimonial.referrer.image?.assetRef"
+					:src="testimonial.referrer.image.assetRef"
+					:alt="testimonial.referrer.image.alt"
+					width="80"
+					height="80"
+					densities="x1 x2"
+					fit="cover"
+					:modifiers="buildImageModifiers(testimonial.referrer.image)"
+				/>
 				<h5><span>{{ testimonial.referrer.firstNames }}</span><span v-if="testimonial.referrer.lastNames">{{ testimonial.referrer.lastNames }}</span></h5>
 			</div>
 		</div>

@@ -43,6 +43,7 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/sanity', 
 		'@pinia/nuxt',
+		'@nuxt/image',
 		'@nuxtjs/sitemap',
 		'nuxt-fathom',
 	],
@@ -56,6 +57,22 @@ export default defineNuxtConfig({
     	'dataset': process.env.SANITY_PROJECT_DATASET,
 		'apiVersion': process.env.SANITY_API_VERSION,
 		'useCdn': false
+	},
+
+	image: {
+		screens: {
+			'phone': 768,
+			'tablet-portrait': 1024,
+			'tablet-landscape': 1201,
+			'laptop': 1441,
+			'desktop': 1601,
+		},
+		quality: 80,
+		provider: 'sanity',
+		sanity: {
+			projectId: process.env.SANITY_PROJECT_ID,
+			dataset: process.env.SANITY_PROJECT_DATASET,
+		}
 	},
 
 	fathom: {

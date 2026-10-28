@@ -4,9 +4,15 @@
 		<div class="downloads">
 			<div v-for="(download, index) in downloads" :key="index" class="download">
 				<NuxtLink :to="download.file" class="image">
-					<Img
-						:src="download.image.asset.url"
+					<NuxtImg
+						loading="lazy"
+						:src="download.image.assetRef"
 						:alt="download.image.alt"
+						sizes="50vw phone:33vw tablet-portrait:25vw tablet-landscape:15vw laptop:15vw desktop:15vw"
+						width="1"
+						height="1"
+						fit="cover"
+						:modifiers="buildImageModifiers(download.image)"
 					/>
 				</NuxtLink>
 				<div class="text">
